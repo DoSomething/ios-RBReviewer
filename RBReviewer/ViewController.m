@@ -10,17 +10,16 @@
 #import "DSODoSomethingAPIClient.h"
 #import "DSOUser.h"
 
-static NSString *APIToken;
-static NSDictionary *APIUser;
-
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIButton *logoutButton;
 @property (weak, nonatomic) IBOutlet UILabel *greetingLabel;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 
 - (IBAction)loginTapped:(id)sender;
+- (IBAction)logoutTapped:(id)sender;
 
 @end
 
@@ -29,11 +28,23 @@ static NSDictionary *APIUser;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.greetingLabel.hidden = TRUE;
+    self.logoutButton.hidden = TRUE;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)logoutTapped:(id)sender {
+    [DSODoSomethingAPIClient logoutUserWithCompletionHandler:^(NSDictionary *response){
+        
+        self.greetingLabel.hidden = TRUE;
+        self.usernameTextField.hidden = FALSE;
+        self.passwordTextField.hidden = FALSE;
+        self.loginButton.hidden = FALSE;
+        self.logoutButton.hidden = TRUE;
+    }];
 }
 
 - (IBAction)loginTapped:(id)sender {
@@ -44,15 +55,15 @@ static NSDictionary *APIUser;
               @"password":self.passwordTextField.text};
     
     [DSODoSomethingAPIClient loginUserWithCompletionHandler:^(NSDictionary *response){
-        
-        APIToken = response[@"token"];
-        APIUser = response[@"user"];
+        NSString *email = [DSODoSomethingAPIClient sharedClient].user[@"mail"];
+        NSString *token = [DSODoSomethingAPIClient sharedClient].authHeaders[@"X-CSRF-Token"];
         self.greetingLabel.hidden = FALSE;
-        self.greetingLabel.text = [NSString stringWithFormat:@"Hi, %@",APIUser[@"mail"]];
+        self.greetingLabel.numberOfLines = 0;
+        self.greetingLabel.text = [NSString stringWithFormat:@"Hi, %@!\n\nYour token is:\n%@", email, token];
         self.usernameTextField.hidden = TRUE;
         self.passwordTextField.hidden = TRUE;
         self.loginButton.hidden = TRUE;
-        
+        self.logoutButton.hidden = FALSE;
     } :auth];
 }
 @end

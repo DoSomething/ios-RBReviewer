@@ -11,10 +11,20 @@
 
 @interface DSODoSomethingAPIClient : NSObject
 
-@property (strong, nonatomic) NSString *token;
+@property (strong, nonatomic) NSString *baseUrl;
+@property (retain, nonatomic) NSDictionary *authHeaders;
+@property (retain, nonatomic) NSDictionary *user;
 
-+ (void) getActiveCampaignsWithCompletionHandler:(void (^)(NSArray *campaigns))completionHandler;
++ (DSODoSomethingAPIClient *)sharedClient;
 
-+ (void) loginUserWithCompletionHandler:(void(^)(NSDictionary *))completionHandler :(NSDictionary *)auth;
++ (NSString *)getEmail;
+
++ (NSString *)getUrl;
+
++ (void)getActiveCampaignsWithCompletionHandler:(void (^)(NSArray *campaigns))completionHandler;
+
++ (void)loginUserWithCompletionHandler:(void(^)(NSDictionary *))completionHandler :(NSDictionary *)auth;
+
++ (void)logoutUserWithCompletionHandler:(void(^)(NSDictionary *))completionHandler;
 
 @end
