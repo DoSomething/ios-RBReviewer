@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *rbfImage;
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *fidLabel;
 @property (weak, nonatomic) IBOutlet UILabel *quantityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITextView *participatedText;
@@ -25,7 +26,8 @@
     [super viewDidLoad];
     [DSODoSomethingAPIClient getSingleInboxReportbackCompletionHandler:^(NSArray *response){
         NSLog(@"%@", response);
-        [self updateDisplay:(NSDictionary *)response[0]];
+        self.reportbackFile = (NSDictionary *)response[0];
+        [self updateDisplay];
     }];
 }
 
@@ -34,14 +36,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) updateDisplay:(NSDictionary *)rbf
+- (void) updateDisplay
 {
-    self.captionLabel.text = rbf[@"caption"];
-    self.participatedText.text = rbf[@"why_participated"];
-    self.quantityLabel.text = [NSString stringWithFormat:@"%@", rbf[@"quantity"]];
-    self.titleLabel.text = rbf[@"title"];
+    self.captionLabel.text = self.reportbackFile[@"caption"];
+    self.fidLabel.text = [NSString stringWithFormat:@"rb/%@", self.reportbackFile[@"fid"]];
+    self.participatedText.text = self.reportbackFile[@"why_participated"];
+    self.quantityLabel.text = [NSString stringWithFormat:@"%@", self.reportbackFile[@"quantity"]];
+    self.titleLabel.text = self.reportbackFile[@"title"];
     
-    NSData* imageData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:rbf[@"src"]]];
+    NSData* imageData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:self.reportbackFile[@"src"]]];
     UIImage* image = [[UIImage alloc] initWithData:imageData];
     [self.rbfImage setImage:image];
 }
@@ -55,5 +58,6 @@
     // Pass the selected object to the new view controller.
 }
 */
+
 
 @end

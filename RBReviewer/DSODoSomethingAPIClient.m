@@ -122,8 +122,24 @@
 {
 ;
     AFHTTPSessionManager *session = [self getAuthenticatedSession];
-    NSString *filesUrl = [self getUrl:@"reportback_files.json?pagesize=1"];
+    NSString *filesUrl = [self getUrl:@"reportback_files.json?pagesize=1&parameters[status]=pending"];
     [session GET:filesUrl parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        completionHandler(responseObject);
+        
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        NSLog(@"Error: %@",error.localizedDescription);
+    }];
+}
++(void)postReportbackReviewWithCompletionHandler:(void(^)(NSArray *))completionHandler :(NSDictionary *)values
+{
+    ;
+    AFHTTPSessionManager *session = [self getAuthenticatedSession];
+    NSString *postUrl = [self getUrl:[NSString stringWithFormat:@"reportback_files/%@/review.json", values[@"fid"]]];
+
+    [session POST:postUrl parameters:values success:^(NSURLSessionDataTask *task, id responseObject) {
         
         completionHandler(responseObject);
         
