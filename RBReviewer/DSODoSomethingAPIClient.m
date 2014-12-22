@@ -30,7 +30,8 @@
 - (id)init {
     if (self = [super init]) {
         authHeaders = [[NSDictionary alloc] init];
-        baseUrl = @"https://www.dosomething.org/api/v1/";
+        // baseUrl = @"https://www.dosomething.org/api/v1/";
+        baseUrl = @"http://staging.beta.dosomething.org/api/v1/";
         user =[[NSDictionary alloc] init];
     }
     return self;
@@ -91,22 +92,38 @@
 +(AFHTTPSessionManager *) getAuthenticatedSession
 {
     AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
-    //[session setRequestSerializer:[AFJSONRequestSerializer serializer]];
+    [session setRequestSerializer:[AFJSONRequestSerializer serializer]];
     [session setResponseSerializer:[AFJSONResponseSerializer serializer]];
-    session.requestSerializer = [AFJSONRequestSerializer serializer];
+
     for (NSString* key in self.sharedClient.authHeaders) {
         id value = [self.sharedClient.authHeaders objectForKey:key];
         [session.requestSerializer setValue:key forHTTPHeaderField:value];
-        NSLog(@"%@", session.requestSerializer.description);
+        NSLog(@"key=%@ value=%@", key, value);
     }
+    NSLog(@"%@", session.requestSerializer.description);
     return session;
 }
         
 +(void)logoutUserWithCompletionHandler:(void(^)(NSDictionary *))completionHandler
 {
     AFHTTPSessionManager *session = [self getAuthenticatedSession];
-    NSString *logoutUrl = [self getUrl:@"auth/logout"];
+    NSString *logoutUrl = [self getUrl:@"auth/logout.json"];
     [session POST:logoutUrl parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        completionHandler(responseObject);
+        
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        NSLog(@"Error: %@",error.localizedDescription);
+    }];
+}
++(void)getSingleInboxReportbackCompletionHandler:(void(^)(NSArray *))completionHandler
+{
+;
+    AFHTTPSessionManager *session = [self getAuthenticatedSession];
+    NSString *filesUrl = [self getUrl:@"reportback_files.json?pagesize=1"];
+    [session GET:filesUrl parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
         completionHandler(responseObject);
         

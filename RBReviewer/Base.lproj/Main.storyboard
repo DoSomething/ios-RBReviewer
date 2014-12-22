@@ -52,8 +52,8 @@
                                     <constraint firstAttribute="width" constant="240" id="gDZ-gx-gdC"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVC-JF-TL8">
-                                <rect key="frame" x="277" y="550" width="49" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVC-JF-TL8">
+                                <rect key="frame" x="535" y="562" width="49" height="30"/>
                                 <state key="normal" title="Logout">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -61,22 +61,37 @@
                                     <action selector="logoutTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="jhJ-Dg-JZs"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0g-X1-IDS">
+                                <rect key="frame" x="275" y="516" width="50" height="30"/>
+                                <state key="normal" title="Review">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="reviewTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="L2n-EK-UfR"/>
+                                    <segue destination="dfQ-yb-EVL" kind="show" id="BeE-eU-r5h"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="l86-O8-19x" firstAttribute="centerX" secondItem="17H-N6-dvL" secondAttribute="centerX" id="5ZT-h0-Wmb"/>
+                            <constraint firstItem="N0g-X1-IDS" firstAttribute="centerX" secondItem="l86-O8-19x" secondAttribute="centerX" id="EDN-Sl-T6y"/>
                             <constraint firstItem="17H-N6-dvL" firstAttribute="trailing" secondItem="CNo-St-IiF" secondAttribute="trailing" id="Gc5-Ig-0en"/>
                             <constraint firstAttribute="centerY" secondItem="l86-O8-19x" secondAttribute="centerY" constant="-183" id="HbF-f5-Fe3"/>
                             <constraint firstItem="RmI-6k-Pj9" firstAttribute="centerX" secondItem="CNo-St-IiF" secondAttribute="centerX" id="JkA-Xk-C56"/>
                             <constraint firstItem="RmI-6k-Pj9" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="NbI-WG-2Nm"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="UVC-JF-TL8" secondAttribute="bottom" constant="8" symbolic="YES" id="Tae-sw-8Fw"/>
                             <constraint firstItem="Jhm-4t-2MY" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="31" id="b48-fZ-ANz"/>
                             <constraint firstItem="CNo-St-IiF" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="ddG-Dp-9BH"/>
                             <constraint firstItem="Jhm-4t-2MY" firstAttribute="centerX" secondItem="RmI-6k-Pj9" secondAttribute="centerX" id="h6M-m0-Q75"/>
                             <constraint firstItem="CNo-St-IiF" firstAttribute="top" secondItem="RmI-6k-Pj9" secondAttribute="bottom" constant="49" id="hNc-YT-92S"/>
+                            <constraint firstItem="N0g-X1-IDS" firstAttribute="top" secondItem="l86-O8-19x" secondAttribute="bottom" constant="18" id="jgx-IA-mbM"/>
                             <constraint firstItem="17H-N6-dvL" firstAttribute="top" secondItem="CNo-St-IiF" secondAttribute="bottom" constant="45" id="lDN-IC-LyM"/>
+                            <constraint firstItem="UVC-JF-TL8" firstAttribute="trailing" secondItem="17H-N6-dvL" secondAttribute="trailing" id="ogE-he-hhN"/>
                             <constraint firstItem="CNo-St-IiF" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="qhm-cq-9ed"/>
                             <constraint firstItem="l86-O8-19x" firstAttribute="top" secondItem="17H-N6-dvL" secondAttribute="bottom" constant="78" id="t1N-5S-2FI"/>
                             <constraint firstItem="17H-N6-dvL" firstAttribute="leading" secondItem="CNo-St-IiF" secondAttribute="leading" id="ufd-ZJ-MVT"/>
+                            <constraint firstItem="UVC-JF-TL8" firstAttribute="trailing" secondItem="RmI-6k-Pj9" secondAttribute="trailing" id="y0Y-k1-8mZ"/>
                         </constraints>
                     </view>
                     <connections>
@@ -84,11 +99,56 @@
                         <outlet property="loginButton" destination="l86-O8-19x" id="a44-RJ-i0h"/>
                         <outlet property="logoutButton" destination="UVC-JF-TL8" id="NwK-8x-s7x"/>
                         <outlet property="passwordTextField" destination="17H-N6-dvL" id="JVQ-O9-xSO"/>
+                        <outlet property="reviewButton" destination="N0g-X1-IDS" id="wNq-Id-IgL"/>
                         <outlet property="usernameTextField" destination="CNo-St-IiF" id="hZw-wT-7T2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Reportback File View Controller-->
+        <scene sceneID="PPl-AJ-hcG">
+            <objects>
+                <viewController id="dfQ-yb-EVL" customClass="DSOReportbackFileViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LLm-JF-AdB"/>
+                        <viewControllerLayoutGuide type="bottom" id="gjQ-iP-G6f"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kaS-XC-tIW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BrN-ud-ltW">
+                                <rect key="frame" x="167" y="28" width="266" height="241"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="266" id="6OX-9n-FOn"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caption" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJr-49-ag2">
+                                <rect key="frame" x="16" y="299" width="568" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oJr-49-ag2" firstAttribute="top" secondItem="BrN-ud-ltW" secondAttribute="bottom" constant="30" id="AQQ-5Z-zfM"/>
+                            <constraint firstItem="oJr-49-ag2" firstAttribute="leading" secondItem="kaS-XC-tIW" secondAttribute="leadingMargin" id="EI7-le-220"/>
+                            <constraint firstItem="BrN-ud-ltW" firstAttribute="centerX" secondItem="kaS-XC-tIW" secondAttribute="centerX" id="FAG-7e-poj"/>
+                            <constraint firstItem="oJr-49-ag2" firstAttribute="centerX" secondItem="BrN-ud-ltW" secondAttribute="centerX" id="Kyb-VK-673"/>
+                            <constraint firstItem="gjQ-iP-G6f" firstAttribute="top" secondItem="BrN-ud-ltW" secondAttribute="bottom" constant="331" id="icF-Qw-wMD"/>
+                            <constraint firstItem="BrN-ud-ltW" firstAttribute="top" secondItem="LLm-JF-AdB" secondAttribute="bottom" constant="8" symbolic="YES" id="w3E-3Q-t53"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="rbfCaption" destination="oJr-49-ag2" id="5ck-Rg-4Ke"/>
+                        <outlet property="rbfImage" destination="BrN-ud-ltW" id="VXR-aH-CO1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lPC-kd-Zdd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="873" y="136"/>
         </scene>
     </scenes>
     <resources>

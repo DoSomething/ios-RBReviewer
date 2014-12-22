@@ -14,12 +14,14 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet UIButton *logoutButton;
+@property (weak, nonatomic) IBOutlet UIButton *reviewButton;
 @property (weak, nonatomic) IBOutlet UILabel *greetingLabel;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 
 - (IBAction)loginTapped:(id)sender;
 - (IBAction)logoutTapped:(id)sender;
+- (IBAction)reviewTapped:(id)sender;
 
 @end
 
@@ -29,6 +31,7 @@
     [super viewDidLoad];
     self.greetingLabel.hidden = TRUE;
     self.logoutButton.hidden = TRUE;
+    self.reviewButton.hidden = TRUE;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,7 +47,12 @@
         self.passwordTextField.hidden = FALSE;
         self.loginButton.hidden = FALSE;
         self.logoutButton.hidden = TRUE;
+        self.reviewButton.hidden = TRUE;
     }];
+}
+
+- (IBAction)reviewTapped:(id)sender {
+
 }
 
 - (IBAction)loginTapped:(id)sender {
@@ -64,6 +72,7 @@
         self.passwordTextField.hidden = TRUE;
         self.loginButton.hidden = TRUE;
         self.logoutButton.hidden = FALSE;
+        self.reviewButton.hidden = FALSE;
     } :auth];
 }
 @end

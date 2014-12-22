@@ -23,6 +23,8 @@
 
 + (void)getActiveCampaignsWithCompletionHandler:(void (^)(NSArray *campaigns))completionHandler;
 
++ (void)getSingleInboxReportbackCompletionHandler:(void(^)(NSArray *))completionHandler;
+
 + (void)loginUserWithCompletionHandler:(void(^)(NSDictionary *))completionHandler :(NSDictionary *)auth;
 
 + (void)logoutUserWithCompletionHandler:(void(^)(NSDictionary *))completionHandler;
