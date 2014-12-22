@@ -12,7 +12,10 @@
 @interface DSOReportbackFileViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *rbfImage;
-@property (weak, nonatomic) IBOutlet UILabel *rbfCaption;
+@property (weak, nonatomic) IBOutlet UILabel *captionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *quantityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UITextView *participatedText;
 
 @end
 
@@ -33,7 +36,11 @@
 
 - (void) updateDisplay:(NSDictionary *)rbf
 {
-    self.rbfCaption.text = rbf[@"caption"];
+    self.captionLabel.text = rbf[@"caption"];
+    self.participatedText.text = rbf[@"why_participated"];
+    self.quantityLabel.text = [NSString stringWithFormat:@"%@", rbf[@"quantity"]];
+    self.titleLabel.text = rbf[@"title"];
+    
     NSData* imageData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:rbf[@"src"]]];
     UIImage* image = [[UIImage alloc] initWithData:imageData];
     [self.rbfImage setImage:image];
