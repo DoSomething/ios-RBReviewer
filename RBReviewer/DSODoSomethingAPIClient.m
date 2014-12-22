@@ -9,6 +9,12 @@
 #import "DSODoSomethingAPIClient.h"
 #import <AFNetworking.h>
 
+@interface DSODoSomethingAPIClient ()
+
+@property (strong, nonatomic) AFHTTPSessionManager *session;
+
+@end
+
 @implementation DSODoSomethingAPIClient
 
 @synthesize authHeaders;
@@ -29,9 +35,18 @@
 
 - (id)init {
     if (self = [super init]) {
+        _session = [AFHTTPSessionManager manager];
         authHeaders = [[NSDictionary alloc] init];
+
+        // Production
         // baseUrl = @"https://www.dosomething.org/api/v1/";
+
+        // Staging
         baseUrl = @"http://staging.beta.dosomething.org/api/v1/";
+        
+        // Local dev
+        // baseUrl = @"http://dev.dosomething.org:8888/api/v1/";
+
         user =[[NSDictionary alloc] init];
     }
     return self;
@@ -118,7 +133,8 @@
         NSLog(@"Error: %@",error.localizedDescription);
     }];
 }
-+(void)getSingleInboxReportbackCompletionHandler:(void(^)(NSArray *))completionHandler
+
++ (void)getSingleInboxReportbackCompletionHandler:(void(^)(NSMutableArray *))completionHandler
 {
 ;
     AFHTTPSessionManager *session = [self getAuthenticatedSession];
@@ -133,10 +149,12 @@
         NSLog(@"Error: %@",error.localizedDescription);
     }];
 }
-+(void)postReportbackReviewWithCompletionHandler:(void(^)(NSArray *))completionHandler :(NSDictionary *)values
+
++ (void)postReportbackReviewWithCompletionHandler:(void(^)(NSArray *))completionHandler :(NSDictionary *)values
 {
     ;
     AFHTTPSessionManager *session = [self getAuthenticatedSession];
+    NSLog(@"%@", values);
     NSString *postUrl = [self getUrl:[NSString stringWithFormat:@"reportback_files/%@/review.json", values[@"fid"]]];
 
     [session POST:postUrl parameters:values success:^(NSURLSessionDataTask *task, id responseObject) {

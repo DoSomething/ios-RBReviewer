@@ -18,15 +18,18 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITextView *participatedText;
 
+- (IBAction)approveTapped:(id)sender;
+- (IBAction)excludeTapped:(id)sender;
+
 @end
 
 @implementation DSOReportbackFileViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [DSODoSomethingAPIClient getSingleInboxReportbackCompletionHandler:^(NSArray *response){
+    [DSODoSomethingAPIClient getSingleInboxReportbackCompletionHandler:^(NSMutableArray *response){
         NSLog(@"%@", response);
-        self.reportbackFile = (NSDictionary *)response[0];
+        self.reportbackFile = (NSMutableDictionary *)response[0];
         [self updateDisplay];
     }];
 }
@@ -60,4 +63,22 @@
 */
 
 
+- (IBAction)approveTapped:(id)sender {
+    [self postReview:@"approved"];
+}
+
+- (IBAction)excludeTapped:(id)sender {
+    [self postReview:@"excluded"];
+}
+- (void) postReview:(NSString *)status
+{
+    NSDictionary *values = @{
+                             @"fid":self.reportbackFile[@"fid"],
+                             @"status":status,
+                             @"source":@"ios"
+                             };
+    [DSODoSomethingAPIClient postReportbackReviewWithCompletionHandler:^(NSArray *response){
+        [self viewDidLoad];
+    } :values];
+}
 @end

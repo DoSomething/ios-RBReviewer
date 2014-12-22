@@ -10,6 +10,6 @@
 
 @interface DSOReportbackFileViewController : UIViewController
 
-@property (strong, nonatomic) NSDictionary *reportbackFile;
+@property (strong, nonatomic) NSMutableDictionary *reportbackFile;
 
 @end

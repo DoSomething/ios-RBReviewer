@@ -19,14 +19,14 @@
 
 + (NSString *)getEmail;
 
-+ (NSString *)getUrl;
-
 + (void)getActiveCampaignsWithCompletionHandler:(void (^)(NSArray *campaigns))completionHandler;
 
-+ (void)getSingleInboxReportbackCompletionHandler:(void(^)(NSArray *))completionHandler;
++ (void)getSingleInboxReportbackCompletionHandler:(void(^)(NSMutableArray *))completionHandler;
 
 + (void)loginUserWithCompletionHandler:(void(^)(NSDictionary *))completionHandler :(NSDictionary *)auth;
 
 + (void)logoutUserWithCompletionHandler:(void(^)(NSDictionary *))completionHandler;
+
++ (void)postReportbackReviewWithCompletionHandler:(void(^)(NSArray *))completionHandler :(NSDictionary *)values;
 
 @end
