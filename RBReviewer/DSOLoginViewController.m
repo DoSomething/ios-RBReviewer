@@ -44,7 +44,6 @@
 - (void) checkForKeychain
 {
     NSArray *dsAccounts = [SSKeychain accountsForService:@"DoSomething.org"];
-    NSLog(@"%@", dsAccounts);
     if ([dsAccounts count] > 0) {
         NSDictionary *account = dsAccounts[0];
         self.usernameTextField.text = account[@"acct"];
