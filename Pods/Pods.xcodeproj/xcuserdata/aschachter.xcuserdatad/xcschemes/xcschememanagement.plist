@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-RBReviewer-SSKeychain.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-RBReviewer.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>8AE78E741D0853D9F7935564</key>
+		<key>4D40B8A9475BFECA5B758FBE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DD3B19948B24FD2F806C7FF5</key>
+		<key>CEB490E1238129FA1AE3828B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EECDAD6DAE5BB8CD4D2865CB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

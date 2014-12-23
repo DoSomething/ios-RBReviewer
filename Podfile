@@ -3,7 +3,7 @@ platform :ios, '8.0'
 
 target 'RBReviewer' do
 pod 'AFNetworking', '2.5.0'
-
+pod 'SSKeychain', '1.2.2'
 end
 
 target 'RBReviewerTests' do
