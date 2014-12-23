@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DSOUser.h"
 
 @interface DSODoSomethingAPIClient : NSObject
 

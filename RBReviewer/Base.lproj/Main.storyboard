@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
+        <!--Home-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="DSOLoginViewController" sceneMemberID="viewController">
@@ -93,7 +93,7 @@
                             <constraint firstItem="l86-O8-19x" firstAttribute="top" secondItem="17H-N6-dvL" secondAttribute="bottom" constant="78" id="ymE-DE-suE"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="keT-OI-mR0"/>
+                    <navigationItem key="navigationItem" title="Home" id="keT-OI-mR0"/>
                     <connections>
                         <outlet property="greetingLabel" destination="RmI-6k-Pj9" id="7wV-8e-jBJ"/>
                         <outlet property="loginButton" destination="l86-O8-19x" id="a44-RJ-i0h"/>
@@ -216,9 +216,7 @@
                             <constraint firstItem="BrN-ud-ltW" firstAttribute="trailing" secondItem="IvP-U1-gYP" secondAttribute="trailing" id="zmS-wp-r3d"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Review" id="jMU-7M-FCi">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="bmg-sI-yAW"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Review" id="jMU-7M-FCi"/>
                     <connections>
                         <outlet property="captionLabel" destination="oJr-49-ag2" id="rVN-kJ-Qfq"/>
                         <outlet property="fidLabel" destination="J8z-MX-ejs" id="R7R-1g-rqe"/>

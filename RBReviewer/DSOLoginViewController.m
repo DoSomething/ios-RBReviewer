@@ -8,7 +8,6 @@
 
 #import "DSOLoginViewController.h"
 #import "DSODoSomethingAPIClient.h"
-#import "DSOUser.h"
 #import "SSKeychain/SSKeychain.h"
 #import "SSKeychain/SSKeychainQuery.h"
 
@@ -33,6 +32,7 @@
     self.greetingLabel.hidden = TRUE;
     self.logoutButton.hidden = TRUE;
     self.reviewButton.hidden = TRUE;
+    self.title = @"Login";
     [self checkForKeychain];
 }
 
@@ -84,6 +84,7 @@
         self.loginButton.hidden = TRUE;
         self.logoutButton.hidden = FALSE;
         self.reviewButton.hidden = FALSE;
+        self.title = @"Home";
     } :auth];
 }
 @end

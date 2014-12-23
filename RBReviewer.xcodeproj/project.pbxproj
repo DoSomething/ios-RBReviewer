@@ -16,7 +16,6 @@
 		B20DC9DA1A39E63300075693 /* RBReviewerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B20DC9D91A39E63300075693 /* RBReviewerTests.m */; };
 		B238D2571A3A55E500CFFEE6 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = B238D2561A3A55E500CFFEE6 /* logo.png */; };
 		B280325A1A39EA7F00785B7E /* DSODoSomethingAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B28032591A39EA7F00785B7E /* DSODoSomethingAPIClient.m */; };
-		B280325D1A39F3A800785B7E /* DSOUser.m in Sources */ = {isa = PBXBuildFile; fileRef = B280325C1A39F3A800785B7E /* DSOUser.m */; };
 		B2DF862B1A4871370098D4B7 /* DSOReportbackFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DF862A1A4871370098D4B7 /* DSOReportbackFileViewController.m */; };
 		D0B079FE25543743D62D91C0 /* libPods-RBReviewer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0049ADD328CA632EABF1AC49 /* libPods-RBReviewer.a */; };
 /* End PBXBuildFile section */
@@ -50,8 +49,6 @@
 		B238D2561A3A55E500CFFEE6 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		B28032581A39EA7F00785B7E /* DSODoSomethingAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSODoSomethingAPIClient.h; sourceTree = "<group>"; };
 		B28032591A39EA7F00785B7E /* DSODoSomethingAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSODoSomethingAPIClient.m; sourceTree = "<group>"; };
-		B280325B1A39F3A800785B7E /* DSOUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSOUser.h; sourceTree = "<group>"; };
-		B280325C1A39F3A800785B7E /* DSOUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSOUser.m; sourceTree = "<group>"; };
 		B2DF86291A4871370098D4B7 /* DSOReportbackFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSOReportbackFileViewController.h; sourceTree = "<group>"; };
 		B2DF862A1A4871370098D4B7 /* DSOReportbackFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSOReportbackFileViewController.m; sourceTree = "<group>"; };
 		CA4F0AC1C06FE9851EDC1502 /* Pods-RBReviewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RBReviewer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RBReviewer/Pods-RBReviewer.debug.xcconfig"; sourceTree = "<group>"; };
@@ -111,8 +108,6 @@
 				B20DC9C21A39E63300075693 /* AppDelegate.m */,
 				B28032581A39EA7F00785B7E /* DSODoSomethingAPIClient.h */,
 				B28032591A39EA7F00785B7E /* DSODoSomethingAPIClient.m */,
-				B280325B1A39F3A800785B7E /* DSOUser.h */,
-				B280325C1A39F3A800785B7E /* DSOUser.m */,
 				B20DC9C41A39E63300075693 /* DSOLoginViewController.h */,
 				B20DC9C51A39E63300075693 /* DSOLoginViewController.m */,
 				B20DC9C71A39E63300075693 /* Main.storyboard */,
@@ -301,7 +296,6 @@
 				B280325A1A39EA7F00785B7E /* DSODoSomethingAPIClient.m in Sources */,
 				B20DC9C61A39E63300075693 /* DSOLoginViewController.m in Sources */,
 				B20DC9C31A39E63300075693 /* AppDelegate.m in Sources */,
-				B280325D1A39F3A800785B7E /* DSOUser.m in Sources */,
 				B20DC9C01A39E63300075693 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
