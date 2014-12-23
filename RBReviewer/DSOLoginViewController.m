@@ -52,7 +52,8 @@
 }
 
 - (IBAction)logoutTapped:(id)sender {
-    [DSODoSomethingAPIClient logoutUserWithCompletionHandler:^(NSDictionary *response){
+    DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
+    [client logoutUserWithCompletionHandler:^(NSDictionary *response){
         
         self.greetingLabel.hidden = TRUE;
         self.usernameTextField.hidden = FALSE;

@@ -29,13 +29,11 @@
 
 + (NSString *)getEmail;
 
-+ (void)getActiveCampaignsWithCompletionHandler:(void (^)(NSArray *campaigns))completionHandler;
 
-+ (void)getSingleInboxReportbackCompletionHandler:(void(^)(NSMutableArray *))completionHandler;
+- (void)getSingleInboxReportbackCompletionHandler:(void(^)(NSMutableArray *))completionHandler;
 
+- (void)logoutUserWithCompletionHandler:(void(^)(NSDictionary *))completionHandler;
 
-+ (void)logoutUserWithCompletionHandler:(void(^)(NSDictionary *))completionHandler;
-
-+ (void)postReportbackReviewWithCompletionHandler:(void(^)(NSArray *))completionHandler :(NSDictionary *)values;
+- (void)postReportbackReviewWithCompletionHandler:(void(^)(NSArray *))completionHandler :(NSDictionary *)values;
 
 @end

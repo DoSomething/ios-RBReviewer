@@ -27,8 +27,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [DSODoSomethingAPIClient getSingleInboxReportbackCompletionHandler:^(NSMutableArray *response){
-        NSLog(@"%@", response);
+    DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
+    [client getSingleInboxReportbackCompletionHandler:^(NSMutableArray *response){
         self.reportbackFile = (NSMutableDictionary *)response[0];
         [self updateDisplay];
     }];
@@ -77,7 +77,8 @@
                              @"status":status,
                              @"source":@"ios"
                              };
-    [DSODoSomethingAPIClient postReportbackReviewWithCompletionHandler:^(NSArray *response){
+    DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
+    [client postReportbackReviewWithCompletionHandler:^(NSArray *response){
         [self viewDidLoad];
     } :values];
 }
