@@ -72,10 +72,15 @@
     auth = @{@"username":username,
               @"password":password};
     
-    [DSODoSomethingAPIClient loginUserWithCompletionHandler:^(NSDictionary *response){
-        NSString *email = [DSODoSomethingAPIClient sharedClient].user[@"mail"];
-        NSString *token = [DSODoSomethingAPIClient sharedClient].authHeaders[@"X-CSRF-Token"];
+    DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
+
+    [client loginWithCompletionHandler:^(NSDictionary *response){
+
+        NSString *email = client.user[@"mail"];
+        NSString *token = client.authHeaders[@"X-CSRF-Token"];
+
         [SSKeychain setPassword:password forService:@"DoSomething.org" account:username];
+
         self.greetingLabel.hidden = FALSE;
         self.greetingLabel.numberOfLines = 0;
         self.greetingLabel.text = [NSString stringWithFormat:@"Hi, %@!\n\nYour token is:\n%@", email, token];
@@ -85,6 +90,7 @@
         self.logoutButton.hidden = FALSE;
         self.reviewButton.hidden = FALSE;
         self.title = @"Home";
-    } :auth];
+
+    } andDictionary:auth];
 }
 @end

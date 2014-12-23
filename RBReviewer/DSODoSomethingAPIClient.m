@@ -9,9 +9,11 @@
 #import "DSODoSomethingAPIClient.h"
 #import <AFNetworking.h>
 
+static NSString * const DoSomethingAPIString = @"http://staging.beta.dosomething.org/api/v1/";
+
 @interface DSODoSomethingAPIClient ()
 
-@property (strong, nonatomic) AFHTTPSessionManager *session;
+// @property (strong, nonatomic) AFHTTPSessionManager *session;
 
 @end
 
@@ -24,18 +26,47 @@
 
 + (DSODoSomethingAPIClient *)sharedClient
 {
-    static DSODoSomethingAPIClient *sharedClient = nil;
-    // Blindly stealing this from http://www.galloway.me.uk/tutorials/singleton-classes/ for now
+    static DSODoSomethingAPIClient *_sharedClient = nil;
+
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedClient = [[self alloc] init];
+        _sharedClient  = [[self alloc] initWithBaseURL:[NSURL URLWithString:DoSomethingAPIString]];
     });
-    return sharedClient;
+    return _sharedClient;
+}
+
+- (instancetype)initWithBaseURL:(NSURL *)url
+{
+    self = [super initWithBaseURL:url];
+    
+    if (self) {
+        self.responseSerializer = [AFJSONResponseSerializer serializer];
+        self.requestSerializer = [AFJSONRequestSerializer serializer];
+    }
+    
+    return self;
+}
+
+-(void)loginWithCompletionHandler:(void(^)(NSDictionary *))completionHandler andDictionary:(NSDictionary *)authValues
+{
+    
+    [self POST:@"auth/login.json" parameters:authValues success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        self.authHeaders = @{
+                             @"X-CSRF-Token":responseObject[@"token"],
+                             @"Cookie":[NSString stringWithFormat:@"%@=%@", responseObject[@"session_name"], responseObject[@"sessid"]]
+                             };
+        self.user = responseObject[@"user"];
+        completionHandler(responseObject);
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        NSLog(@"Error: %@",error.localizedDescription);
+    }];
 }
 
 - (id)init {
     if (self = [super init]) {
-        _session = [AFHTTPSessionManager manager];
         authHeaders = [[NSDictionary alloc] init];
 
         // Production
@@ -81,28 +112,6 @@
     }];
 }
 
-+(void)loginUserWithCompletionHandler:(void(^)(NSDictionary *))completionHandler :(NSDictionary *)authValues
-{
-    AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
-    [session setRequestSerializer:[AFJSONRequestSerializer serializer]];
-    [session setResponseSerializer:[AFJSONResponseSerializer serializer]];
-
-    NSString *loginUrl = [self getUrl:@"auth/login.json"];
-
-    [session POST:loginUrl parameters:authValues success:^(NSURLSessionDataTask *task, id responseObject) {
-
-        self.sharedClient.authHeaders = @{
-                        @"X-CSRF-Token":responseObject[@"token"],
-                        @"Cookie":[NSString stringWithFormat:@"%@=%@", responseObject[@"session_name"], responseObject[@"sessid"]]
-                        };
-        self.sharedClient.user = responseObject[@"user"];
-        completionHandler(responseObject);
-
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
-        NSLog(@"Error: %@",error.localizedDescription);
-    }];
-}
 
 +(AFHTTPSessionManager *) getAuthenticatedSession
 {

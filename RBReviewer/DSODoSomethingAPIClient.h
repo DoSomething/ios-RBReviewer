@@ -7,14 +7,25 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AFHTTPSessionManager.h"
 
-@interface DSODoSomethingAPIClient : NSObject
+// Following http://www.raywenderlich.com/59255/afnetworking-2-0-tutorial for now.
+@protocol DSODoSomethingAPIClientDelegate;
+
+@interface DSODoSomethingAPIClient : AFHTTPSessionManager
+
+@property (nonatomic, weak) id<DSODoSomethingAPIClientDelegate>delegate;
 
 @property (strong, nonatomic) NSString *baseUrl;
 @property (retain, nonatomic) NSDictionary *authHeaders;
 @property (retain, nonatomic) NSDictionary *user;
 
+
 + (DSODoSomethingAPIClient *)sharedClient;
+
+- (instancetype)initWithBaseURL:(NSURL *)url;
+
+-(void)loginWithCompletionHandler:(void(^)(NSDictionary *))completionHandler andDictionary:(NSDictionary *)authValues;
 
 + (NSString *)getEmail;
 
@@ -22,7 +33,6 @@
 
 + (void)getSingleInboxReportbackCompletionHandler:(void(^)(NSMutableArray *))completionHandler;
 
-+ (void)loginUserWithCompletionHandler:(void(^)(NSDictionary *))completionHandler :(NSDictionary *)auth;
 
 + (void)logoutUserWithCompletionHandler:(void(^)(NSDictionary *))completionHandler;
 
