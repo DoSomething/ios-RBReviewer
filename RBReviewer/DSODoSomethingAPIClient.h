@@ -29,7 +29,6 @@
 
 + (NSString *)getEmail;
 
-
 - (void)getSingleInboxReportbackCompletionHandler:(void(^)(NSMutableArray *))completionHandler;
 
 - (void)logoutUserWithCompletionHandler:(void(^)(NSDictionary *))completionHandler;

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F44680F89E5F4634B1B27E8F"
-               BuildableName = "libPods-RBReviewer.a"
-               BlueprintName = "Pods-RBReviewer"
+               BlueprintIdentifier = "603307835E7F0569D163CED8"
+               BuildableName = "libPods-RBReviewer-AFNetworkActivityLogger.a"
+               BlueprintName = "Pods-RBReviewer-AFNetworkActivityLogger"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

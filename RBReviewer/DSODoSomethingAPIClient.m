@@ -53,7 +53,7 @@ static NSString * const DoSomethingAPIString = @"http://staging.beta.dosomething
 {
     for (NSString* key in self.authHeaders) {
         id value = [self.authHeaders objectForKey:key];
-        [self.requestSerializer setValue:key forHTTPHeaderField:value];
+        [self.requestSerializer setValue:value forHTTPHeaderField:key];
         NSLog(@"Adding key=%@ value=%@", key, value);
     }
 }
