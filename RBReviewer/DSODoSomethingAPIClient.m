@@ -88,6 +88,9 @@ static NSString * const DoSomethingAPIString = @"http://staging.beta.dosomething
         
 - (void)logoutUserWithCompletionHandler:(void(^)(NSDictionary *))completionHandler
 {
+    // Shot in the dark to fix 406 error, per http://stackoverflow.com/questions/21620429/afnetworking-2-0-nslocalizeddescription-request-failed-unacceptable-content-ty
+
+    // self.responseSerializer = [AFHTTPResponseSerializer serializer];
 
     [self POST:@"auth/logout.json" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
