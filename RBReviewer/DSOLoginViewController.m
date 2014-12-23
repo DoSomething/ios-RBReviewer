@@ -23,7 +23,6 @@
 
 - (IBAction)loginTapped:(id)sender;
 - (IBAction)logoutTapped:(id)sender;
-- (IBAction)reviewTapped:(id)sender;
 
 @end
 
@@ -52,6 +51,7 @@
         self.passwordTextField.text = [SSKeychain passwordForService:@"DoSomething.org" account:account[@"acct"]];
     }
 }
+
 - (IBAction)logoutTapped:(id)sender {
     [DSODoSomethingAPIClient logoutUserWithCompletionHandler:^(NSDictionary *response){
         
@@ -62,10 +62,6 @@
         self.logoutButton.hidden = TRUE;
         self.reviewButton.hidden = TRUE;
     }];
-}
-
-- (IBAction)reviewTapped:(id)sender {
-
 }
 
 - (IBAction)loginTapped:(id)sender {
@@ -81,7 +77,6 @@
         NSString *email = [DSODoSomethingAPIClient sharedClient].user[@"mail"];
         NSString *token = [DSODoSomethingAPIClient sharedClient].authHeaders[@"X-CSRF-Token"];
         [SSKeychain setPassword:password forService:@"DoSomething.org" account:username];
-        NSLog(@"%@", [SSKeychain allAccounts]);
         self.greetingLabel.hidden = FALSE;
         self.greetingLabel.numberOfLines = 0;
         self.greetingLabel.text = [NSString stringWithFormat:@"Hi, %@!\n\nYour token is:\n%@", email, token];

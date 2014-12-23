@@ -67,7 +67,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="reviewTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="L2n-EK-UfR"/>
                                     <segue destination="dfQ-yb-EVL" kind="show" id="BeE-eU-r5h"/>
                                 </connections>
                             </button>
