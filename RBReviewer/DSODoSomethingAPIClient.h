@@ -27,6 +27,8 @@
 
 -(void)loginWithCompletionHandler:(void(^)(NSDictionary *))completionHandler andDictionary:(NSDictionary *)authValues;
 
+-(void)checkStatusWithCompletionHandler:(void(^)(NSDictionary *))completionHandler;
+
 + (NSString *)getEmail;
 
 - (void)getSingleInboxReportbackCompletionHandler:(void(^)(NSMutableArray *))completionHandler;

@@ -7,6 +7,7 @@
 //
 
 #import "DSOLoginViewController.h"
+#import "DSOHomeViewController.h"
 #import "DSODoSomethingAPIClient.h"
 #import "SSKeychain/SSKeychain.h"
 #import "SSKeychain/SSKeychainQuery.h"
@@ -14,14 +15,10 @@
 @interface DSOLoginViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
-@property (weak, nonatomic) IBOutlet UIButton *logoutButton;
-@property (weak, nonatomic) IBOutlet UIButton *reviewButton;
-@property (weak, nonatomic) IBOutlet UILabel *greetingLabel;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 
 - (IBAction)loginTapped:(id)sender;
-- (IBAction)logoutTapped:(id)sender;
 
 @end
 
@@ -29,9 +26,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.greetingLabel.hidden = TRUE;
-    self.logoutButton.hidden = TRUE;
-    self.reviewButton.hidden = TRUE;
     self.title = @"Login";
     [self checkForKeychain];
 }
@@ -51,18 +45,6 @@
     }
 }
 
-- (IBAction)logoutTapped:(id)sender {
-    DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
-    [client logoutUserWithCompletionHandler:^(NSDictionary *response){
-        
-        self.greetingLabel.hidden = TRUE;
-        self.usernameTextField.hidden = FALSE;
-        self.passwordTextField.hidden = FALSE;
-        self.loginButton.hidden = FALSE;
-        self.logoutButton.hidden = TRUE;
-        self.reviewButton.hidden = TRUE;
-    }];
-}
 
 - (IBAction)loginTapped:(id)sender {
 
@@ -77,20 +59,15 @@
 
     [client loginWithCompletionHandler:^(NSDictionary *response){
 
-        NSString *email = client.user[@"mail"];
-        NSString *token = client.authHeaders[@"X-CSRF-Token"];
-
         [SSKeychain setPassword:password forService:@"DoSomething.org" account:username];
+        
+        UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+        [self presentViewController:vc animated:YES completion:nil];
 
-        self.greetingLabel.hidden = FALSE;
-        self.greetingLabel.numberOfLines = 0;
-        self.greetingLabel.text = [NSString stringWithFormat:@"Hi, %@!\n\nYour token is:\n%@", email, token];
-        self.usernameTextField.hidden = TRUE;
-        self.passwordTextField.hidden = TRUE;
-        self.loginButton.hidden = TRUE;
-        self.logoutButton.hidden = FALSE;
-        self.reviewButton.hidden = FALSE;
-        self.title = @"Home";
+        // http://stackoverflow.com/questions/18780123/segue-to-a-uinavigation-controller-programmatically-without-storyboards
+//        DSOHomeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+//        [self.navigationController pushViewController:vc animated:YES];
+//        return;
 
     } andDictionary:auth];
 }
