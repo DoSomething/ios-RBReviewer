@@ -27,6 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"All campaigns";
     DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
     [client getSingleInboxReportbackCompletionHandler:^(NSMutableArray *response){
         self.reportbackFile = (NSMutableDictionary *)response[0];
@@ -52,16 +53,6 @@
     [self.rbfImage setImage:image];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 
 - (IBAction)approveTapped:(id)sender {
     [self postReview:@"approved"];
@@ -70,6 +61,7 @@
 - (IBAction)excludeTapped:(id)sender {
     [self postReview:@"excluded"];
 }
+
 - (void) postReview:(NSString *)status
 {
     NSDictionary *values = @{

@@ -11,6 +11,8 @@
 
 @interface DSOHomeViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+@property (weak, nonatomic) IBOutlet UIButton *logoutButton;
+- (IBAction)logoutTapped:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
@@ -50,14 +52,13 @@
     return cell;
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)logoutTapped:(id)sender {
+    DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
+    [client logoutUserWithCompletionHandler:^(NSDictionary *response){
+        NSLog(@"%@", response);
+        UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginNavigationController"];
+        [self.navigationController presentViewController:vc animated:YES completion:NULL];
+    }];
 }
-*/
-
 @end

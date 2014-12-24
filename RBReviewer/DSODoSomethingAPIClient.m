@@ -13,8 +13,6 @@ static NSString * const DoSomethingAPIString = @"http://staging.beta.dosomething
 
 @interface DSODoSomethingAPIClient ()
 
-// @property (strong, nonatomic) AFHTTPSessionManager *session;
-
 @end
 
 @implementation DSODoSomethingAPIClient
@@ -92,28 +90,13 @@ static NSString * const DoSomethingAPIString = @"http://staging.beta.dosomething
     }];
 }
 
-
-+(NSString *) getEmail
-{
-    return self.sharedClient.user[@"mail"];
-}
-
         
 - (void)logoutUserWithCompletionHandler:(void(^)(NSDictionary *))completionHandler
 {
-    // Shot in the dark to fix 406 error, per http://stackoverflow.com/questions/21620429/afnetworking-2-0-nslocalizeddescription-request-failed-unacceptable-content-ty
-
-    // self.responseSerializer = [AFHTTPResponseSerializer serializer];
-    
-    //[self.requestSerializer setValue:nil forHTTPHeaderField:@"Cookie"];
-    
-    // This is currently returning a 406 error, which Services thinks there is no $user.
-    // http://drupalcontrib.org/api/drupal/contributions%21services%21resources%21user_resource.inc/function/_user_resource_logout/7
     
     [self POST:@"auth/logout.json" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
         completionHandler(responseObject);
-        
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
@@ -137,7 +120,7 @@ static NSString * const DoSomethingAPIString = @"http://staging.beta.dosomething
 
 - (void)postReportbackReviewWithCompletionHandler:(void(^)(NSArray *))completionHandler :(NSDictionary *)values
 {
-    ;
+
     NSString *postUrl = [NSString stringWithFormat:@"reportback_files/%@/review.json", values[@"fid"]];
 
     [self POST:postUrl parameters:values success:^(NSURLSessionDataTask *task, id responseObject) {

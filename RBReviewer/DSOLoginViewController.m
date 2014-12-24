@@ -60,15 +60,10 @@
     [client loginWithCompletionHandler:^(NSDictionary *response){
 
         [SSKeychain setPassword:password forService:@"DoSomething.org" account:username];
+
+        UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeNavigationController"];
+        [self.navigationController presentViewController:vc animated:YES completion:NULL];
         
-        UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
-        [self presentViewController:vc animated:YES completion:nil];
-
-        // http://stackoverflow.com/questions/18780123/segue-to-a-uinavigation-controller-programmatically-without-storyboards
-//        DSOHomeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
-//        [self.navigationController pushViewController:vc animated:YES];
-//        return;
-
     } andDictionary:auth];
 }
 @end
