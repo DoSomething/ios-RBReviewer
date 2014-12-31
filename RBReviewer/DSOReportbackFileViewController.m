@@ -20,6 +20,8 @@
 
 - (IBAction)approveTapped:(id)sender;
 - (IBAction)excludeTapped:(id)sender;
+- (IBAction)flagTapped:(id)sender;
+- (IBAction)promoteTapped:(id)sender;
 
 @end
 
@@ -60,6 +62,14 @@
 
 - (IBAction)excludeTapped:(id)sender {
     [self postReview:@"excluded"];
+}
+
+- (IBAction)flagTapped:(id)sender {
+    [self postReview:@"flagged"];
+}
+
+- (IBAction)promoteTapped:(id)sender {
+    [self postReview:@"promoted"];
 }
 
 - (void) postReview:(NSString *)status
