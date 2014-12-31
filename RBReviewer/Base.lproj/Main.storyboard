@@ -284,8 +284,12 @@
                         <barButtonItem key="backBarButtonItem" title="Home" id="Dvo-Tb-kay"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="approveButton" destination="IvP-U1-gYP" id="uEf-bf-1Wx"/>
                         <outlet property="captionLabel" destination="oJr-49-ag2" id="rVN-kJ-Qfq"/>
+                        <outlet property="excludeButton" destination="O4H-pd-bmw" id="SAJ-2K-qPA"/>
+                        <outlet property="flagButton" destination="mVW-sP-K76" id="XV3-Tj-X0M"/>
                         <outlet property="participatedText" destination="RAN-bZ-7jx" id="ruR-Wb-X7D"/>
+                        <outlet property="promoteButton" destination="rqd-33-LY8" id="MmF-uG-njT"/>
                         <outlet property="quantityLabel" destination="jLD-oa-0xM" id="qdQ-w4-fUm"/>
                         <outlet property="rbfImage" destination="BrN-ud-ltW" id="VXR-aH-CO1"/>
                         <outlet property="titleLabel" destination="ETc-iu-nYb" id="Pti-QH-xfe"/>

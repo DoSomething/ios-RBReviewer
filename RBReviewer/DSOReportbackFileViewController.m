@@ -5,7 +5,7 @@
 //  Created by Aaron Schachter on 12/22/14.
 //  Copyright (c) 2014 DoSomething.org. All rights reserved.
 //
-
+#import <QuartzCore/QuartzCore.h>
 #import "DSOReportbackFileViewController.h"
 #import "DSODoSomethingAPIClient.h"
 
@@ -17,6 +17,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *quantityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITextView *participatedText;
+@property (weak, nonatomic) IBOutlet UIButton *excludeButton;
+@property (weak, nonatomic) IBOutlet UIButton *approveButton;
+@property (weak, nonatomic) IBOutlet UIButton *flagButton;
+@property (weak, nonatomic) IBOutlet UIButton *promoteButton;
 
 - (IBAction)approveTapped:(id)sender;
 - (IBAction)excludeTapped:(id)sender;
@@ -29,6 +33,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _approveButton.layer.cornerRadius = 10;
+    _approveButton.clipsToBounds = YES;
+    _excludeButton.layer.cornerRadius = 10;
+    _excludeButton.clipsToBounds = YES;
+    _flagButton.layer.cornerRadius = 10;
+    _flagButton.clipsToBounds = YES;
+    _promoteButton.layer.cornerRadius = 10;
+    _promoteButton.clipsToBounds = YES;
     self.title = @"All campaigns";
     DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
     [client getSingleInboxReportbackCompletionHandler:^(NSMutableArray *response){
