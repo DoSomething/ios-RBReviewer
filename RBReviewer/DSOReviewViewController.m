@@ -42,11 +42,16 @@
     _promoteButton.layer.cornerRadius = 10;
     _promoteButton.clipsToBounds = YES;
     self.title = self.taxonomyTerm[@"name"];
+
+    // @todo: Remove this once API is fixed to return numeric tid.
+    NSString *tidString = (NSString *)self.taxonomyTerm[@"tid"];
+    NSInteger tid = [tidString integerValue];
+    
     DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
-    [client getSingleInboxReportbackCompletionHandler:^(NSMutableArray *response){
+    [client getSingleInboxReportbackWithCompletionHandler:^(NSMutableArray *response){
         self.reportbackFile = (NSMutableDictionary *)response[0];
         [self updateDisplay];
-    }];
+    } andTid:tid];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -23,7 +23,7 @@
 
 -(void)checkStatusWithCompletionHandler:(void(^)(NSDictionary *))completionHandler;
 
-- (void)getSingleInboxReportbackCompletionHandler:(void(^)(NSMutableArray *))completionHandler;
+- (void)getSingleInboxReportbackWithCompletionHandler:(void(^)(NSMutableArray *))completionHandler andTid:(NSInteger)tid;
 
 - (void)getTermsWithCompletionHandler:(void(^)(NSMutableArray *))completionHandler;
 

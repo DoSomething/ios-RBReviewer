@@ -104,11 +104,11 @@ static NSString * const DoSomethingAPIString = @"http://staging.beta.dosomething
     }];
 }
 
-- (void)getSingleInboxReportbackCompletionHandler:(void(^)(NSMutableArray *))completionHandler
+- (void)getSingleInboxReportbackWithCompletionHandler:(void(^)(NSMutableArray *))completionHandler andTid:(NSInteger)tid
 {
-    // Hardcoded for Poverty term for now.
-    NSString *filesUrl = @"terms/15/inbox.json?count=1";
-    [self GET:filesUrl parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    
+    NSString *url = [NSString stringWithFormat:@"terms/%li/inbox.json?count=1", tid];
+    [self GET:url parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
         completionHandler(responseObject);
         
