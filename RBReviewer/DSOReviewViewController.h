@@ -11,5 +11,6 @@
 @interface DSOReviewViewController : UIViewController
 
 @property (strong, nonatomic) NSMutableDictionary *reportbackFile;
+@property (strong, nonatomic) NSMutableDictionary *taxonomyTerm;
 
 @end

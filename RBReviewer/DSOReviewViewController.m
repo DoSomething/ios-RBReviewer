@@ -41,7 +41,7 @@
     _flagButton.clipsToBounds = YES;
     _promoteButton.layer.cornerRadius = 10;
     _promoteButton.clipsToBounds = YES;
-    self.title = @"All campaigns";
+    self.title = self.taxonomyTerm[@"name"];
     DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
     [client getSingleInboxReportbackCompletionHandler:^(NSMutableArray *response){
         self.reportbackFile = (NSMutableDictionary *)response[0];

@@ -7,6 +7,7 @@
 //
 
 #import "DSOHomeViewController.h"
+#import "DSOReviewViewController.h"
 #import "DSODoSomethingAPIClient.h"
 
 @interface DSOHomeViewController ()
@@ -36,7 +37,7 @@
         [self.tableView reloadData];
     }];
     
-    // @todo: What is this for again?
+    // @todo: Set this view as the initial vc, and then check if we're logged in
 //    [client checkStatusWithCompletionHandler:^(NSDictionary *response){
 //        NSLog(@"%@", response);
 //    }];
@@ -73,5 +74,19 @@
         UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginNavigationController"];
         [self.navigationController presentViewController:vc animated:YES completion:NULL];
     }];
+}
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if (sender == self.logoutButton) {
+        return;
+    }
+    UINavigationController *initialVC = (UINavigationController *) [segue destinationViewController];
+    DSOReviewViewController *destVC = (DSOReviewViewController *)initialVC.topViewController;
+    UITableViewCell *cell = (UITableViewCell *)sender;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    NSMutableDictionary *term = (NSMutableDictionary *)[self.terms objectAtIndex:indexPath.row];
+    [destVC setTaxonomyTerm:term];
 }
 @end
