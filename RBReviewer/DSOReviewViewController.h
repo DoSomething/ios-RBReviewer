@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DSOReportbackFileViewController : UIViewController
+@interface DSOReviewViewController : UIViewController
 
 @property (strong, nonatomic) NSMutableDictionary *reportbackFile;
 

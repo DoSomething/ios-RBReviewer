@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 DoSomething.org. All rights reserved.
 //
 #import <QuartzCore/QuartzCore.h>
-#import "DSOReportbackFileViewController.h"
+#import "DSOReviewViewController.h"
 #import "DSODoSomethingAPIClient.h"
 
-@interface DSOReportbackFileViewController ()
+@interface DSOReviewViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *rbfImage;
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
@@ -29,7 +29,7 @@
 
 @end
 
-@implementation DSOReportbackFileViewController
+@implementation DSOReviewViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
