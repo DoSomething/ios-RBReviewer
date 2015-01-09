@@ -10,8 +10,11 @@
 #import "DSODoSomethingAPIClient.h"
 
 @interface DSOHomeViewController ()
+
+@property (strong, nonatomic) NSMutableArray *terms;
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 @property (weak, nonatomic) IBOutlet UIButton *logoutButton;
+
 - (IBAction)logoutTapped:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -21,13 +24,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.terms = [[NSMutableArray alloc] init];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
     self.emailLabel.text = client.user[@"mail"];
-    [client checkStatusWithCompletionHandler:^(NSDictionary *response){
-        NSLog(@"%@", response);
+    
+    [client getTermsWithCompletionHandler:^(NSMutableArray *response){
+        self.terms = response;
+        NSLog(@"Terms: %@", self.terms);
+        [self.tableView reloadData];
     }];
+    
+    // @todo: What is this for again?
+//    [client checkStatusWithCompletionHandler:^(NSDictionary *response){
+//        NSLog(@"%@", response);
+//    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,7 +48,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return [self.terms count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -47,8 +59,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tableCell" forIndexPath:indexPath];
-    cell.textLabel.text = @"All campaigns";
-    
+    NSMutableDictionary *term = (NSMutableDictionary *)[self.terms objectAtIndex:indexPath.row];
+    cell.textLabel.text = term[@"name"];
+    NSLog(@"%li Term: %@", indexPath.row, term);
     return cell;
 }
 

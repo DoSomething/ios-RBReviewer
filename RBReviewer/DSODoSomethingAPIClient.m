@@ -106,8 +106,24 @@ static NSString * const DoSomethingAPIString = @"http://staging.beta.dosomething
 
 - (void)getSingleInboxReportbackCompletionHandler:(void(^)(NSMutableArray *))completionHandler
 {
-    NSString *filesUrl = @"reportback_files.json?pagesize=1&parameters[status]=pending";
+    // Hardcoded for Poverty term for now.
+    NSString *filesUrl = @"terms/15/inbox.json?count=1";
     [self GET:filesUrl parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        completionHandler(responseObject);
+        
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        NSLog(@"Error: %@",error.localizedDescription);
+    }];
+}
+
+- (void)getTermsWithCompletionHandler:(void(^)(NSMutableArray *))completionHandler
+{
+
+    NSString *url = @"terms.json";
+    [self GET:url parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
         completionHandler(responseObject);
         

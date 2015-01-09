@@ -25,6 +25,8 @@
 
 - (void)getSingleInboxReportbackCompletionHandler:(void(^)(NSMutableArray *))completionHandler;
 
+- (void)getTermsWithCompletionHandler:(void(^)(NSMutableArray *))completionHandler;
+
 - (void)logoutUserWithCompletionHandler:(void(^)(NSDictionary *))completionHandler;
 
 - (void)postReportbackReviewWithCompletionHandler:(void(^)(NSArray *))completionHandler :(NSDictionary *)values;
