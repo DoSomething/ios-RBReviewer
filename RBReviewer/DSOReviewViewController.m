@@ -11,6 +11,8 @@
 
 @interface DSOReviewViewController ()
 
+@property (nonatomic, assign) NSInteger fid;
+
 @property (weak, nonatomic) IBOutlet UIImageView *rbfImage;
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *fidLabel;
@@ -33,6 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self hideElements:TRUE];
     _approveButton.layer.cornerRadius = 10;
     _approveButton.clipsToBounds = YES;
     _excludeButton.layer.cornerRadius = 10;
@@ -50,7 +53,8 @@
     DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
     [client getSingleInboxReportbackWithCompletionHandler:^(NSMutableArray *response){
         if ([response count] > 0) {
-            [self updateDisplay:(NSMutableDictionary *)response[0]];
+            self.reportbackFile = (NSMutableDictionary *)response[0];
+            [self updateDisplay:self.reportbackFile];
         }
         else {
             [self updateDisplay:nil];
@@ -63,12 +67,27 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) hideElements:(BOOL)value {
+    self.captionLabel.hidden = value;
+    self.participatedText.hidden = value;
+    self.rbfImage.hidden = value;
+    self.titleLabel.hidden = value;
+    self.quantityLabel.hidden = value;
+    self.approveButton.hidden = value;
+    self.excludeButton.hidden = value;
+    self.flagButton.hidden = value;
+    self.promoteButton.hidden = value;
+}
+
 - (void) updateDisplay:(NSMutableDictionary *)values
 {
     if (values == nil) {
+        self.participatedText.hidden = FALSE;
         self.participatedText.text = @"No pending reportbacks.";
         return;
     }
+    [self hideElements:FALSE];
+    self.fid = (NSInteger) values[@"fid"];
     NSString *caption = (NSString *)values[@"caption"];
     if (caption == (id)[NSNull null] || caption.length == 0) {
         self.captionLabel.text = @"(No caption)";
@@ -106,6 +125,7 @@
 
 - (void) postReview:(NSString *)status
 {
+    [self hideElements:TRUE];
     NSDictionary *values = @{
                              @"fid":self.reportbackFile[@"fid"],
                              @"status":status,
