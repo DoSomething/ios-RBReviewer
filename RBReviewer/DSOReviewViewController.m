@@ -49,8 +49,12 @@
     
     DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
     [client getSingleInboxReportbackWithCompletionHandler:^(NSMutableArray *response){
-        self.reportbackFile = (NSMutableDictionary *)response[0];
-        [self updateDisplay];
+        if ([response count] > 0) {
+            [self updateDisplay:(NSMutableDictionary *)response[0]];
+        }
+        else {
+            [self updateDisplay:nil];
+        }
     } andTid:tid];
 }
 
@@ -59,15 +63,26 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) updateDisplay
+- (void) updateDisplay:(NSMutableDictionary *)values
 {
-    self.captionLabel.text = self.reportbackFile[@"caption"];
-    self.fidLabel.text = [NSString stringWithFormat:@"rb/%@", self.reportbackFile[@"fid"]];
-    self.participatedText.text = self.reportbackFile[@"why_participated"];
-    self.quantityLabel.text = [NSString stringWithFormat:@"%@", self.reportbackFile[@"quantity"]];
-    self.titleLabel.text = self.reportbackFile[@"title"];
+    if (values == nil) {
+        self.participatedText.text = @"No pending reportbacks.";
+        return;
+    }
+    NSString *caption = (NSString *)values[@"caption"];
+    if (caption == (id)[NSNull null] || caption.length == 0) {
+        self.captionLabel.text = @"(No caption)";
+    }
+    else {
+        self.captionLabel.text = caption;
+    }
+
+    self.fidLabel.text = [NSString stringWithFormat:@"rb/%@", values[@"fid"]];
+    self.participatedText.text = values[@"why_participated"];
+    self.quantityLabel.text = [NSString stringWithFormat:@"%@", values[@"quantity"]];
+    self.titleLabel.text = values[@"title"];
     
-    NSData* imageData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:self.reportbackFile[@"src"]]];
+    NSData* imageData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:values[@"src"]]];
     UIImage* image = [[UIImage alloc] initWithData:imageData];
     [self.rbfImage setImage:image];
 }

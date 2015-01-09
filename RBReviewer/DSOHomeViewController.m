@@ -70,7 +70,6 @@
 - (IBAction)logoutTapped:(id)sender {
     DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
     [client logoutUserWithCompletionHandler:^(NSDictionary *response){
-        NSLog(@"%@", response);
         UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginNavigationController"];
         [self.navigationController presentViewController:vc animated:YES completion:NULL];
     }];
