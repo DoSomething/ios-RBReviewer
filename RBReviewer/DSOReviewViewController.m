@@ -98,8 +98,8 @@
 
     self.fidLabel.text = [NSString stringWithFormat:@"rb/%@", values[@"fid"]];
     self.participatedText.text = values[@"why_participated"];
-    self.quantityLabel.text = [NSString stringWithFormat:@"%@", values[@"quantity"]];
-    self.titleLabel.text = values[@"title"];
+    self.quantityLabel.text = [NSString stringWithFormat:@"%@ %@ (%@)", values[@"quantity"], values[@"quantity_label"], values[@"title"]];
+
     
     NSData* imageData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:values[@"src"]]];
     UIImage* image = [[UIImage alloc] initWithData:imageData];
