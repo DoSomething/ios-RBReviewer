@@ -116,7 +116,7 @@
 }
 
 - (IBAction)flagTapped:(id)sender {
-    [self postReview:@"flagged"];
+    //[self postReview:@"flagged"];
 }
 
 - (IBAction)promoteTapped:(id)sender {
