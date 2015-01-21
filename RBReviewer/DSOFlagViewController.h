@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface DSOFlagViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@property (strong, nonatomic) NSString *flaggedReason;
+@property(nonatomic, assign) BOOL deleteImage;
 
 @end

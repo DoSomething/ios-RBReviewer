@@ -19,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.deleteImage = FALSE;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.options = [[NSMutableArray alloc] init];
@@ -88,22 +89,33 @@
             UIAlertView *messageAlert = [[UIAlertView alloc]
                                          initWithTitle:@"Delete Image" message:@"Are you sure? This cannot be undone." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [messageAlert show];
+            self.deleteImage = TRUE;
         }
     }
     else {
         cell.image = nil;
         [option setObject:[NSNumber numberWithInt:0]  forKey:@"checked"];
+        if ([key isEqual:@"delete"]) {
+            self.deleteImage = FALSE;
+        }
     }
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSMutableArray *reasons = [[NSMutableArray alloc] init];
     // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    // Loop through all of the options to see which were checked.
+    for (NSMutableDictionary *option in self.options) {
+        if ([[option objectForKey:@"checked"] boolValue]) {
+            [reasons addObject:option[@"key"]];
+        }
+    }
+    self.flaggedReason = [reasons componentsJoinedByString:@", "];
 }
-*/
+
 
 @end

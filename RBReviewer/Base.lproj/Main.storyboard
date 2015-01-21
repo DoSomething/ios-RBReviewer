@@ -326,8 +326,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Flag" id="rom-Xw-LOv">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="rwv-zy-xgS"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="mfT-Ip-TUV"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="mfT-Ip-TUV">
+                            <connections>
+                                <segue destination="7WQ-j4-PPN" kind="unwind" unwindAction="unwindToList:" id="L4Y-We-x3w"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="saveButton" destination="rom-Xw-LOv" id="Bq9-DN-BI0"/>
@@ -335,6 +338,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RB9-0z-rkj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="7WQ-j4-PPN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3565" y="1791"/>
         </scene>

@@ -8,6 +8,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "DSOReviewViewController.h"
 #import "DSODoSomethingAPIClient.h"
+#import "DSOFlagViewController.h"
 
 @interface DSOReviewViewController ()
 
@@ -106,6 +107,20 @@
     [self.rbfImage setImage:image];
 }
 
+- (IBAction)unwindToList:(UIStoryboardSegue *)segue {
+    DSOFlagViewController *source = [segue sourceViewController];
+    NSDictionary *values = @{
+                             @"fid":self.reportbackFile[@"fid"],
+                             @"status":@"flagged",
+                             @"flagged_reason":source.flaggedReason,
+                             @"delete":[NSNumber numberWithBool:source.deleteImage],
+                             @"source":@"ios"
+                             };
+    DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
+    [client postReportbackReviewWithCompletionHandler:^(NSArray *response){
+        [self viewDidLoad];
+    } :values];
+}
 
 - (IBAction)approveTapped:(id)sender {
     [self postReview:@"approved"];
