@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="iyE-nb-rCv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wQp-6U-E8P">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -414,11 +414,101 @@
             </objects>
             <point key="canvasLocation" x="2753" y="1791"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="j0d-O3-Eyi">
+            <objects>
+                <viewController id="wQp-6U-E8P" customClass="DSODetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="B14-8F-N2P"/>
+                        <viewControllerLayoutGuide type="bottom" id="PYB-Vy-Ygy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7y0-xG-t8w">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="DN5-K4-tLq">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="imageCell" rowHeight="300" id="fNC-Kh-qCl" customClass="DSOImageTableViewCell">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fNC-Kh-qCl" id="DaK-oh-z5C">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ghost-guitar.png" translatesAutoresizingMaskIntoConstraints="NO" id="E3f-Px-kI4">
+                                                    <rect key="frame" x="8" y="-1" width="584" height="301"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="300" id="R8x-gr-c6R"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="E3f-Px-kI4" secondAttribute="trailing" id="BfD-Mz-hnz"/>
+                                                <constraint firstItem="E3f-Px-kI4" firstAttribute="top" secondItem="DaK-oh-z5C" secondAttribute="top" id="FE4-po-Jp5"/>
+                                                <constraint firstAttribute="centerY" secondItem="E3f-Px-kI4" secondAttribute="centerY" id="SUn-y1-9Qp"/>
+                                                <constraint firstItem="E3f-Px-kI4" firstAttribute="top" secondItem="DaK-oh-z5C" secondAttribute="topMargin" priority="750" id="bGo-1a-pjH"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="E3f-Px-kI4" secondAttribute="bottom" priority="750" id="rwZ-Yb-95w"/>
+                                                <constraint firstAttribute="bottom" secondItem="E3f-Px-kI4" secondAttribute="bottom" id="v8c-2o-ycn"/>
+                                                <constraint firstItem="E3f-Px-kI4" firstAttribute="leading" secondItem="DaK-oh-z5C" secondAttribute="leadingMargin" id="vvh-FY-ndm"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="FE4-po-Jp5"/>
+                                                    <exclude reference="v8c-2o-ycn"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="fullSizeImageView" destination="E3f-Px-kI4" id="bJA-lU-WBy"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="whyParticipatedCell" id="0C4-Kd-nfK" customClass="DSODynamicTextTableViewCell">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0C4-Kd-nfK" id="nwx-Y5-cVC">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="puN-Da-3cb">
+                                                    <rect key="frame" x="8" y="8" width="584" height="27"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="puN-Da-3cb" firstAttribute="leading" secondItem="nwx-Y5-cVC" secondAttribute="leadingMargin" id="980-ks-REO"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="puN-Da-3cb" secondAttribute="bottom" id="HJW-8U-Aig"/>
+                                                <constraint firstItem="puN-Da-3cb" firstAttribute="top" secondItem="nwx-Y5-cVC" secondAttribute="topMargin" id="NIj-hc-5Hf"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="puN-Da-3cb" secondAttribute="trailing" id="iFw-Hp-ITR"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dynamicTextLabel" destination="puN-Da-3cb" id="DqD-mS-EPZ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="DN5-K4-tLq" secondAttribute="trailing" id="G3V-9u-cHb"/>
+                            <constraint firstItem="PYB-Vy-Ygy" firstAttribute="top" secondItem="DN5-K4-tLq" secondAttribute="bottom" id="R5W-YW-1ej"/>
+                            <constraint firstItem="DN5-K4-tLq" firstAttribute="leading" secondItem="7y0-xG-t8w" secondAttribute="leading" id="VwP-9W-PrZ"/>
+                            <constraint firstItem="DN5-K4-tLq" firstAttribute="top" secondItem="B14-8F-N2P" secondAttribute="bottom" id="kLq-H7-aa8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="DN5-K4-tLq" id="ugm-SO-2fQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WIs-3n-0VO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2044" y="2207"/>
+        </scene>
     </scenes>
     <resources>
         <image name="approved.png" width="25" height="25"/>
         <image name="excluded.png" width="25" height="25"/>
         <image name="flagged.png" width="25" height="25"/>
+        <image name="ghost-guitar.png" width="768" height="1024"/>
         <image name="logo.png" width="160" height="140"/>
         <image name="promoted.png" width="25" height="25"/>
     </resources>

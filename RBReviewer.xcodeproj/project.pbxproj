@@ -17,6 +17,10 @@
 		B238D2571A3A55E500CFFEE6 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = B238D2561A3A55E500CFFEE6 /* logo.png */; };
 		B240E1111A7002A5005EFECD /* DSOFlagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B240E1101A7002A5005EFECD /* DSOFlagViewController.m */; };
 		B2428B8F1A4A3650007DF9C2 /* DSOHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2428B8E1A4A3650007DF9C2 /* DSOHomeViewController.m */; };
+		B27B50C41A7185820098C0C9 /* DSODetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B27B50C31A7185820098C0C9 /* DSODetailViewController.m */; };
+		B27B50C71A718A490098C0C9 /* DSOImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B27B50C61A718A490098C0C9 /* DSOImageTableViewCell.m */; };
+		B27B50CA1A718A6A0098C0C9 /* DSODynamicTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B27B50C91A718A6A0098C0C9 /* DSODynamicTextTableViewCell.m */; };
+		B27B50CC1A718C400098C0C9 /* ghost-guitar.png in Resources */ = {isa = PBXBuildFile; fileRef = B27B50CB1A718C400098C0C9 /* ghost-guitar.png */; };
 		B280325A1A39EA7F00785B7E /* DSODoSomethingAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B28032591A39EA7F00785B7E /* DSODoSomethingAPIClient.m */; };
 		B2DF862B1A4871370098D4B7 /* DSOReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DF862A1A4871370098D4B7 /* DSOReviewViewController.m */; };
 		B2E573161A53CDA9009AA647 /* approved.png in Resources */ = {isa = PBXBuildFile; fileRef = B2E573151A53CDA9009AA647 /* approved.png */; };
@@ -57,6 +61,13 @@
 		B240E1101A7002A5005EFECD /* DSOFlagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSOFlagViewController.m; sourceTree = "<group>"; };
 		B2428B8D1A4A3650007DF9C2 /* DSOHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSOHomeViewController.h; sourceTree = "<group>"; };
 		B2428B8E1A4A3650007DF9C2 /* DSOHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSOHomeViewController.m; sourceTree = "<group>"; };
+		B27B50C21A7185820098C0C9 /* DSODetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSODetailViewController.h; sourceTree = "<group>"; };
+		B27B50C31A7185820098C0C9 /* DSODetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSODetailViewController.m; sourceTree = "<group>"; };
+		B27B50C51A718A490098C0C9 /* DSOImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSOImageTableViewCell.h; sourceTree = "<group>"; };
+		B27B50C61A718A490098C0C9 /* DSOImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSOImageTableViewCell.m; sourceTree = "<group>"; };
+		B27B50C81A718A6A0098C0C9 /* DSODynamicTextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSODynamicTextTableViewCell.h; sourceTree = "<group>"; };
+		B27B50C91A718A6A0098C0C9 /* DSODynamicTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSODynamicTextTableViewCell.m; sourceTree = "<group>"; };
+		B27B50CB1A718C400098C0C9 /* ghost-guitar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ghost-guitar.png"; sourceTree = "<group>"; };
 		B28032581A39EA7F00785B7E /* DSODoSomethingAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSODoSomethingAPIClient.h; sourceTree = "<group>"; };
 		B28032591A39EA7F00785B7E /* DSODoSomethingAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSODoSomethingAPIClient.m; sourceTree = "<group>"; };
 		B2DF86291A4871370098D4B7 /* DSOReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSOReviewViewController.h; sourceTree = "<group>"; };
@@ -132,6 +143,7 @@
 		B20DC9BD1A39E63300075693 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B27B50CB1A718C400098C0C9 /* ghost-guitar.png */,
 				B2E573151A53CDA9009AA647 /* approved.png */,
 				B2E5731D1A53D34F009AA647 /* excluded.png */,
 				B2E5731F1A53D3D5009AA647 /* flagged.png */,
@@ -167,10 +179,16 @@
 				B20DC9C51A39E63300075693 /* DSOLoginViewController.m */,
 				B2428B8D1A4A3650007DF9C2 /* DSOHomeViewController.h */,
 				B2428B8E1A4A3650007DF9C2 /* DSOHomeViewController.m */,
+				B27B50C21A7185820098C0C9 /* DSODetailViewController.h */,
+				B27B50C31A7185820098C0C9 /* DSODetailViewController.m */,
 				B2DF86291A4871370098D4B7 /* DSOReviewViewController.h */,
 				B2DF862A1A4871370098D4B7 /* DSOReviewViewController.m */,
 				B240E10F1A7002A5005EFECD /* DSOFlagViewController.h */,
 				B240E1101A7002A5005EFECD /* DSOFlagViewController.m */,
+				B27B50C51A718A490098C0C9 /* DSOImageTableViewCell.h */,
+				B27B50C61A718A490098C0C9 /* DSOImageTableViewCell.m */,
+				B27B50C81A718A6A0098C0C9 /* DSODynamicTextTableViewCell.h */,
+				B27B50C91A718A6A0098C0C9 /* DSODynamicTextTableViewCell.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -280,6 +298,7 @@
 				B238D2571A3A55E500CFFEE6 /* logo.png in Resources */,
 				B2E5731E1A53D34F009AA647 /* excluded.png in Resources */,
 				B20DC9C91A39E63300075693 /* Main.storyboard in Resources */,
+				B27B50CC1A718C400098C0C9 /* ghost-guitar.png in Resources */,
 				B2E5731C1A53CE39009AA647 /* promoted.png in Resources */,
 				B20DC9CE1A39E63300075693 /* LaunchScreen.xib in Resources */,
 				B20DC9CB1A39E63300075693 /* Images.xcassets in Resources */,
@@ -335,9 +354,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2DF862B1A4871370098D4B7 /* DSOReviewViewController.m in Sources */,
+				B27B50CA1A718A6A0098C0C9 /* DSODynamicTextTableViewCell.m in Sources */,
 				B280325A1A39EA7F00785B7E /* DSODoSomethingAPIClient.m in Sources */,
 				B20DC9C61A39E63300075693 /* DSOLoginViewController.m in Sources */,
+				B27B50C71A718A490098C0C9 /* DSOImageTableViewCell.m in Sources */,
 				B20DC9C31A39E63300075693 /* AppDelegate.m in Sources */,
+				B27B50C41A7185820098C0C9 /* DSODetailViewController.m in Sources */,
 				B240E1111A7002A5005EFECD /* DSOFlagViewController.m in Sources */,
 				B2428B8F1A4A3650007DF9C2 /* DSOHomeViewController.m in Sources */,
 				B20DC9C01A39E63300075693 /* main.m in Sources */,
