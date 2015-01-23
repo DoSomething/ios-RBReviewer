@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface DSODetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
-
+@property (strong, nonatomic) NSMutableDictionary *taxonomyTerm;
 @end

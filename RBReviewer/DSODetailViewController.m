@@ -7,12 +7,16 @@
 //
 
 #import "DSODetailViewController.h"
+#import "DSOCaptionTableViewCell.h"
+#import "DSOTitleTableViewCell.h"
 #import "DSODynamicTextTableViewCell.h"
 #import "DSOImageTableViewCell.h"
+#import "DSODoSomethingAPIClient.h"
 
 @interface DSODetailViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) NSMutableDictionary *reportbackFile;
 @end
 
 @implementation DSODetailViewController
@@ -23,6 +27,22 @@
     self.tableView.dataSource = self;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 44;
+    self.title = self.taxonomyTerm[@"name"];
+    
+    // @todo: Remove this once API is fixed to return numeric tid.
+    NSString *tidString = (NSString *)self.taxonomyTerm[@"tid"];
+    NSInteger tid = [tidString integerValue];
+    
+    DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
+    [client getSingleInboxReportbackWithCompletionHandler:^(NSMutableArray *response){
+        if ([response count] > 0) {
+            self.reportbackFile = (NSMutableDictionary *)response[0];
+            [self.tableView reloadData];
+        }
+        else {
+            //[self updateDisplay:nil];
+        }
+    } andTid:tid];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,33 +50,49 @@
     // Dispose of any resources that can be recreated.
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if (indexPath.row==0)
-//    {
-//        return 300;
-//    } else
-//    {
-//        return 44;
-//    }
-//}
-
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return 4;
 }
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row ==0) {
-        DSOImageTableViewCell *imageCell = [tableView dequeueReusableCellWithIdentifier:@"imageCell" forIndexPath:indexPath];
-        return imageCell;
-    } else
-    {
-        DSODynamicTextTableViewCell *textcell = [tableView dequeueReusableCellWithIdentifier:@"whyParticipatedCell" forIndexPath:indexPath];
-        textcell.dynamicTextLabel.text = @"Lorem ipsum dolor sit amet, regione legimus his ei, tacimates definitiones ei qui, at vis velit debet liberavisse. Eu veri minim scripta eum. Et clita aeterno omittantur duo, convenire accusamus ex per. Vim in option aliquid assentior, ea civibus periculis maiestatis nam.Lorem ipsum dolor sit amet, regione legimus his ei, tacimates definitiones ei qui, at vis velit debet liberavisse. Eu veri minim scripta eum. Et clita aeterno omittantur duo, convenire accusamus ex per. Vim in option aliquid assentior, ea civibus periculis maiestatis nam.Lorem ipsum dolor sit amet, regione legimus his ei, tacimates definitiones ei qui, at vis velit debet liberavisse. Eu veri minim scripta eum. Et clita aeterno omittantur duo, convenire accusamus ex per. Vim in option aliquid assentior, ea civibus periculis maiestatis nam.Lorem ipsum dolor sit amet, regione legimus his ei, tacimates definitiones ei qui, at vis velit debet liberavisse. Eu veri minim scripta eum. Et clita aeterno omittantur duo, convenire accusamus ex per. Vim in option aliquid assentior, ea civibus periculis maiestatis nam.Lorem ipsum dolor sit amet, regione legimus his ei, tacimates definitiones ei qui, at vis velit debet liberavisse. Eu veri minim scripta eum. Et clita aeterno omittantur duo, convenire accusamus ex per. Vim in option aliquid assentior, ea civibus periculis maiestatis nam.Lorem ipsum dolor sit amet, regione legimus his ei, tacimates definitiones ei qui, at vis velit debet liberavisse. Eu veri minim scripta eum. Et clita aeterno omittantur duo, convenire accusamus ex per. Vim in option aliquid assentior, ea civibus periculis maiestatis nam.Lorem ipsum dolor sit amet, regione legimus his ei, tacimates definitiones ei qui, at vis velit debet liberavisse. Eu veri minim scripta eum. Et clita aeterno omittantur duo, convenire accusamus ex per. Vim in option aliquid assentior, ea civibus periculis maiestatis nam.";
-        return textcell;
+    NSLog(@"Test %li", indexPath.row);
+    switch (indexPath.row) {
+        case 0: {
+            DSOTitleTableViewCell *cell =  [tableView dequeueReusableCellWithIdentifier:@"titleCell" forIndexPath:indexPath];
+            cell.titleLabel.text = self.reportbackFile[@"title"];
+            cell.titleLabel.textAlignment = NSTextAlignmentCenter;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+        }
+
+        case 1: {
+            DSOImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"imageCell" forIndexPath:indexPath];
+            NSData* imageData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:self.reportbackFile[@"src"]]];
+            UIImage* image = [[UIImage alloc] initWithData:imageData];
+            cell.fullSizeImageView.image = image;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+        }
+        case 2: {
+            DSOCaptionTableViewCell *cell =  [tableView dequeueReusableCellWithIdentifier:@"captionCell" forIndexPath:indexPath];
+            cell.captionLabel.text = self.reportbackFile[@"caption"];
+            cell.captionLabel.textAlignment = NSTextAlignmentCenter;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+        }
+
+        case 3: {
+            DSODynamicTextTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"whyParticipatedCell" forIndexPath:indexPath];
+            cell.dynamicTextLabel.text = self.reportbackFile[@"why_participated"];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+        }
     }
-   
+    return nil;
 }
+
 /*
 #pragma mark - Navigation
 

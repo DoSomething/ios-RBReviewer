@@ -9,6 +9,7 @@
 #import "DSOHomeViewController.h"
 #import "DSOReviewViewController.h"
 #import "DSODoSomethingAPIClient.h"
+#import "DSODetailViewController.h"
 
 @interface DSOHomeViewController ()
 

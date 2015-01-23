@@ -14,7 +14,9 @@
 		B20DC9CB1A39E63300075693 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B20DC9CA1A39E63300075693 /* Images.xcassets */; };
 		B20DC9CE1A39E63300075693 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20DC9CC1A39E63300075693 /* LaunchScreen.xib */; };
 		B20DC9DA1A39E63300075693 /* RBReviewerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B20DC9D91A39E63300075693 /* RBReviewerTests.m */; };
+		B2201DAF1A72D44B00B3D117 /* DSOTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2201DAE1A72D44B00B3D117 /* DSOTitleTableViewCell.m */; };
 		B238D2571A3A55E500CFFEE6 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = B238D2561A3A55E500CFFEE6 /* logo.png */; };
+		B23C9C571A72F4D2008A93D7 /* DSOCaptionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C9C561A72F4D2008A93D7 /* DSOCaptionTableViewCell.m */; };
 		B240E1111A7002A5005EFECD /* DSOFlagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B240E1101A7002A5005EFECD /* DSOFlagViewController.m */; };
 		B2428B8F1A4A3650007DF9C2 /* DSOHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2428B8E1A4A3650007DF9C2 /* DSOHomeViewController.m */; };
 		B27B50C41A7185820098C0C9 /* DSODetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B27B50C31A7185820098C0C9 /* DSODetailViewController.m */; };
@@ -56,7 +58,11 @@
 		B20DC9D31A39E63300075693 /* RBReviewerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RBReviewerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B20DC9D81A39E63300075693 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B20DC9D91A39E63300075693 /* RBReviewerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBReviewerTests.m; sourceTree = "<group>"; };
+		B2201DAD1A72D44B00B3D117 /* DSOTitleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSOTitleTableViewCell.h; sourceTree = "<group>"; };
+		B2201DAE1A72D44B00B3D117 /* DSOTitleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSOTitleTableViewCell.m; sourceTree = "<group>"; };
 		B238D2561A3A55E500CFFEE6 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		B23C9C551A72F4D2008A93D7 /* DSOCaptionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSOCaptionTableViewCell.h; sourceTree = "<group>"; };
+		B23C9C561A72F4D2008A93D7 /* DSOCaptionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSOCaptionTableViewCell.m; sourceTree = "<group>"; };
 		B240E10F1A7002A5005EFECD /* DSOFlagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSOFlagViewController.h; sourceTree = "<group>"; };
 		B240E1101A7002A5005EFECD /* DSOFlagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSOFlagViewController.m; sourceTree = "<group>"; };
 		B2428B8D1A4A3650007DF9C2 /* DSOHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSOHomeViewController.h; sourceTree = "<group>"; };
@@ -189,6 +195,10 @@
 				B27B50C61A718A490098C0C9 /* DSOImageTableViewCell.m */,
 				B27B50C81A718A6A0098C0C9 /* DSODynamicTextTableViewCell.h */,
 				B27B50C91A718A6A0098C0C9 /* DSODynamicTextTableViewCell.m */,
+				B2201DAD1A72D44B00B3D117 /* DSOTitleTableViewCell.h */,
+				B2201DAE1A72D44B00B3D117 /* DSOTitleTableViewCell.m */,
+				B23C9C551A72F4D2008A93D7 /* DSOCaptionTableViewCell.h */,
+				B23C9C561A72F4D2008A93D7 /* DSOCaptionTableViewCell.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -358,11 +368,13 @@
 				B280325A1A39EA7F00785B7E /* DSODoSomethingAPIClient.m in Sources */,
 				B20DC9C61A39E63300075693 /* DSOLoginViewController.m in Sources */,
 				B27B50C71A718A490098C0C9 /* DSOImageTableViewCell.m in Sources */,
+				B2201DAF1A72D44B00B3D117 /* DSOTitleTableViewCell.m in Sources */,
 				B20DC9C31A39E63300075693 /* AppDelegate.m in Sources */,
 				B27B50C41A7185820098C0C9 /* DSODetailViewController.m in Sources */,
 				B240E1111A7002A5005EFECD /* DSOFlagViewController.m in Sources */,
 				B2428B8F1A4A3650007DF9C2 /* DSOHomeViewController.m in Sources */,
 				B20DC9C01A39E63300075693 /* main.m in Sources */,
+				B23C9C571A72F4D2008A93D7 /* DSOCaptionTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
