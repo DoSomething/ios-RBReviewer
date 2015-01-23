@@ -22,6 +22,9 @@
 		B27B50CA1A718A6A0098C0C9 /* DSODynamicTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B27B50C91A718A6A0098C0C9 /* DSODynamicTextTableViewCell.m */; };
 		B27B50CC1A718C400098C0C9 /* ghost-guitar.png in Resources */ = {isa = PBXBuildFile; fileRef = B27B50CB1A718C400098C0C9 /* ghost-guitar.png */; };
 		B280325A1A39EA7F00785B7E /* DSODoSomethingAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B28032591A39EA7F00785B7E /* DSODoSomethingAPIClient.m */; };
+		B2C3F74B1A7198BA00F79131 /* DSOImageCard.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C3F74A1A7198BA00F79131 /* DSOImageCard.m */; };
+		B2C3F74D1A7198D100F79131 /* DSOImageCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2C3F74C1A7198D100F79131 /* DSOImageCard.xib */; };
+		B2C3F7501A719B6300F79131 /* DSOCardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C3F74F1A719B6300F79131 /* DSOCardsViewController.m */; };
 		B2DF862B1A4871370098D4B7 /* DSOReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DF862A1A4871370098D4B7 /* DSOReviewViewController.m */; };
 		B2E573161A53CDA9009AA647 /* approved.png in Resources */ = {isa = PBXBuildFile; fileRef = B2E573151A53CDA9009AA647 /* approved.png */; };
 		B2E5731C1A53CE39009AA647 /* promoted.png in Resources */ = {isa = PBXBuildFile; fileRef = B2E573191A53CE39009AA647 /* promoted.png */; };
@@ -70,6 +73,11 @@
 		B27B50CB1A718C400098C0C9 /* ghost-guitar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ghost-guitar.png"; sourceTree = "<group>"; };
 		B28032581A39EA7F00785B7E /* DSODoSomethingAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSODoSomethingAPIClient.h; sourceTree = "<group>"; };
 		B28032591A39EA7F00785B7E /* DSODoSomethingAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSODoSomethingAPIClient.m; sourceTree = "<group>"; };
+		B2C3F7491A7198BA00F79131 /* DSOImageCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSOImageCard.h; sourceTree = "<group>"; };
+		B2C3F74A1A7198BA00F79131 /* DSOImageCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSOImageCard.m; sourceTree = "<group>"; };
+		B2C3F74C1A7198D100F79131 /* DSOImageCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DSOImageCard.xib; sourceTree = "<group>"; };
+		B2C3F74E1A719B6300F79131 /* DSOCardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSOCardsViewController.h; sourceTree = "<group>"; };
+		B2C3F74F1A719B6300F79131 /* DSOCardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSOCardsViewController.m; sourceTree = "<group>"; };
 		B2DF86291A4871370098D4B7 /* DSOReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSOReviewViewController.h; sourceTree = "<group>"; };
 		B2DF862A1A4871370098D4B7 /* DSOReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSOReviewViewController.m; sourceTree = "<group>"; };
 		B2E573151A53CDA9009AA647 /* approved.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = approved.png; sourceTree = "<group>"; };
@@ -189,6 +197,11 @@
 				B27B50C61A718A490098C0C9 /* DSOImageTableViewCell.m */,
 				B27B50C81A718A6A0098C0C9 /* DSODynamicTextTableViewCell.h */,
 				B27B50C91A718A6A0098C0C9 /* DSODynamicTextTableViewCell.m */,
+				B2C3F7491A7198BA00F79131 /* DSOImageCard.h */,
+				B2C3F74A1A7198BA00F79131 /* DSOImageCard.m */,
+				B2C3F74C1A7198D100F79131 /* DSOImageCard.xib */,
+				B2C3F74E1A719B6300F79131 /* DSOCardsViewController.h */,
+				B2C3F74F1A719B6300F79131 /* DSOCardsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -294,6 +307,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2C3F74D1A7198D100F79131 /* DSOImageCard.xib in Resources */,
 				B2E573201A53D3D5009AA647 /* flagged.png in Resources */,
 				B238D2571A3A55E500CFFEE6 /* logo.png in Resources */,
 				B2E5731E1A53D34F009AA647 /* excluded.png in Resources */,
@@ -357,10 +371,12 @@
 				B27B50CA1A718A6A0098C0C9 /* DSODynamicTextTableViewCell.m in Sources */,
 				B280325A1A39EA7F00785B7E /* DSODoSomethingAPIClient.m in Sources */,
 				B20DC9C61A39E63300075693 /* DSOLoginViewController.m in Sources */,
+				B2C3F74B1A7198BA00F79131 /* DSOImageCard.m in Sources */,
 				B27B50C71A718A490098C0C9 /* DSOImageTableViewCell.m in Sources */,
 				B20DC9C31A39E63300075693 /* AppDelegate.m in Sources */,
 				B27B50C41A7185820098C0C9 /* DSODetailViewController.m in Sources */,
 				B240E1111A7002A5005EFECD /* DSOFlagViewController.m in Sources */,
+				B2C3F7501A719B6300F79131 /* DSOCardsViewController.m in Sources */,
 				B2428B8F1A4A3650007DF9C2 /* DSOHomeViewController.m in Sources */,
 				B20DC9C01A39E63300075693 /* main.m in Sources */,
 			);

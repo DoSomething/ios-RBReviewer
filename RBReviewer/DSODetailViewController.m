@@ -11,6 +11,7 @@
 #import "DSOImageTableViewCell.h"
 
 @interface DSODetailViewController ()
+- (IBAction)closeTapped:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -67,4 +68,7 @@
 }
 */
 
+- (IBAction)closeTapped:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end
