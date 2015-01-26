@@ -9,6 +9,7 @@
 #import "DSODetailViewController.h"
 #import "DSOCaptionTableViewCell.h"
 #import "DSOQuantityTableViewCell.h"
+#import "DSOReviewTableViewCell.h"
 #import "DSOTitleTableViewCell.h"
 #import "DSODynamicTextTableViewCell.h"
 #import "DSOImageTableViewCell.h"
@@ -53,12 +54,12 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 6;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"Test %li", indexPath.row);
+
     switch (indexPath.row) {
         case 0: {
             DSOTitleTableViewCell *cell =  [tableView dequeueReusableCellWithIdentifier:@"titleCell" forIndexPath:indexPath];
@@ -106,8 +107,39 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }
+        case 5: {
+            DSOReviewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reviewCell" forIndexPath:indexPath];
+            cell.excludeButton.tag = 0;
+            [cell.excludeButton addTarget:self action:@selector(review:) forControlEvents:UIControlEventTouchUpInside];
+            cell.approveButton.tag = 10;
+            [cell.approveButton addTarget:self action:@selector(review:) forControlEvents:UIControlEventTouchUpInside];
+            return cell;
+        }
     }
     return nil;
+}
+
+-(void)review:(id)sender
+{
+    UIButton *senderButton = (UIButton *)sender;
+    NSString *status = @"approved";
+    if (senderButton.tag == 0) {
+        status = @"excluded";
+    }
+    [self postReview:status];
+}
+
+- (void) postReview:(NSString *)status
+{
+    NSDictionary *values = @{
+                             @"fid":self.reportbackFile[@"fid"],
+                             @"status":status,
+                             @"source":@"ios"
+                             };
+    DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
+    [client postReportbackReviewWithCompletionHandler:^(NSArray *response){
+        [self viewDidLoad];
+    } :values];
 }
 
 /*

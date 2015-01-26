@@ -20,6 +20,7 @@
 		B240E1111A7002A5005EFECD /* DSOFlagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B240E1101A7002A5005EFECD /* DSOFlagViewController.m */; };
 		B2428B8F1A4A3650007DF9C2 /* DSOHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2428B8E1A4A3650007DF9C2 /* DSOHomeViewController.m */; };
 		B266AED71A7693AE00B61F47 /* DSOQuantityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B266AED61A7693AE00B61F47 /* DSOQuantityTableViewCell.m */; };
+		B266AEDA1A769A7C00B61F47 /* DSOReviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B266AED91A769A7C00B61F47 /* DSOReviewTableViewCell.m */; };
 		B27B50C41A7185820098C0C9 /* DSODetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B27B50C31A7185820098C0C9 /* DSODetailViewController.m */; };
 		B27B50C71A718A490098C0C9 /* DSOImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B27B50C61A718A490098C0C9 /* DSOImageTableViewCell.m */; };
 		B27B50CA1A718A6A0098C0C9 /* DSODynamicTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B27B50C91A718A6A0098C0C9 /* DSODynamicTextTableViewCell.m */; };
@@ -70,6 +71,8 @@
 		B2428B8E1A4A3650007DF9C2 /* DSOHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSOHomeViewController.m; sourceTree = "<group>"; };
 		B266AED51A7693AE00B61F47 /* DSOQuantityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSOQuantityTableViewCell.h; sourceTree = "<group>"; };
 		B266AED61A7693AE00B61F47 /* DSOQuantityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSOQuantityTableViewCell.m; sourceTree = "<group>"; };
+		B266AED81A769A7C00B61F47 /* DSOReviewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSOReviewTableViewCell.h; sourceTree = "<group>"; };
+		B266AED91A769A7C00B61F47 /* DSOReviewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSOReviewTableViewCell.m; sourceTree = "<group>"; };
 		B27B50C21A7185820098C0C9 /* DSODetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSODetailViewController.h; sourceTree = "<group>"; };
 		B27B50C31A7185820098C0C9 /* DSODetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSODetailViewController.m; sourceTree = "<group>"; };
 		B27B50C51A718A490098C0C9 /* DSOImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSOImageTableViewCell.h; sourceTree = "<group>"; };
@@ -222,6 +225,8 @@
 				B23C9C561A72F4D2008A93D7 /* DSOCaptionTableViewCell.m */,
 				B266AED51A7693AE00B61F47 /* DSOQuantityTableViewCell.h */,
 				B266AED61A7693AE00B61F47 /* DSOQuantityTableViewCell.m */,
+				B266AED81A769A7C00B61F47 /* DSOReviewTableViewCell.h */,
+				B266AED91A769A7C00B61F47 /* DSOReviewTableViewCell.m */,
 			);
 			name = TableViewCell;
 			sourceTree = "<group>";
@@ -378,6 +383,7 @@
 			files = (
 				B266AED71A7693AE00B61F47 /* DSOQuantityTableViewCell.m in Sources */,
 				B2DF862B1A4871370098D4B7 /* DSOReviewViewController.m in Sources */,
+				B266AEDA1A769A7C00B61F47 /* DSOReviewTableViewCell.m in Sources */,
 				B27B50CA1A718A6A0098C0C9 /* DSODynamicTextTableViewCell.m in Sources */,
 				B280325A1A39EA7F00785B7E /* DSODoSomethingAPIClient.m in Sources */,
 				B20DC9C61A39E63300075693 /* DSOLoginViewController.m in Sources */,
