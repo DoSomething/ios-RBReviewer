@@ -7,8 +7,8 @@
 //
 
 #import "DSOHomeViewController.h"
-#import "DSOReviewViewController.h"
 #import "DSODoSomethingAPIClient.h"
+#import "DSODetailViewController.h"
 
 @interface DSOHomeViewController ()
 
@@ -74,6 +74,7 @@
         [self.navigationController presentViewController:vc animated:YES completion:NULL];
     }];
 }
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -82,7 +83,7 @@
         return;
     }
     UINavigationController *initialVC = (UINavigationController *) [segue destinationViewController];
-    DSOReviewViewController *destVC = (DSOReviewViewController *)initialVC.topViewController;
+    DSODetailViewController *destVC = (DSODetailViewController *)initialVC.topViewController;
     UITableViewCell *cell = (UITableViewCell *)sender;
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     NSMutableDictionary *term = (NSMutableDictionary *)[self.terms objectAtIndex:indexPath.row];
