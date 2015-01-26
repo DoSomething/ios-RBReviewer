@@ -12,5 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *approveButton;
 @property (weak, nonatomic) IBOutlet UIButton *excludeButton;
+@property (weak, nonatomic) IBOutlet UIButton *flagButton;
+@property (weak, nonatomic) IBOutlet UIButton *promoteButton;
 
 @end

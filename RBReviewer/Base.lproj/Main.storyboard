@@ -560,25 +560,46 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2h-UU-RAb">
-                                                    <rect key="frame" x="535" y="9" width="25" height="25"/>
-                                                    <state key="normal" image="approved.png"/>
+                                                    <rect key="frame" x="488" y="8" width="72" height="27"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <state key="normal" title="Approve" image="approved.png"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FBU-Lt-gb7">
+                                                    <rect key="frame" x="88" y="8" width="49" height="27"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <state key="normal" title="Flag" image="flagged.png"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xWk-0I-ohX">
+                                                    <rect key="frame" x="405" y="8" width="73" height="27"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <state key="normal" title="Promote" image="promoted.png"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2rj-lw-rt4">
-                                                    <rect key="frame" x="8" y="9" width="25" height="25"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <state key="normal" image="excluded.png"/>
+                                                    <rect key="frame" x="8" y="8" width="70" height="27"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <state key="normal" title="Exclude" image="excluded.png"/>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="2rj-lw-rt4" firstAttribute="leading" secondItem="Au7-wt-klE" secondAttribute="leadingMargin" id="7AB-mk-qq9"/>
-                                                <constraint firstAttribute="centerY" secondItem="2rj-lw-rt4" secondAttribute="centerY" id="8C1-DO-cMp"/>
-                                                <constraint firstAttribute="centerY" secondItem="h2h-UU-RAb" secondAttribute="centerY" id="FgM-j5-sJt"/>
-                                                <constraint firstItem="h2h-UU-RAb" firstAttribute="trailing" secondItem="Au7-wt-klE" secondAttribute="trailingMargin" id="L73-zq-3Pt"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="xWk-0I-ohX" secondAttribute="bottom" id="5UW-bX-VNS"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="FBU-Lt-gb7" secondAttribute="bottom" id="BMN-Gs-00a"/>
+                                                <constraint firstItem="2rj-lw-rt4" firstAttribute="top" secondItem="Au7-wt-klE" secondAttribute="topMargin" id="KLg-8N-YGZ"/>
+                                                <constraint firstItem="h2h-UU-RAb" firstAttribute="trailing" secondItem="Au7-wt-klE" secondAttribute="trailingMargin" id="LYe-Yi-Nxe"/>
+                                                <constraint firstItem="2rj-lw-rt4" firstAttribute="leading" secondItem="Au7-wt-klE" secondAttribute="leadingMargin" id="Oji-I4-gRH"/>
+                                                <constraint firstItem="xWk-0I-ohX" firstAttribute="top" secondItem="Au7-wt-klE" secondAttribute="topMargin" id="Qr3-Mf-VDc"/>
+                                                <constraint firstItem="FBU-Lt-gb7" firstAttribute="leading" secondItem="2rj-lw-rt4" secondAttribute="trailing" constant="10" id="Sca-6j-sDh"/>
+                                                <constraint firstItem="h2h-UU-RAb" firstAttribute="leading" secondItem="xWk-0I-ohX" secondAttribute="trailing" constant="10" id="Te8-UW-mDd"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="h2h-UU-RAb" secondAttribute="bottom" id="TfO-Sd-KwX"/>
+                                                <constraint firstItem="FBU-Lt-gb7" firstAttribute="top" secondItem="Au7-wt-klE" secondAttribute="topMargin" id="hMk-yh-foS"/>
+                                                <constraint firstItem="h2h-UU-RAb" firstAttribute="top" secondItem="Au7-wt-klE" secondAttribute="topMargin" id="s8F-CE-hnD"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="2rj-lw-rt4" secondAttribute="bottom" id="xJU-2W-Y6L"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="approveButton" destination="h2h-UU-RAb" id="Vpm-Hm-zHr"/>
                                             <outlet property="excludeButton" destination="2rj-lw-rt4" id="diU-rn-NaI"/>
+                                            <outlet property="flagButton" destination="FBU-Lt-gb7" id="qev-ZM-SDb"/>
+                                            <outlet property="promoteButton" destination="xWk-0I-ohX" id="bh7-9j-K0s"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -599,7 +620,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WIs-3n-0VO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1777" y="1644"/>
+            <point key="canvasLocation" x="1777" y="1641"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bfj-lu-eSA">

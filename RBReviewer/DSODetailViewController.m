@@ -109,10 +109,19 @@
         }
         case 5: {
             DSOReviewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reviewCell" forIndexPath:indexPath];
+
             cell.excludeButton.tag = 0;
             [cell.excludeButton addTarget:self action:@selector(review:) forControlEvents:UIControlEventTouchUpInside];
+
+            cell.flagButton.tag = -10;
+            [cell.flagButton addTarget:self action:@selector(review:) forControlEvents:UIControlEventTouchUpInside];
+    
             cell.approveButton.tag = 10;
             [cell.approveButton addTarget:self action:@selector(review:) forControlEvents:UIControlEventTouchUpInside];
+
+            cell.promoteButton.tag = 20;
+            [cell.promoteButton addTarget:self action:@selector(review:) forControlEvents:UIControlEventTouchUpInside];
+            
             return cell;
         }
     }
@@ -125,6 +134,12 @@
     NSString *status = @"approved";
     if (senderButton.tag == 0) {
         status = @"excluded";
+    }
+    else if (senderButton.tag == -10) {
+        status = @"flagged";
+    }
+    else if (senderButton.tag == 20) {
+        status = @"promoted";
     }
     [self postReview:status];
 }
