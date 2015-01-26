@@ -8,6 +8,7 @@
 
 #import "DSODetailViewController.h"
 #import "DSOCaptionTableViewCell.h"
+#import "DSOQuantityTableViewCell.h"
 #import "DSOTitleTableViewCell.h"
 #import "DSODynamicTextTableViewCell.h"
 #import "DSOImageTableViewCell.h"
@@ -52,7 +53,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 5;
 }
 
 
@@ -88,8 +89,18 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }
-
         case 3: {
+            DSOQuantityTableViewCell *cell =  [tableView dequeueReusableCellWithIdentifier:@"quantityCell" forIndexPath:indexPath];
+            cell.quantityLabel.text = nil;
+            if (self.reportbackFile[@"quantity"] != nil) {
+                cell.quantityLabel.text = [NSString stringWithFormat:@"%@ %@", self.reportbackFile[@"quantity"], self.reportbackFile[@"quantity_label"]];
+            }
+            cell.quantityLabel.textAlignment = NSTextAlignmentCenter;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+        }
+
+        case 4: {
             DSODynamicTextTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"whyParticipatedCell" forIndexPath:indexPath];
             cell.dynamicTextLabel.text = self.reportbackFile[@"why_participated"];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
