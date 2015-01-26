@@ -13,6 +13,7 @@
 #import "DSOTitleTableViewCell.h"
 #import "DSODynamicTextTableViewCell.h"
 #import "DSOImageTableViewCell.h"
+#import "DSOFlagViewController.h"
 #import "DSODoSomethingAPIClient.h"
 
 @interface DSODetailViewController ()
@@ -113,9 +114,6 @@
             cell.excludeButton.tag = 0;
             [cell.excludeButton addTarget:self action:@selector(review:) forControlEvents:UIControlEventTouchUpInside];
 
-            cell.flagButton.tag = -10;
-            [cell.flagButton addTarget:self action:@selector(review:) forControlEvents:UIControlEventTouchUpInside];
-    
             cell.approveButton.tag = 10;
             [cell.approveButton addTarget:self action:@selector(review:) forControlEvents:UIControlEventTouchUpInside];
 
@@ -128,15 +126,27 @@
     return nil;
 }
 
+- (IBAction)unwindToDetail:(UIStoryboardSegue *)segue {
+    DSOFlagViewController *source = [segue sourceViewController];
+    NSDictionary *values = @{
+                             @"fid":self.reportbackFile[@"fid"],
+                             @"status":@"flagged",
+                             @"flagged_reason":source.flaggedReason,
+                             @"delete":[NSNumber numberWithBool:source.deleteImage],
+                             @"source":@"ios"
+                             };
+    DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
+    [client postReportbackReviewWithCompletionHandler:^(NSArray *response){
+        [self viewDidLoad];
+    } :values];
+}
+
 -(void)review:(id)sender
 {
     UIButton *senderButton = (UIButton *)sender;
     NSString *status = @"approved";
     if (senderButton.tag == 0) {
         status = @"excluded";
-    }
-    else if (senderButton.tag == -10) {
-        status = @"flagged";
     }
     else if (senderButton.tag == 20) {
         status = @"promoted";

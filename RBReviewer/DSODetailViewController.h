@@ -10,4 +10,5 @@
 
 @interface DSODetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) NSMutableDictionary *taxonomyTerm;
+- (IBAction)unwindToDetail:(UIStoryboardSegue *)segue;
 @end

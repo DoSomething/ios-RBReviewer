@@ -328,7 +328,7 @@
                     <navigationItem key="navigationItem" title="Flag" id="rom-Xw-LOv">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="mfT-Ip-TUV">
                             <connections>
-                                <segue destination="7WQ-j4-PPN" kind="unwind" unwindAction="unwindToList:" id="L4Y-We-x3w"/>
+                                <segue destination="7WQ-j4-PPN" kind="unwind" unwindAction="unwindToDetail:" id="0ZP-ja-aJ8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -340,7 +340,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RB9-0z-rkj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="7WQ-j4-PPN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4377" y="1791"/>
+            <point key="canvasLocation" x="3113" y="1641"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="SCK-4F-k98">
@@ -412,7 +412,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tOz-rT-e9M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3565" y="1791"/>
+            <point key="canvasLocation" x="2443" y="1641"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="j0d-O3-Eyi">
@@ -568,6 +568,9 @@
                                                     <rect key="frame" x="88" y="8" width="49" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <state key="normal" title="Flag" image="flagged.png"/>
+                                                    <connections>
+                                                        <segue destination="UKh-iw-KOS" kind="show" id="YBd-C4-71z"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xWk-0I-ohX">
                                                     <rect key="frame" x="405" y="8" width="73" height="27"/>
@@ -649,4 +652,7 @@
         <image name="logo.png" width="160" height="140"/>
         <image name="promoted.png" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ezp-vz-d3X"/>
+    </inferredMetricsTieBreakers>
 </document>
