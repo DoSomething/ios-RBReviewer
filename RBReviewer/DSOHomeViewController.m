@@ -7,7 +7,6 @@
 //
 
 #import "DSOHomeViewController.h"
-#import "DSOReviewViewController.h"
 #import "DSODoSomethingAPIClient.h"
 #import "DSODetailViewController.h"
 
@@ -84,7 +83,7 @@
         return;
     }
     UINavigationController *initialVC = (UINavigationController *) [segue destinationViewController];
-    DSOReviewViewController *destVC = (DSOReviewViewController *)initialVC.topViewController;
+    DSODetailViewController *destVC = (DSODetailViewController *)initialVC.topViewController;
     UITableViewCell *cell = (UITableViewCell *)sender;
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     NSMutableDictionary *term = (NSMutableDictionary *)[self.terms objectAtIndex:indexPath.row];
