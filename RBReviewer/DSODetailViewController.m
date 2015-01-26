@@ -77,7 +77,13 @@
         }
         case 2: {
             DSOCaptionTableViewCell *cell =  [tableView dequeueReusableCellWithIdentifier:@"captionCell" forIndexPath:indexPath];
-            cell.captionLabel.text = self.reportbackFile[@"caption"];
+            
+            if ([self.reportbackFile[@"caption"] isEqualToString:@""]) {
+                cell.captionLabel.text = @"(No caption)";
+            } else {
+                cell.captionLabel.text = self.reportbackFile[@"caption"];
+            }
+            
             cell.captionLabel.textAlignment = NSTextAlignmentCenter;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
