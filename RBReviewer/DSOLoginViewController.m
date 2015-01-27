@@ -26,7 +26,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"Login";
     [self checkForKeychain];
 }
 
