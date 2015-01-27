@@ -60,12 +60,31 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tableCell" forIndexPath:indexPath];
     NSMutableDictionary *term = (NSMutableDictionary *)[self.terms objectAtIndex:indexPath.row];
+
     cell.textLabel.text = term[@"name"];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%li", indexPath.row];
+    NSString *total = (NSString *)term[@"inbox"];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", total];
+    cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+
+    if ([total intValue] == 0) {
+        cell.textLabel.textColor = [UIColor grayColor];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
     
     return cell;
 }
-
+- (NSIndexPath *)tableView:(UITableView *)tv willSelectRowAtIndexPath:(NSIndexPath *)path
+{
+    NSMutableDictionary *term = (NSMutableDictionary *)[self.terms objectAtIndex:path.row];
+    NSString *total = (NSString *)term[@"inbox"];
+    
+    if ([total intValue] > 0){
+        return path;
+    }
+    
+    return nil;
+}
 
 - (IBAction)logoutTapped:(id)sender {
     DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
