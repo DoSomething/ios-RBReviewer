@@ -71,7 +71,7 @@
             </objects>
             <point key="canvasLocation" x="951" y="136"/>
         </scene>
-        <!--Home-->
+        <!--Inbox-->
         <scene sceneID="BNA-Vd-23Z">
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" id="I1m-YK-5Au" customClass="DSOHomeViewController" sceneMemberID="viewController">
@@ -83,14 +83,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VN9-lY-dkt">
-                                <rect key="frame" x="16" y="145" width="568" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="tableView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="nl9-pf-HiM">
-                                <rect key="frame" x="0.0" y="222" width="600" height="287"/>
+                                <rect key="frame" x="16" y="0.0" width="568" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tableCell" textLabel="RKy-VV-Byk" style="IBUITableViewCellStyleDefault" id="1qK-wJ-hqa">
@@ -113,8 +107,20 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OUH-b9-Xeb">
-                                <rect key="frame" x="505" y="562" width="79" height="30"/>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nl9-pf-HiM" firstAttribute="top" secondItem="7wp-I8-wFu" secondAttribute="bottom" constant="-64" id="4tz-V4-ccb"/>
+                            <constraint firstItem="Rtq-aN-Nys" firstAttribute="top" secondItem="nl9-pf-HiM" secondAttribute="bottom" constant="64" id="9r4-3y-1Wc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nl9-pf-HiM" secondAttribute="trailing" id="XmW-fM-N2M"/>
+                            <constraint firstItem="nl9-pf-HiM" firstAttribute="leading" secondItem="T0i-bW-DmH" secondAttribute="leadingMargin" id="wu5-O2-dkZ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Inbox" id="F6C-vP-ujv">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="SpM-Sh-v1B">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OUH-b9-Xeb">
+                                <rect key="frame" x="445" y="155" width="79" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="79" id="Rrf-oO-UTH"/>
                                 </constraints>
@@ -125,23 +131,9 @@
                                     <action selector="logoutTapped:" destination="I1m-YK-5Au" eventType="touchUpInside" id="Iad-eF-Igf"/>
                                 </connections>
                             </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="nl9-pf-HiM" secondAttribute="trailing" id="4vd-IH-vwv"/>
-                            <constraint firstItem="Rtq-aN-Nys" firstAttribute="top" secondItem="OUH-b9-Xeb" secondAttribute="bottom" constant="8" symbolic="YES" id="6Ia-gL-A1Q"/>
-                            <constraint firstItem="VN9-lY-dkt" firstAttribute="leading" secondItem="T0i-bW-DmH" secondAttribute="leadingMargin" id="HnV-bi-0FY"/>
-                            <constraint firstItem="VN9-lY-dkt" firstAttribute="centerX" secondItem="nl9-pf-HiM" secondAttribute="centerX" id="V4a-OU-xHD"/>
-                            <constraint firstItem="nl9-pf-HiM" firstAttribute="top" secondItem="VN9-lY-dkt" secondAttribute="bottom" constant="56" id="YMk-2e-DzK"/>
-                            <constraint firstItem="OUH-b9-Xeb" firstAttribute="trailing" secondItem="VN9-lY-dkt" secondAttribute="trailing" id="adC-YF-xsA"/>
-                            <constraint firstItem="OUH-b9-Xeb" firstAttribute="top" secondItem="nl9-pf-HiM" secondAttribute="bottom" constant="53" id="d2R-Ta-Ukh"/>
-                            <constraint firstItem="VN9-lY-dkt" firstAttribute="top" secondItem="7wp-I8-wFu" secondAttribute="bottom" constant="81" id="hHV-gu-FJc"/>
-                            <constraint firstItem="nl9-pf-HiM" firstAttribute="leading" secondItem="T0i-bW-DmH" secondAttribute="leading" id="yqU-ty-jFC"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Home" id="F6C-vP-ujv"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="emailLabel" destination="VN9-lY-dkt" id="ncC-YS-Dok"/>
                         <outlet property="logoutButton" destination="OUH-b9-Xeb" id="MOY-lR-nYw"/>
                         <outlet property="tableView" destination="nl9-pf-HiM" id="8La-Nm-t9Z"/>
                     </connections>

@@ -33,7 +33,6 @@
     
     [client getTermsWithCompletionHandler:^(NSMutableArray *response){
         self.terms = response;
-        NSLog(@"Terms: %@", self.terms);
         [self.tableView reloadData];
     }];
     
