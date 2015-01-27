@@ -76,7 +76,7 @@
         <!--Inbox-->
         <scene sceneID="BNA-Vd-23Z">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="I1m-YK-5Au" customClass="DSOHomeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="I1m-YK-5Au" customClass="DSOInboxViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7wp-I8-wFu"/>
                         <viewControllerLayoutGuide type="bottom" id="Rtq-aN-Nys"/>

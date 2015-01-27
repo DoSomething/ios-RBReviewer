@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DSOHomeViewController : UIViewController  <UITableViewDataSource, UITableViewDelegate>
+@interface DSOInboxViewController : UIViewController  <UITableViewDataSource, UITableViewDelegate>
 
 @end

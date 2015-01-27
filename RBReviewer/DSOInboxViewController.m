@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 DoSomething.org. All rights reserved.
 //
 
-#import "DSOHomeViewController.h"
+#import "DSOInboxViewController.h"
 #import "DSODoSomethingAPIClient.h"
 #import "DSODetailViewController.h"
 
-@interface DSOHomeViewController ()
+@interface DSOInboxViewController ()
 
 @property (strong, nonatomic) NSMutableArray *terms;
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
@@ -21,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
-@implementation DSOHomeViewController
+@implementation DSOInboxViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

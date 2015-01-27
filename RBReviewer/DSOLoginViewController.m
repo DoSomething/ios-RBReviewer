@@ -7,7 +7,7 @@
 //
 
 #import "DSOLoginViewController.h"
-#import "DSOHomeViewController.h"
+#import "DSOInboxViewController.h"
 #import "DSODoSomethingAPIClient.h"
 #import "SSKeychain/SSKeychain.h"
 #import "SSKeychain/SSKeychainQuery.h"
