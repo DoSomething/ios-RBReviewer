@@ -19,6 +19,8 @@
 		B23C9C571A72F4D2008A93D7 /* DSOCaptionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C9C561A72F4D2008A93D7 /* DSOCaptionTableViewCell.m */; };
 		B240E1111A7002A5005EFECD /* DSOFlagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B240E1101A7002A5005EFECD /* DSOFlagViewController.m */; };
 		B2428B8F1A4A3650007DF9C2 /* DSOHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2428B8E1A4A3650007DF9C2 /* DSOHomeViewController.m */; };
+		B262F5ED1A77FAA800B1DA2D /* DSOInboxZeroView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B262F5EC1A77FAA800B1DA2D /* DSOInboxZeroView.xib */; };
+		B262F5F01A77FABE00B1DA2D /* DSOInboxZeroView.m in Sources */ = {isa = PBXBuildFile; fileRef = B262F5EF1A77FABE00B1DA2D /* DSOInboxZeroView.m */; };
 		B266AED71A7693AE00B61F47 /* DSOQuantityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B266AED61A7693AE00B61F47 /* DSOQuantityTableViewCell.m */; };
 		B266AEDA1A769A7C00B61F47 /* DSOReviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B266AED91A769A7C00B61F47 /* DSOReviewTableViewCell.m */; };
 		B27B50C41A7185820098C0C9 /* DSODetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B27B50C31A7185820098C0C9 /* DSODetailViewController.m */; };
@@ -68,6 +70,9 @@
 		B240E1101A7002A5005EFECD /* DSOFlagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSOFlagViewController.m; sourceTree = "<group>"; };
 		B2428B8D1A4A3650007DF9C2 /* DSOHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSOHomeViewController.h; sourceTree = "<group>"; };
 		B2428B8E1A4A3650007DF9C2 /* DSOHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSOHomeViewController.m; sourceTree = "<group>"; };
+		B262F5EC1A77FAA800B1DA2D /* DSOInboxZeroView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DSOInboxZeroView.xib; sourceTree = "<group>"; };
+		B262F5EE1A77FABE00B1DA2D /* DSOInboxZeroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSOInboxZeroView.h; sourceTree = "<group>"; };
+		B262F5EF1A77FABE00B1DA2D /* DSOInboxZeroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSOInboxZeroView.m; sourceTree = "<group>"; };
 		B266AED51A7693AE00B61F47 /* DSOQuantityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSOQuantityTableViewCell.h; sourceTree = "<group>"; };
 		B266AED61A7693AE00B61F47 /* DSOQuantityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSOQuantityTableViewCell.m; sourceTree = "<group>"; };
 		B266AED81A769A7C00B61F47 /* DSOReviewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSOReviewTableViewCell.h; sourceTree = "<group>"; };
@@ -203,6 +208,9 @@
 				B20DC9C71A39E63300075693 /* Main.storyboard */,
 				B20DC9CA1A39E63300075693 /* Images.xcassets */,
 				B20DC9CC1A39E63300075693 /* LaunchScreen.xib */,
+				B262F5EC1A77FAA800B1DA2D /* DSOInboxZeroView.xib */,
+				B262F5EE1A77FABE00B1DA2D /* DSOInboxZeroView.h */,
+				B262F5EF1A77FABE00B1DA2D /* DSOInboxZeroView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -317,6 +325,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B262F5ED1A77FAA800B1DA2D /* DSOInboxZeroView.xib in Resources */,
 				B2E573201A53D3D5009AA647 /* flagged.png in Resources */,
 				B238D2571A3A55E500CFFEE6 /* logo.png in Resources */,
 				B2E5731E1A53D34F009AA647 /* excluded.png in Resources */,
@@ -380,6 +389,7 @@
 				B266AEDA1A769A7C00B61F47 /* DSOReviewTableViewCell.m in Sources */,
 				B27B50CA1A718A6A0098C0C9 /* DSODynamicTextTableViewCell.m in Sources */,
 				B280325A1A39EA7F00785B7E /* DSODoSomethingAPIClient.m in Sources */,
+				B262F5F01A77FABE00B1DA2D /* DSOInboxZeroView.m in Sources */,
 				B20DC9C61A39E63300075693 /* DSOLoginViewController.m in Sources */,
 				B27B50C71A718A490098C0C9 /* DSOImageTableViewCell.m in Sources */,
 				B2201DAF1A72D44B00B3D117 /* DSOTitleTableViewCell.m in Sources */,

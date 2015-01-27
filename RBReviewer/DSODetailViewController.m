@@ -15,18 +15,23 @@
 #import "DSOImageTableViewCell.h"
 #import "DSOFlagViewController.h"
 #import "DSODoSomethingAPIClient.h"
+#import "DSOInboxZeroView.h"
 
 @interface DSODetailViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableDictionary *reportbackFile;
+@property (weak, nonatomic) IBOutlet DSOInboxZeroView *inboxZeroView;
+
 @end
 
 @implementation DSODetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.inboxZeroView.hidden = TRUE;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.hidden = TRUE;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 44;
     self.title = self.taxonomyTerm[@"name"];
@@ -40,9 +45,12 @@
         if ([response count] > 0) {
             self.reportbackFile = (NSMutableDictionary *)response[0];
             [self.tableView reloadData];
+            self.inboxZeroView.hidden = TRUE;
+            self.tableView.hidden = FALSE;
         }
         else {
-            //[self updateDisplay:nil];
+            self.tableView.hidden = TRUE;
+            self.inboxZeroView.hidden = FALSE;
         }
     } andTid:tid];
 }
