@@ -61,6 +61,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tableCell" forIndexPath:indexPath];
     NSMutableDictionary *term = (NSMutableDictionary *)[self.terms objectAtIndex:indexPath.row];
     cell.textLabel.text = term[@"name"];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%li", indexPath.row];
     
     return cell;
 }
