@@ -16,6 +16,7 @@
 #import "DSOFlagViewController.h"
 #import "DSODoSomethingAPIClient.h"
 #import "DSOInboxZeroView.h"
+#import <TSMessage.h>
 
 @interface DSODetailViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -35,11 +36,14 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 44;
     self.title = self.taxonomyTerm[@"name"];
-    
+    [self updateTableView];
+}
+
+- (void)updateTableView {
     // @todo: Remove this once API is fixed to return numeric tid.
     NSString *tidString = (NSString *)self.taxonomyTerm[@"tid"];
     NSInteger tid = [tidString integerValue];
-    
+
     DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
     [client getSingleInboxReportbackWithCompletionHandler:^(NSMutableArray *response){
         if ([response count] > 0) {
@@ -170,7 +174,25 @@
                              };
     DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
     [client postReportbackReviewWithCompletionHandler:^(NSArray *response){
-        [self viewDidLoad];
+//        [TSMessage showNotificationWithTitle:@"Your Title"
+//                                    subtitle:@"A description"
+//                                        type:TSMessageNotificationTypeError];
+        NSString *subtitle = [NSString stringWithFormat:@"Reportback %@.", status];
+        // Add a button inside the message
+        [TSMessage showNotificationInViewController:self
+                                              title:@"Great success."
+                                           subtitle:subtitle
+                                              image:nil
+                                               type:TSMessageNotificationTypeSuccess
+                                           duration:TSMessageNotificationDurationAutomatic
+                                           callback:nil
+                                        buttonTitle:@"OK"
+                                     buttonCallback:^{
+                                         NSLog(@"User tapped the button");
+                                     }
+                                         atPosition:TSMessageNotificationPositionBottom
+                               canBeDismissedByUser:YES];
+        [self updateTableView];
     } :values];
 }
 
