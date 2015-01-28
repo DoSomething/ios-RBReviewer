@@ -8,6 +8,7 @@
 
 #import "DSODoSomethingAPIClient.h"
 #import <AFNetworking.h>
+#import <TSMessage.h>
 
 static NSString * const DoSomethingAPIString = @"http://staging.beta.dosomething.org/api/v1/";
 
@@ -56,7 +57,7 @@ static NSString * const DoSomethingAPIString = @"http://staging.beta.dosomething
     }
 }
 
--(void)loginWithCompletionHandler:(void(^)(NSDictionary *))completionHandler andDictionary:(NSDictionary *)authValues
+-(void)loginWithCompletionHandler:(void(^)(NSDictionary *))completionHandler andDictionary:(NSDictionary *)authValues andViewController:(UIViewController *)vc
 {
     
     [self POST:@"auth/login.json" parameters:authValues success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -73,6 +74,10 @@ static NSString * const DoSomethingAPIString = @"http://staging.beta.dosomething
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
         NSLog(@"Error: %@",error.localizedDescription);
+        [TSMessage showNotificationInViewController:vc
+                                              title:@"Aw, shit"
+                                           subtitle:error.localizedDescription
+                                               type:TSMessageNotificationTypeError];
     }];
 }
 

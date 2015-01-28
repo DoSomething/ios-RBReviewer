@@ -11,6 +11,7 @@
 #import "DSODoSomethingAPIClient.h"
 #import "SSKeychain/SSKeychain.h"
 #import "SSKeychain/SSKeychainQuery.h"
+#import <TSMessage.h>
 
 @interface DSOLoginViewController ()
 
@@ -59,10 +60,15 @@
     [client loginWithCompletionHandler:^(NSDictionary *response){
 
         [SSKeychain setPassword:password forService:@"DoSomething.org" account:username];
-
+        NSLog(@"Response:%@", response);
+        NSDictionary *user = response[@"user"];
         UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeNavigationController"];
         [self.navigationController presentViewController:vc animated:YES completion:NULL];
+        [TSMessage showNotificationInViewController:vc
+                                              title:@"Welcome back!"
+                                           subtitle:user[@"mail"]
+                                        type:TSMessageNotificationTypeMessage];
         
-    } andDictionary:auth];
+    } andDictionary:auth andViewController:self];
 }
 @end

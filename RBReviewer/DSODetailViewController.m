@@ -16,6 +16,7 @@
 #import "DSOFlagViewController.h"
 #import "DSODoSomethingAPIClient.h"
 #import "DSOInboxZeroView.h"
+#import <TSMessage.h>
 
 @interface DSODetailViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -35,11 +36,14 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 44;
     self.title = self.taxonomyTerm[@"name"];
-    
+    [self updateTableView];
+}
+
+- (void)updateTableView {
     // @todo: Remove this once API is fixed to return numeric tid.
     NSString *tidString = (NSString *)self.taxonomyTerm[@"tid"];
     NSInteger tid = [tidString integerValue];
-    
+
     DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
     [client getSingleInboxReportbackWithCompletionHandler:^(NSMutableArray *response){
         if ([response count] > 0) {
@@ -170,7 +174,22 @@
                              };
     DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
     [client postReportbackReviewWithCompletionHandler:^(NSArray *response){
-        [self viewDidLoad];
+
+        NSString *title = [NSString stringWithFormat:@"Reportback %@ %@.", self.reportbackFile[@"fid"], status];
+        NSString *filename = [NSString stringWithFormat:@"%@.png", status];
+
+        [TSMessage showNotificationInViewController:self
+                                              title:title
+                                           subtitle:nil
+                                              image:[UIImage imageNamed:filename]
+                                               type:TSMessageNotificationTypeSuccess
+                                           duration:TSMessageNotificationDurationAutomatic
+                                           callback:nil
+                                        buttonTitle:nil
+                                     buttonCallback:nil
+                                         atPosition:TSMessageNotificationPositionBottom
+                               canBeDismissedByUser:YES];
+        [self updateTableView];
     } :values];
 }
 
