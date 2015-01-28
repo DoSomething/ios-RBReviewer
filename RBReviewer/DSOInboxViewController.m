@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *logoutButton;
 
 - (IBAction)logoutTapped:(id)sender;
+- (IBAction)refreshTapped:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
@@ -92,6 +93,10 @@
         UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginNavigationController"];
         [self.navigationController presentViewController:vc animated:YES completion:NULL];
     }];
+}
+
+- (IBAction)refreshTapped:(id)sender {
+    [self viewDidLoad];
 }
 
 #pragma mark - Navigation
