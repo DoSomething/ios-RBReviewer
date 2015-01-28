@@ -174,22 +174,19 @@
                              };
     DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
     [client postReportbackReviewWithCompletionHandler:^(NSArray *response){
-//        [TSMessage showNotificationWithTitle:@"Your Title"
-//                                    subtitle:@"A description"
-//                                        type:TSMessageNotificationTypeError];
-        NSString *subtitle = [NSString stringWithFormat:@"Reportback %@.", status];
-        // Add a button inside the message
+
+        NSString *title = [NSString stringWithFormat:@"Reportback %@ %@.", self.reportbackFile[@"fid"], status];
+        NSString *filename = [NSString stringWithFormat:@"%@.png", status];
+
         [TSMessage showNotificationInViewController:self
-                                              title:@"Great success."
-                                           subtitle:subtitle
-                                              image:nil
+                                              title:title
+                                           subtitle:nil
+                                              image:[UIImage imageNamed:filename]
                                                type:TSMessageNotificationTypeSuccess
                                            duration:TSMessageNotificationDurationAutomatic
                                            callback:nil
-                                        buttonTitle:@"OK"
-                                     buttonCallback:^{
-                                         NSLog(@"User tapped the button");
-                                     }
+                                        buttonTitle:nil
+                                     buttonCallback:nil
                                          atPosition:TSMessageNotificationPositionBottom
                                canBeDismissedByUser:YES];
         [self updateTableView];

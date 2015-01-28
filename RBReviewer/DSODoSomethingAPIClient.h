@@ -19,7 +19,7 @@
 
 - (instancetype)initWithBaseURL:(NSURL *)url;
 
--(void)loginWithCompletionHandler:(void(^)(NSDictionary *))completionHandler andDictionary:(NSDictionary *)authValues;
+-(void)loginWithCompletionHandler:(void(^)(NSDictionary *))completionHandler andDictionary:(NSDictionary *)authValues andViewController:(UIViewController *)vc;
 
 -(void)checkStatusWithCompletionHandler:(void(^)(NSDictionary *))completionHandler;
 
