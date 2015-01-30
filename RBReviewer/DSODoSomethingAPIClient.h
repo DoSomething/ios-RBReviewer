@@ -13,6 +13,7 @@
 
 @property (retain, nonatomic) NSDictionary *authHeaders;
 @property (retain, nonatomic) NSString *serviceName;
+@property (retain, nonatomic) NSString *serviceTokensName;
 @property (retain, nonatomic) NSDictionary *user;
 
 
@@ -20,7 +21,7 @@
 
 - (instancetype)initWithBaseURL:(NSURL *)url;
 
--(void)loginWithCompletionHandler:(void(^)(NSDictionary *))completionHandler andDictionary:(NSDictionary *)authValues andViewController:(UIViewController *)vc;
+-(void)loginWithCompletionHandler:(void(^)(NSDictionary *))completionHandler andUsername:(NSString *)username andPassword:(NSString *)password andViewController:(UIViewController *)vc;
 
 -(void)checkStatusWithCompletionHandler:(void(^)(NSDictionary *))completionHandler;
 
@@ -31,5 +32,7 @@
 - (void)logoutUserWithCompletionHandler:(void(^)(NSDictionary *))completionHandler;
 
 - (void)postReportbackReviewWithCompletionHandler:(void(^)(NSArray *))completionHandler :(NSDictionary *)values;
+
+- (NSDictionary *) getSavedLogin;
 
 @end

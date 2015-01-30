@@ -19,6 +19,7 @@
 
 @synthesize authHeaders;
 @synthesize serviceName;
+@synthesize serviceTokensName;
 @synthesize user;
 
 
@@ -37,6 +38,7 @@
     dispatch_once(&onceToken, ^{
         _sharedClient  = [[self alloc] initWithBaseURL:[NSURL URLWithString:apiEndpoint]];
         _sharedClient.serviceName = server;
+        _sharedClient.serviceTokensName = [NSString stringWithFormat:@"%@-tokens", server];
     });
     return _sharedClient;
 }
@@ -58,21 +60,28 @@
 -(void) addAuthHTTPHeaders
 {
     for (NSString* key in self.authHeaders) {
+
         id value = [self.authHeaders objectForKey:key];
         [self.requestSerializer setValue:value forHTTPHeaderField:key];
-        NSLog(@"Adding key=%@ value=%@", key, value);
+
+        // Store each header field in the SSKeychain.
+        [SSKeychain setPassword:value forService:self.serviceTokensName account:key];
+
     }
 }
 
--(void)loginWithCompletionHandler:(void(^)(NSDictionary *))completionHandler andDictionary:(NSDictionary *)authValues andViewController:(UIViewController *)vc
+-(void)loginWithCompletionHandler:(void(^)(NSDictionary *))completionHandler andUsername:(NSString *)username andPassword:(NSString *)password andViewController:(UIViewController *)vc
 {
+    NSDictionary *params = [[NSDictionary alloc] init];
+    params = @{@"username":username,
+             @"password":password};
     
-    [self POST:@"auth/login.json" parameters:authValues success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"authValues:%@", authValues);
+    [self POST:@"auth/login.json" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
         self.authHeaders = @{
                              @"X-CSRF-Token":responseObject[@"token"],
                              @"Cookie":[NSString stringWithFormat:@"%@=%@", responseObject[@"session_name"], responseObject[@"sessid"]]
                              };
+        [SSKeychain setPassword:password forService:self.serviceName account:username];
         self.user = responseObject[@"user"];
         [self addAuthHTTPHeaders];
         completionHandler(responseObject);
@@ -161,4 +170,18 @@
         NSLog(@"Error: %@",error.localizedDescription);
     }];
 }
+
+- (NSDictionary *) getSavedLogin
+{
+    NSDictionary *authValues = [[NSDictionary alloc] init];
+    
+    NSArray *accounts = [SSKeychain accountsForService:self.serviceName];
+    if ([accounts count] > 0) {
+        NSDictionary *account = accounts[0];
+        authValues = @{@"username":account[@"acct"],
+                   @"password":[SSKeychain passwordForService:self.serviceName account:account[@"acct"]]};
+    }
+    return authValues;
+}
+
 @end
