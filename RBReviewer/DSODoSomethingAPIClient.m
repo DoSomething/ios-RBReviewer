@@ -59,14 +59,10 @@
 
 -(void) addAuthHTTPHeaders
 {
-    for (NSString* key in self.authHeaders) {
-
-        id value = [self.authHeaders objectForKey:key];
+    NSDictionary *tokens = [self getSavedTokens];
+    for (NSString* key in tokens) {
+        NSString *value = [tokens objectForKey:key];
         [self.requestSerializer setValue:value forHTTPHeaderField:key];
-
-        // Store each header field in the SSKeychain.
-        [SSKeychain setPassword:value forService:self.serviceTokensName account:key];
-
     }
 }
 
@@ -77,13 +73,13 @@
              @"password":password};
     
     [self POST:@"auth/login.json" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
-        self.authHeaders = @{
-                             @"X-CSRF-Token":responseObject[@"token"],
-                             @"Cookie":[NSString stringWithFormat:@"%@=%@", responseObject[@"session_name"], responseObject[@"sessid"]]
-                             };
+
         [SSKeychain setPassword:password forService:self.serviceName account:username];
         self.user = responseObject[@"user"];
+
+        [self setSavedTokens:responseObject];
         [self addAuthHTTPHeaders];
+
         completionHandler(responseObject);
 
         
@@ -207,4 +203,19 @@
     }
 }
 
+- (void) setSavedTokens:(NSDictionary *)response
+{
+    [SSKeychain setPassword:response[@"token"] forService:self.serviceTokensName account:@"X-CSRF-Token"];
+
+    NSString *cookie = [NSString stringWithFormat:@"%@=%@", response[@"session_name"], response[@"sessid"]];
+    [SSKeychain setPassword:cookie forService:self.serviceTokensName account:@"Cookie"];
+    
+}
+
+- (BOOL) isLoggedIn {
+    NSMutableDictionary *tokens = [self getSavedTokens];
+    if ([tokens count] > 0) {
+    }
+    return FALSE;
+}
 @end
