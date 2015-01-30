@@ -148,7 +148,8 @@
                              };
     DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
     [client postReportbackReviewWithCompletionHandler:^(NSArray *response){
-        [self viewDidLoad];
+        [self displayStatusMessage:@"flagged"];
+        [self updateTableView];
     } :values];
 }
 
@@ -172,27 +173,30 @@
                              @"status":status,
                              @"source":@"ios"
                              };
+
     DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
     [client postReportbackReviewWithCompletionHandler:^(NSArray *response){
-
-        NSString *title = [NSString stringWithFormat:@"Reportback %@ %@.", self.reportbackFile[@"fid"], status];
-        NSString *filename = [NSString stringWithFormat:@"%@.png", status];
-
-        [TSMessage showNotificationInViewController:self
-                                              title:title
-                                           subtitle:nil
-                                              image:[UIImage imageNamed:filename]
-                                               type:TSMessageNotificationTypeSuccess
-                                           duration:TSMessageNotificationDurationAutomatic
-                                           callback:nil
-                                        buttonTitle:nil
-                                     buttonCallback:nil
-                                         atPosition:TSMessageNotificationPositionBottom
-                               canBeDismissedByUser:YES];
+        [self displayStatusMessage:status];
         [self updateTableView];
     } :values];
 }
 
+- (void) displayStatusMessage:(NSString *)status {
+    NSString *title = [NSString stringWithFormat:@"Reportback %@ %@.", self.reportbackFile[@"fid"], status];
+    NSString *filename = [NSString stringWithFormat:@"%@.png", status];
+    
+    [TSMessage showNotificationInViewController:self
+                                          title:title
+                                       subtitle:nil
+                                          image:[UIImage imageNamed:filename]
+                                           type:TSMessageNotificationTypeSuccess
+                                       duration:TSMessageNotificationDurationAutomatic
+                                       callback:nil
+                                    buttonTitle:nil
+                                 buttonCallback:nil
+                                     atPosition:TSMessageNotificationPositionBottom
+                           canBeDismissedByUser:YES];
+}
 /*
 #pragma mark - Navigation
 

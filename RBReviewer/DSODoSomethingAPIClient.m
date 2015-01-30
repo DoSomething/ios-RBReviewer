@@ -12,6 +12,9 @@
 
 static NSString * const DoSomethingAPIString = @"http://staging.beta.dosomething.org/api/v1/";
 
+// static NSString * const DoSomethingAPIString = @"https://www.dosomething.org/api/v1/";
+
+
 @interface DSODoSomethingAPIClient ()
 
 @end
@@ -61,7 +64,7 @@ static NSString * const DoSomethingAPIString = @"http://staging.beta.dosomething
 {
     
     [self POST:@"auth/login.json" parameters:authValues success:^(NSURLSessionDataTask *task, id responseObject) {
-        
+        NSLog(@"authValues:%@", authValues);
         self.authHeaders = @{
                              @"X-CSRF-Token":responseObject[@"token"],
                              @"Cookie":[NSString stringWithFormat:@"%@=%@", responseObject[@"session_name"], responseObject[@"sessid"]]

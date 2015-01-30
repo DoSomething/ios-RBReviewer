@@ -58,7 +58,6 @@
     DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
 
     [client loginWithCompletionHandler:^(NSDictionary *response){
-
         [SSKeychain setPassword:password forService:@"DoSomething.org" account:username];
         NSLog(@"Response:%@", response);
         NSDictionary *user = response[@"user"];
