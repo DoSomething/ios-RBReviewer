@@ -116,7 +116,8 @@
 {
     
     [self POST:@"auth/logout.json" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        
+
+        [self deleteSavedTokens];
         completionHandler(responseObject);
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -183,6 +184,7 @@
     }
     return authValues;
 }
+
 - (NSMutableDictionary *) getSavedTokens
 {
     NSMutableDictionary *savedTokens = [[NSMutableDictionary alloc] init];
@@ -195,6 +197,14 @@
         }
     }
     return savedTokens;
+}
+
+- (void) deleteSavedTokens
+{
+    NSMutableDictionary *tokens = [self getSavedTokens];
+    for(id key in tokens) {
+        [SSKeychain deletePasswordForService:self.serviceTokensName account:key];
+    }
 }
 
 @end
