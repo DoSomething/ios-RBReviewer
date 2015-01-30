@@ -11,9 +11,10 @@
 
 @interface DSODoSomethingAPIClient : AFHTTPSessionManager
 
-@property (strong, nonatomic) NSString *baseUrl;
 @property (retain, nonatomic) NSDictionary *authHeaders;
+@property (retain, nonatomic) NSString *serviceName;
 @property (retain, nonatomic) NSDictionary *user;
+
 
 + (DSODoSomethingAPIClient *)sharedClient;
 

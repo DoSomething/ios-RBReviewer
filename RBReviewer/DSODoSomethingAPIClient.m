@@ -9,11 +9,7 @@
 #import "DSODoSomethingAPIClient.h"
 #import <AFNetworking.h>
 #import <TSMessage.h>
-
-static NSString * const DoSomethingAPIString = @"http://staging.beta.dosomething.org/api/v1/";
-
-// static NSString * const DoSomethingAPIString = @"https://www.dosomething.org/api/v1/";
-
+#import <SSKeychain/SSKeychain.h>
 
 @interface DSODoSomethingAPIClient ()
 
@@ -22,17 +18,25 @@ static NSString * const DoSomethingAPIString = @"http://staging.beta.dosomething
 @implementation DSODoSomethingAPIClient
 
 @synthesize authHeaders;
-@synthesize baseUrl;
+@synthesize serviceName;
 @synthesize user;
 
 
 + (DSODoSomethingAPIClient *)sharedClient
 {
+    NSString *server = @"www.dosomething.org";
+    NSString *protocol = @"https";
+    #ifdef DEBUG
+        server = @"staging.beta.dosomething.org";
+        protocol =@"http";
+    #endif
+    NSString *apiEndpoint = [NSString stringWithFormat:@"%@://%@/api/v1/", protocol, server];
     static DSODoSomethingAPIClient *_sharedClient = nil;
 
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _sharedClient  = [[self alloc] initWithBaseURL:[NSURL URLWithString:DoSomethingAPIString]];
+        _sharedClient  = [[self alloc] initWithBaseURL:[NSURL URLWithString:apiEndpoint]];
+        _sharedClient.serviceName = server;
     });
     return _sharedClient;
 }
