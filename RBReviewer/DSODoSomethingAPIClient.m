@@ -183,5 +183,18 @@
     }
     return authValues;
 }
+- (NSMutableDictionary *) getSavedTokens
+{
+    NSMutableDictionary *savedTokens = [[NSMutableDictionary alloc] init];
+    NSArray *tokens = [SSKeychain accountsForService:self.serviceTokensName];
+    if ([tokens count] > 0) {
+        for (NSDictionary *token in tokens) {
+            NSString *key = token[@"acct"];
+            NSString *value = [SSKeychain passwordForService:self.serviceTokensName account:key];
+            [savedTokens setObject:value forKey:key];
+        }
+    }
+    return savedTokens;
+}
 
 @end
