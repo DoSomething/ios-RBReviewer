@@ -63,6 +63,13 @@
                                            subtitle:client.user[@"mail"]
                                         type:TSMessageNotificationTypeMessage];
         
-    } andUsername:username andPassword:password andViewController:self];
+    } andErrorHandler:^(NSError *error){
+        
+        [TSMessage showNotificationInViewController:self
+                                              title:@"Aw, shit"
+                                           subtitle:error.localizedDescription
+                                               type:TSMessageNotificationTypeError];
+        
+    } andUsername:username andPassword:password];
 }
 @end

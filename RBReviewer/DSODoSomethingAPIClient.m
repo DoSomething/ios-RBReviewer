@@ -8,7 +8,6 @@
 
 #import "DSODoSomethingAPIClient.h"
 #import <AFNetworking.h>
-#import <TSMessage.h>
 #import <SSKeychain/SSKeychain.h>
 
 @interface DSODoSomethingAPIClient ()
@@ -66,7 +65,7 @@
     }
 }
 
--(void)loginWithCompletionHandler:(void(^)(NSDictionary *))completionHandler andUsername:(NSString *)username andPassword:(NSString *)password andViewController:(UIViewController *)vc
+-(void)loginWithCompletionHandler:(void(^)(NSDictionary *))completionHandler andErrorHandler:(void(^)(NSError *))errorHandler andUsername:(NSString *)username andPassword:(NSString *)password
 {
     NSDictionary *params = [[NSDictionary alloc] init];
     params = @{@"username":username,
@@ -84,12 +83,8 @@
 
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
-        NSLog(@"Error: %@",error.localizedDescription);
-        [TSMessage showNotificationInViewController:vc
-                                              title:@"Aw, shit"
-                                           subtitle:error.localizedDescription
-                                               type:TSMessageNotificationTypeError];
+        errorHandler(error);
+
     }];
 }
 
