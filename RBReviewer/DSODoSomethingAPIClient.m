@@ -93,9 +93,12 @@
     }];
 }
 
--(void)checkStatusWithCompletionHandler:(void(^)(NSDictionary *))completionHandler
+-(void)checkStatusWithCompletionHandler:(void(^)(NSDictionary *))completionHandler andErrorHandler:(void(^)(NSDictionary *))errorHandler
 {
-    
+    NSMutableDictionary *tokens = [self getSavedTokens];
+    if ([tokens count] > 0) {
+        [self addAuthHTTPHeaders];
+    }
     [self POST:@"system/connect.json" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
 
         completionHandler(responseObject);
@@ -104,6 +107,7 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
         NSLog(@"Error: %@",error.localizedDescription);
+        errorHandler((NSDictionary *)error);
     }];
 }
 

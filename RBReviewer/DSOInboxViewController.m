@@ -9,6 +9,7 @@
 #import "DSOInboxViewController.h"
 #import "DSODoSomethingAPIClient.h"
 #import "DSODetailViewController.h"
+#import "DSOLoginViewController.h"
 
 @interface DSOInboxViewController ()
 
@@ -31,16 +32,34 @@
     self.tableView.dataSource = self;
     DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
     self.emailLabel.text = client.user[@"mail"];
+
+    [client checkStatusWithCompletionHandler:^(NSDictionary *response){
+
+        NSDictionary *user = response[@"user"];
+        NSDictionary *userRoles = user[@"roles"];
+
+        // 1 is anon user.
+        if ([userRoles objectForKey:@"1"]) {
+            [self displayLoginViewController];
+        }
+        return;
+
+    } andErrorHandler:^(NSDictionary *response){
+        NSLog(@"Error %@", response);
+        [self displayLoginViewController];
+    }];
     
     [client getTermsWithCompletionHandler:^(NSMutableArray *response){
         self.terms = response;
         [self.tableView reloadData];
     }];
-    
-    // @todo: Set this view as the initial vc, and then check if we're logged in
-//    [client checkStatusWithCompletionHandler:^(NSDictionary *response){
-//        NSLog(@"%@", response);
-//    }];
+
+
+}
+
+- (void) displayLoginViewController {
+    DSOLoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
+    [self presentViewController:loginVC animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -90,8 +109,7 @@
 - (IBAction)logoutTapped:(id)sender {
     DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
     [client logoutUserWithCompletionHandler:^(NSDictionary *response){
-        UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginNavigationController"];
-        [self.navigationController presentViewController:vc animated:YES completion:NULL];
+        [self displayLoginViewController];
     }];
 }
 

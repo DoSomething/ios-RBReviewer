@@ -10,6 +10,8 @@
 #import "AFNetworkActivityIndicatorManager.h"
 #import "AFNetworkActivityLogger.h"
 
+static BOOL logActivity = NO;
+
 @interface AppDelegate ()
 
 @end
@@ -19,8 +21,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
-    [[AFNetworkActivityLogger sharedLogger] startLogging];
-    [[AFNetworkActivityLogger sharedLogger] setLevel:AFLoggerLevelDebug];
+    if (logActivity) {
+        [[AFNetworkActivityLogger sharedLogger] startLogging];
+        [[AFNetworkActivityLogger sharedLogger] setLevel:AFLoggerLevelDebug];
+    }
     return YES;
 }
 
