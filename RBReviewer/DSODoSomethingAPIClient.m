@@ -19,6 +19,7 @@
 
 @synthesize authHeaders;
 @synthesize serviceName;
+@synthesize serviceTokensName;
 @synthesize user;
 
 
@@ -37,6 +38,7 @@
     dispatch_once(&onceToken, ^{
         _sharedClient  = [[self alloc] initWithBaseURL:[NSURL URLWithString:apiEndpoint]];
         _sharedClient.serviceName = server;
+        _sharedClient.serviceTokensName = [NSString stringWithFormat:@"%@-tokens", server];
     });
     return _sharedClient;
 }
@@ -57,24 +59,27 @@
 
 -(void) addAuthHTTPHeaders
 {
-    for (NSString* key in self.authHeaders) {
-        id value = [self.authHeaders objectForKey:key];
+    NSDictionary *tokens = [self getSavedTokens];
+    for (NSString* key in tokens) {
+        NSString *value = [tokens objectForKey:key];
         [self.requestSerializer setValue:value forHTTPHeaderField:key];
-        NSLog(@"Adding key=%@ value=%@", key, value);
     }
 }
 
--(void)loginWithCompletionHandler:(void(^)(NSDictionary *))completionHandler andDictionary:(NSDictionary *)authValues andViewController:(UIViewController *)vc
+-(void)loginWithCompletionHandler:(void(^)(NSDictionary *))completionHandler andUsername:(NSString *)username andPassword:(NSString *)password andViewController:(UIViewController *)vc
 {
+    NSDictionary *params = [[NSDictionary alloc] init];
+    params = @{@"username":username,
+             @"password":password};
     
-    [self POST:@"auth/login.json" parameters:authValues success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"authValues:%@", authValues);
-        self.authHeaders = @{
-                             @"X-CSRF-Token":responseObject[@"token"],
-                             @"Cookie":[NSString stringWithFormat:@"%@=%@", responseObject[@"session_name"], responseObject[@"sessid"]]
-                             };
+    [self POST:@"auth/login.json" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+
+        [SSKeychain setPassword:password forService:self.serviceName account:username];
         self.user = responseObject[@"user"];
+
+        [self setSavedTokens:responseObject];
         [self addAuthHTTPHeaders];
+
         completionHandler(responseObject);
 
         
@@ -88,9 +93,12 @@
     }];
 }
 
--(void)checkStatusWithCompletionHandler:(void(^)(NSDictionary *))completionHandler
+-(void)checkStatusWithCompletionHandler:(void(^)(NSDictionary *))completionHandler andErrorHandler:(void(^)(NSDictionary *))errorHandler
 {
-    
+    NSMutableDictionary *tokens = [self getSavedTokens];
+    if ([tokens count] > 0) {
+        [self addAuthHTTPHeaders];
+    }
     [self POST:@"system/connect.json" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
 
         completionHandler(responseObject);
@@ -99,6 +107,7 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
         NSLog(@"Error: %@",error.localizedDescription);
+        errorHandler((NSDictionary *)error);
     }];
 }
 
@@ -107,7 +116,8 @@
 {
     
     [self POST:@"auth/logout.json" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        
+
+        [self deleteSavedTokens];
         completionHandler(responseObject);
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -160,5 +170,56 @@
         
         NSLog(@"Error: %@",error.localizedDescription);
     }];
+}
+
+- (NSDictionary *) getSavedLogin
+{
+    NSDictionary *authValues = [[NSDictionary alloc] init];
+    
+    NSArray *accounts = [SSKeychain accountsForService:self.serviceName];
+    if ([accounts count] > 0) {
+        NSDictionary *account = accounts[0];
+        authValues = @{@"username":account[@"acct"],
+                   @"password":[SSKeychain passwordForService:self.serviceName account:account[@"acct"]]};
+    }
+    return authValues;
+}
+
+- (NSMutableDictionary *) getSavedTokens
+{
+    NSMutableDictionary *savedTokens = [[NSMutableDictionary alloc] init];
+    NSArray *tokens = [SSKeychain accountsForService:self.serviceTokensName];
+    if ([tokens count] > 0) {
+        for (NSDictionary *token in tokens) {
+            NSString *key = token[@"acct"];
+            NSString *value = [SSKeychain passwordForService:self.serviceTokensName account:key];
+            [savedTokens setObject:value forKey:key];
+        }
+    }
+    return savedTokens;
+}
+
+- (void) deleteSavedTokens
+{
+    NSMutableDictionary *tokens = [self getSavedTokens];
+    for(id key in tokens) {
+        [SSKeychain deletePasswordForService:self.serviceTokensName account:key];
+    }
+}
+
+- (void) setSavedTokens:(NSDictionary *)response
+{
+    [SSKeychain setPassword:response[@"token"] forService:self.serviceTokensName account:@"X-CSRF-Token"];
+
+    NSString *cookie = [NSString stringWithFormat:@"%@=%@", response[@"session_name"], response[@"sessid"]];
+    [SSKeychain setPassword:cookie forService:self.serviceTokensName account:@"Cookie"];
+    
+}
+
+- (BOOL) isLoggedIn {
+    NSMutableDictionary *tokens = [self getSavedTokens];
+    if ([tokens count] > 0) {
+    }
+    return FALSE;
 }
 @end

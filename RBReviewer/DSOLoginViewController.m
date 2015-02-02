@@ -37,37 +37,32 @@
 
 - (void) checkForKeychain
 {
-    NSArray *dsAccounts = [SSKeychain accountsForService:@"DoSomething.org"];
-    if ([dsAccounts count] > 0) {
-        NSDictionary *account = dsAccounts[0];
-        self.usernameTextField.text = account[@"acct"];
-        self.passwordTextField.text = [SSKeychain passwordForService:@"DoSomething.org" account:account[@"acct"]];
+    DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
+    
+    NSDictionary *authValues = [client getSavedLogin];
+    if ([authValues count] > 0) {
+        self.usernameTextField.text = authValues[@"username"];
+        self.passwordTextField.text = authValues[@"password"];
     }
 }
 
 
 - (IBAction)loginTapped:(id)sender {
 
-    NSDictionary *auth = [[NSDictionary alloc] init];
     NSString *username = self.usernameTextField.text;
     NSString *password = self.passwordTextField.text;
-
-    auth = @{@"username":username,
-              @"password":password};
     
     DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
 
     [client loginWithCompletionHandler:^(NSDictionary *response){
-        [SSKeychain setPassword:password forService:@"DoSomething.org" account:username];
-        NSLog(@"Response:%@", response);
-        NSDictionary *user = response[@"user"];
+
         UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"HomeNavigationController"];
         [self.navigationController presentViewController:vc animated:YES completion:NULL];
         [TSMessage showNotificationInViewController:vc
                                               title:@"Welcome back!"
-                                           subtitle:user[@"mail"]
+                                           subtitle:client.user[@"mail"]
                                         type:TSMessageNotificationTypeMessage];
         
-    } andDictionary:auth andViewController:self];
+    } andUsername:username andPassword:password andViewController:self];
 }
 @end
