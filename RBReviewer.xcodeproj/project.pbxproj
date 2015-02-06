@@ -145,7 +145,6 @@
 		B20DC9BC1A39E63300075693 /* RBReviewer */ = {
 			isa = PBXGroup;
 			children = (
-				B265C3581A85545500A4DB76 /* ga.txt */,
 				B20DC9C11A39E63300075693 /* AppDelegate.h */,
 				B20DC9C21A39E63300075693 /* AppDelegate.m */,
 				B28032581A39EA7F00785B7E /* DSODoSomethingAPIClient.h */,
@@ -160,6 +159,7 @@
 		B20DC9BD1A39E63300075693 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B265C3581A85545500A4DB76 /* ga.txt */,
 				B27B50CB1A718C400098C0C9 /* ghost-guitar.png */,
 				B2E573151A53CDA9009AA647 /* approved.png */,
 				B2E5731D1A53D34F009AA647 /* excluded.png */,
