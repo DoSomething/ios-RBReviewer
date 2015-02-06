@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GAITrackedViewController.h"
 
-@interface DSODetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface DSODetailViewController : GAITrackedViewController <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) NSMutableDictionary *taxonomyTerm;
 - (IBAction)unwindToDetail:(UIStoryboardSegue *)segue;
 @end

@@ -36,6 +36,7 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 44;
     self.title = self.taxonomyTerm[@"name"];
+    self.screenName = self.title;
     [self updateTableView];
 }
 

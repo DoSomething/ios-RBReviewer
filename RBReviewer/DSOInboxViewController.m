@@ -11,6 +11,7 @@
 #import "DSODetailViewController.h"
 #import "DSOLoginViewController.h"
 
+
 @interface DSOInboxViewController ()
 
 @property (strong, nonatomic) NSMutableArray *terms;
@@ -27,6 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.screenName = @"Inbox";
     self.terms = [[NSMutableArray alloc] init];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;

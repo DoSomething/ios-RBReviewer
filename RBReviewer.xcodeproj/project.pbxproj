@@ -21,6 +21,7 @@
 		B2428B8F1A4A3650007DF9C2 /* DSOInboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2428B8E1A4A3650007DF9C2 /* DSOInboxViewController.m */; };
 		B262F5ED1A77FAA800B1DA2D /* DSOInboxZeroView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B262F5EC1A77FAA800B1DA2D /* DSOInboxZeroView.xib */; };
 		B262F5F01A77FABE00B1DA2D /* DSOInboxZeroView.m in Sources */ = {isa = PBXBuildFile; fileRef = B262F5EF1A77FABE00B1DA2D /* DSOInboxZeroView.m */; };
+		B265C3591A85545500A4DB76 /* ga.txt in Resources */ = {isa = PBXBuildFile; fileRef = B265C3581A85545500A4DB76 /* ga.txt */; };
 		B266AED71A7693AE00B61F47 /* DSOQuantityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B266AED61A7693AE00B61F47 /* DSOQuantityTableViewCell.m */; };
 		B266AEDA1A769A7C00B61F47 /* DSOReviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B266AED91A769A7C00B61F47 /* DSOReviewTableViewCell.m */; };
 		B27B50C41A7185820098C0C9 /* DSODetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B27B50C31A7185820098C0C9 /* DSODetailViewController.m */; };
@@ -73,6 +74,7 @@
 		B262F5EC1A77FAA800B1DA2D /* DSOInboxZeroView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DSOInboxZeroView.xib; sourceTree = "<group>"; };
 		B262F5EE1A77FABE00B1DA2D /* DSOInboxZeroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSOInboxZeroView.h; sourceTree = "<group>"; };
 		B262F5EF1A77FABE00B1DA2D /* DSOInboxZeroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSOInboxZeroView.m; sourceTree = "<group>"; };
+		B265C3581A85545500A4DB76 /* ga.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ga.txt; sourceTree = "<group>"; };
 		B266AED51A7693AE00B61F47 /* DSOQuantityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSOQuantityTableViewCell.h; sourceTree = "<group>"; };
 		B266AED61A7693AE00B61F47 /* DSOQuantityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSOQuantityTableViewCell.m; sourceTree = "<group>"; };
 		B266AED81A769A7C00B61F47 /* DSOReviewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSOReviewTableViewCell.h; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 		B20DC9BC1A39E63300075693 /* RBReviewer */ = {
 			isa = PBXGroup;
 			children = (
+				B265C3581A85545500A4DB76 /* ga.txt */,
 				B20DC9C11A39E63300075693 /* AppDelegate.h */,
 				B20DC9C21A39E63300075693 /* AppDelegate.m */,
 				B28032581A39EA7F00785B7E /* DSODoSomethingAPIClient.h */,
@@ -329,6 +332,7 @@
 				B2E573201A53D3D5009AA647 /* flagged.png in Resources */,
 				B238D2571A3A55E500CFFEE6 /* logo.png in Resources */,
 				B2E5731E1A53D34F009AA647 /* excluded.png in Resources */,
+				B265C3591A85545500A4DB76 /* ga.txt in Resources */,
 				B20DC9C91A39E63300075693 /* Main.storyboard in Resources */,
 				B27B50CC1A718C400098C0C9 /* ghost-guitar.png in Resources */,
 				B2E5731C1A53CE39009AA647 /* promoted.png in Resources */,

@@ -44,6 +44,7 @@
     d4[@"key"] = @"delete";
     d4[@"checked"] = [NSNumber numberWithInt:0];
     [self.options addObject:d4];
+    self.screenName = @"Flag";
 }
 
 - (void)didReceiveMemoryWarning {

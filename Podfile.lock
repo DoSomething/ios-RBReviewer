@@ -22,6 +22,9 @@ PODS:
   - AFNetworking/UIKit (2.5.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - GoogleAnalytics-iOS-SDK (3.10):
+    - GoogleAnalytics-iOS-SDK/Core (= 3.10)
+  - GoogleAnalytics-iOS-SDK/Core (3.10)
   - HexColors (2.2.1)
   - SSKeychain (1.2.2)
   - TSMessages (0.9.11):
@@ -30,12 +33,14 @@ PODS:
 DEPENDENCIES:
   - AFNetworkActivityLogger (= 2.0.1)
   - AFNetworking (= 2.5.0)
+  - GoogleAnalytics-iOS-SDK (= 3.10)
   - SSKeychain (= 1.2.2)
   - TSMessages (= 0.9.11)
 
 SPEC CHECKSUMS:
   AFNetworkActivityLogger: 01dde83938bf509742ad4c21f25d43a0fa019dd6
   AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
+  GoogleAnalytics-iOS-SDK: f422062075d9ccb1ea8d783fc5ba3829461e9502
   HexColors: 01384d2bbe8dc4ffa43c3b4135db6e976952d153
   SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
   TSMessages: e21ef5b1c7518cc590a4826c8b05b16b79b10c2c

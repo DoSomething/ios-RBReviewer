@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2FB5B19898167DDB1593A7D5"
+               BlueprintIdentifier = "40A68347E11EB48506D4EF4A"
                BuildableName = "libPods-RBReviewer.a"
                BlueprintName = "Pods-RBReviewer"
                ReferencedContainer = "container:Pods.xcodeproj">
