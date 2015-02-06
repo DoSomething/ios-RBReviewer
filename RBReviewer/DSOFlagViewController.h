@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GAITrackedViewController.h"
 
-@interface DSOFlagViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface DSOFlagViewController : GAITrackedViewController <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) NSString *flaggedReason;
 @property(nonatomic, assign) BOOL deleteImage;
 

@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "AFNetworkActivityIndicatorManager.h"
 #import "AFNetworkActivityLogger.h"
+#import "GAI.h"
 
 static BOOL logActivity = NO;
 
@@ -25,6 +26,17 @@ static BOOL logActivity = NO;
         [[AFNetworkActivityLogger sharedLogger] startLogging];
         [[AFNetworkActivityLogger sharedLogger] setLevel:AFLoggerLevelDebug];
     }
+
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    [GAI sharedInstance].dispatchInterval = 20;
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"ga"
+                                                    ofType:@"txt"];
+    NSString* trackingId = [NSString stringWithContentsOfFile:path
+                                                  encoding:NSUTF8StringEncoding
+                                                     error:NULL];
+    [[GAI sharedInstance] trackerWithTrackingId:trackingId];
+
     return YES;
 }
 

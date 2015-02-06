@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GAITrackedViewController.h"
 
-@interface DSOInboxViewController : UIViewController  <UITableViewDataSource, UITableViewDelegate>
+@interface DSOInboxViewController : GAITrackedViewController  <UITableViewDataSource, UITableViewDelegate>
 
 @end
