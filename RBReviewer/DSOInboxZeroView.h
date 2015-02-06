@@ -11,5 +11,7 @@
 @interface DSOInboxZeroView : UIView
 @property (weak, nonatomic) IBOutlet UILabel *label;
 @property (strong, nonatomic) IBOutlet UIView *view;
+@property (weak, nonatomic) IBOutlet UIButton *rockOnButton;
+- (IBAction)rockOnTapped:(id)sender;
 
 @end
