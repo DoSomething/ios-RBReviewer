@@ -122,6 +122,7 @@
         }
         case 5: {
             DSOReviewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reviewCell" forIndexPath:indexPath];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
             cell.excludeButton.tag = 0;
             [cell.excludeButton addTarget:self action:@selector(review:) forControlEvents:UIControlEventTouchUpInside];
