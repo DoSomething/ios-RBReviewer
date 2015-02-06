@@ -29,6 +29,7 @@ PODS:
   - SSKeychain (1.2.2)
   - TSMessages (0.9.11):
     - HexColors
+  - UIImageView-PlayGIF (1.0.2)
 
 DEPENDENCIES:
   - AFNetworkActivityLogger (= 2.0.1)
@@ -36,6 +37,7 @@ DEPENDENCIES:
   - GoogleAnalytics-iOS-SDK (= 3.10)
   - SSKeychain (= 1.2.2)
   - TSMessages (= 0.9.11)
+  - UIImageView-PlayGIF (~> 1.0.2)
 
 SPEC CHECKSUMS:
   AFNetworkActivityLogger: 01dde83938bf509742ad4c21f25d43a0fa019dd6
@@ -44,5 +46,6 @@ SPEC CHECKSUMS:
   HexColors: 01384d2bbe8dc4ffa43c3b4135db6e976952d153
   SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
   TSMessages: e21ef5b1c7518cc590a4826c8b05b16b79b10c2c
+  UIImageView-PlayGIF: 1b70b8b4d8d7aec4bc09091d16eb21cbdb04ded4
 
 COCOAPODS: 0.35.0
