@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DSOInboxZeroView">
             <connections>
-                <outlet property="label" destination="KBp-XZ-uSj" id="Iw6-np-o5p"/>
+                <outlet property="label" destination="kia-JR-pm2" id="ajY-Zd-D8E"/>
+                <outlet property="rockOnButton" destination="Qgy-jJ-J0h" id="jwT-sH-Jn0"/>
                 <outlet property="view" destination="iN0-l3-epB" id="JnO-I2-nUT"/>
             </connections>
         </placeholder>
@@ -15,18 +16,27 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No reportbacks to review." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBp-XZ-uSj">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qgy-jJ-J0h">
+                    <rect key="frame" x="270" y="370" width="60" height="30"/>
+                    <state key="normal" title="Rock On">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="rockOnTapped:" destination="-1" eventType="touchUpInside" id="i5Y-pD-rsK"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inbox Zero!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kia-JR-pm2">
+                    <rect key="frame" x="191" y="277" width="218" height="53"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="44"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="KBp-XZ-uSj" secondAttribute="bottom" id="3hU-NC-hE4"/>
-                <constraint firstAttribute="trailing" secondItem="KBp-XZ-uSj" secondAttribute="trailing" id="6Ok-N2-Ihg"/>
-                <constraint firstItem="KBp-XZ-uSj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Mfj-Sw-Bed"/>
-                <constraint firstItem="KBp-XZ-uSj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Nf5-EQ-Vn3"/>
+                <constraint firstAttribute="centerX" secondItem="kia-JR-pm2" secondAttribute="centerX" id="1lq-3t-Vio"/>
+                <constraint firstAttribute="centerX" secondItem="Qgy-jJ-J0h" secondAttribute="centerX" id="P6n-8m-fD9"/>
+                <constraint firstAttribute="bottom" secondItem="Qgy-jJ-J0h" secondAttribute="bottom" constant="200" id="bFP-ba-PfT"/>
+                <constraint firstItem="Qgy-jJ-J0h" firstAttribute="top" secondItem="kia-JR-pm2" secondAttribute="bottom" constant="40" id="c67-2Q-SXX"/>
             </constraints>
         </view>
     </objects>
