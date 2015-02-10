@@ -9,8 +9,8 @@
 #import "DSOLoginViewController.h"
 #import "DSOInboxViewController.h"
 #import "DSODoSomethingAPIClient.h"
-#import "SSKeychain/SSKeychain.h"
-#import "SSKeychain/SSKeychainQuery.h"
+#import <SSKeychain/SSKeychain.h>
+#import <SSKeychain/SSKeychainQuery.h>
 #import <TSMessage.h>
 
 @interface DSOLoginViewController ()

@@ -7,7 +7,7 @@
 //
 
 #import "DSOFlagViewController.h"
-
+#import <TSMessage.h>
 
 @interface DSOFlagViewController ()
 @property (strong, nonatomic) NSMutableArray *options;
@@ -88,9 +88,17 @@
         cell.image = [UIImage imageNamed:@"approved.png"];
         [option setObject:[NSNumber numberWithInt:1]  forKey:@"checked"];
         if ([key isEqual:@"delete"]) {
-            UIAlertView *messageAlert = [[UIAlertView alloc]
-                                         initWithTitle:@"Delete Image" message:@"Are you sure? This cannot be undone." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [messageAlert show];
+            [TSMessage showNotificationInViewController:self
+                                                  title:@"Delete Image"
+                                               subtitle:@"Are you sure? This cannot be undone."
+                                                  image:nil
+                                                   type:TSMessageNotificationTypeWarning
+                                               duration:TSMessageNotificationDurationAutomatic
+                                               callback:nil
+                                            buttonTitle:@"Ok"
+                                         buttonCallback:nil
+                                             atPosition:TSMessageNotificationPositionBottom
+                                   canBeDismissedByUser:YES];
             self.deleteImage = TRUE;
         }
     }
