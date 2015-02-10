@@ -58,6 +58,9 @@
             self.inboxZeroView.hidden = FALSE;
         }
     } andTid:tid];
+
+    // Set TableFooterView to avoid repeating seperator lines.
+    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
 }
 
 - (void)didReceiveMemoryWarning {
