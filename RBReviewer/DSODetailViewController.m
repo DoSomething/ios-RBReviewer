@@ -186,7 +186,8 @@
     DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
     [client postReportbackReviewWithCompletionHandler:^(NSArray *response){
         [self displayStatusMessage:status];
-        self.inboxCount--;
+        int newValue = self.inboxCount;
+        self.inboxCount = newValue - 1;
         [self updateTitle];
         [self updateTableView];
     } :values];
