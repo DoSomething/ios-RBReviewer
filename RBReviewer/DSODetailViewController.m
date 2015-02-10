@@ -35,13 +35,17 @@
     self.tableView.hidden = TRUE;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 44;
-    self.title = self.taxonomyTerm[@"name"];
-    self.screenName = self.title;
+
+    self.screenName = self.taxonomyTerm[@"name"];
+    [self updateTitle];
     [self updateTableView];
 }
 
+- (void) updateTitle {
+    self.title = [NSString stringWithFormat:@"%@ (%li)", self.taxonomyTerm[@"name"], self.inboxCount];
+}
+
 - (void)updateTableView {
-    // @todo: Remove this once API is fixed to return numeric tid.
     NSString *tidString = (NSString *)self.taxonomyTerm[@"tid"];
     NSInteger tid = [tidString integerValue];
 
@@ -182,6 +186,8 @@
     DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
     [client postReportbackReviewWithCompletionHandler:^(NSArray *response){
         [self displayStatusMessage:status];
+        self.inboxCount--;
+        [self updateTitle];
         [self updateTableView];
     } :values];
 }

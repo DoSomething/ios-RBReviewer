@@ -39,7 +39,7 @@
 
         NSDictionary *user = response[@"user"];
         NSDictionary *userRoles = user[@"roles"];
-
+        NSLog(@"%@", user);
         // 1 is anon user.
         if ([userRoles objectForKey:@"1"]) {
             [self displayLoginViewController];
@@ -131,6 +131,7 @@
     UITableViewCell *cell = (UITableViewCell *)sender;
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     NSMutableDictionary *term = (NSMutableDictionary *)[self.terms objectAtIndex:indexPath.row];
+    [destVC setInboxCount:[cell.detailTextLabel.text intValue]];
     [destVC setTaxonomyTerm:term];
 }
 @end
