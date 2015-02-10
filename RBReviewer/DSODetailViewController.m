@@ -159,6 +159,9 @@
     [client postReportbackReviewWithCompletionHandler:^(NSArray *response){
         [self displayStatusMessage:@"flagged"];
         [self updateTableView];
+        int newValue = self.inboxCount;
+        self.inboxCount = newValue - 1;
+        [self updateTitle];
     } :values];
 }
 
