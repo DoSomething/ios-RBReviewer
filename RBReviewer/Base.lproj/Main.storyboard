@@ -76,7 +76,7 @@
         <!--Inbox-->
         <scene sceneID="BNA-Vd-23Z">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="I1m-YK-5Au" customClass="DSOInboxViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InboxViewController" id="I1m-YK-5Au" customClass="DSOInboxViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7wp-I8-wFu"/>
                         <viewControllerLayoutGuide type="bottom" id="Rtq-aN-Nys"/>
@@ -229,7 +229,7 @@
         <!--Navigation Controller-->
         <scene sceneID="zx7-xJ-omJ">
             <objects>
-                <navigationController storyboardIdentifier="inboxNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="PsM-Wm-SB6" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="inboxNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PsM-Wm-SB6" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jnf-Qq-ixg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
