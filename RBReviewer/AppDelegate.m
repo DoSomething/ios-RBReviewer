@@ -12,6 +12,7 @@
 #import "GAI.h"
 
 static BOOL logActivity = NO;
+static BOOL logAnalytics = NO;
 
 @interface AppDelegate ()
 
@@ -28,8 +29,11 @@ static BOOL logActivity = NO;
     }
 
     [GAI sharedInstance].trackUncaughtExceptions = YES;
-    [GAI sharedInstance].dispatchInterval = 20;
-    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    if (logAnalytics) {
+        [GAI sharedInstance].dispatchInterval = 20;
+        [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    }
+
     NSString* path = [[NSBundle mainBundle] pathForResource:@"ga"
                                                     ofType:@"txt"];
     NSString* trackingId = [NSString stringWithContentsOfFile:path
