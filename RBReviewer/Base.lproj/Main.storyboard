@@ -163,7 +163,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="tableView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Jwk-cY-2V5">
-                                <rect key="frame" x="-5" y="124" width="605" height="279"/>
+                                <rect key="frame" x="-5" y="0.0" width="605" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" restorationIdentifier="tableCell" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="tableCell" textLabel="iHU-CE-fC3" style="IBUITableViewCellStyleDefault" id="iXJ-ma-vlT">
@@ -187,7 +187,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Flag" id="rom-Xw-LOv">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="mfT-Ip-TUV">
+                        <barButtonItem key="rightBarButtonItem" title="Submit" id="mfT-Ip-TUV">
                             <connections>
                                 <segue destination="7WQ-j4-PPN" kind="unwind" unwindAction="unwindToDetail:" id="0ZP-ja-aJ8"/>
                             </connections>
