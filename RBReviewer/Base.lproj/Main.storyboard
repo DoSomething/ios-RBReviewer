@@ -17,13 +17,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CNo-St-IiF">
-                                <rect key="frame" x="16" y="285" width="568" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CNo-St-IiF">
+                                <rect key="frame" x="16" y="227" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="17H-N6-dvL">
-                                <rect key="frame" x="16" y="360" width="568" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="17H-N6-dvL">
+                                <rect key="frame" x="16" y="272" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
@@ -38,12 +38,12 @@
                         <constraints>
                             <constraint firstItem="CNo-St-IiF" firstAttribute="trailing" secondItem="17H-N6-dvL" secondAttribute="trailing" id="3Ia-6o-Qft"/>
                             <constraint firstItem="CNo-St-IiF" firstAttribute="centerX" secondItem="Jhm-4t-2MY" secondAttribute="centerX" id="3hf-aF-GDL"/>
-                            <constraint firstItem="CNo-St-IiF" firstAttribute="top" secondItem="Jhm-4t-2MY" secondAttribute="bottom" constant="85" id="bMc-lM-STB"/>
+                            <constraint firstItem="CNo-St-IiF" firstAttribute="top" secondItem="Jhm-4t-2MY" secondAttribute="bottom" constant="15" id="bMc-lM-STB"/>
                             <constraint firstItem="CNo-St-IiF" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="iSe-0e-gWV"/>
                             <constraint firstItem="Jhm-4t-2MY" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" symbolic="YES" id="pQ1-b0-FfX"/>
                             <constraint firstItem="17H-N6-dvL" firstAttribute="leading" secondItem="CNo-St-IiF" secondAttribute="leading" id="uhL-Y4-PL7"/>
                             <constraint firstItem="CNo-St-IiF" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="wKz-Io-Nxx"/>
-                            <constraint firstItem="17H-N6-dvL" firstAttribute="top" secondItem="CNo-St-IiF" secondAttribute="bottom" constant="45" id="zHP-qg-Sl8"/>
+                            <constraint firstItem="17H-N6-dvL" firstAttribute="top" secondItem="CNo-St-IiF" secondAttribute="bottom" constant="15" id="zHP-qg-Sl8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="keT-OI-mR0">
