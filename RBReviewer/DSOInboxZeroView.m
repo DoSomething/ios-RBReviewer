@@ -36,11 +36,8 @@
 }
 
 - (IBAction)rockOnTapped:(id)sender {
-    // @todo: Buggy, this only works the first tap, otherwise complains with Warning: Attempt to present <UINavigationController: 0x7fff3bda1c80> on <UINavigationController: 0x7fff3be1dee0> whose view is not in the window hierarchy!
-
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    UIViewController *rootViewController = window.rootViewController;
-    DSOInboxViewController *inboxVC = [rootViewController.storyboard instantiateViewControllerWithIdentifier:@"inboxNavigationController"];
-    [rootViewController presentViewController:inboxVC animated:YES completion:nil];
+    UINavigationController *rootViewController = (UINavigationController *)window.rootViewController;
+    [rootViewController popToRootViewControllerAnimated:YES];
 }
 @end
