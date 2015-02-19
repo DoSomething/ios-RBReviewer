@@ -17,9 +17,9 @@
 @property (strong, nonatomic) NSMutableArray *terms;
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 @property (weak, nonatomic) IBOutlet UIButton *logoutButton;
+@property (strong, nonatomic) DSODoSomethingAPIClient *client;
 
 - (IBAction)logoutTapped:(id)sender;
-- (IBAction)refreshTapped:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
@@ -32,11 +32,13 @@
     self.terms = [[NSMutableArray alloc] init];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
-    self.emailLabel.text = client.user[@"mail"];
+    self.client = [DSODoSomethingAPIClient sharedClient];
+}
 
-    [client checkStatusWithCompletionHandler:^(NSDictionary *response){
-
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.client checkStatusWithCompletionHandler:^(NSDictionary *response){
+        
         NSDictionary *user = response[@"user"];
         NSDictionary *userRoles = user[@"roles"];
         NSLog(@"%@", user);
@@ -45,18 +47,16 @@
             [self displayLoginViewController];
         }
         return;
-
+        
     } andErrorHandler:^(NSDictionary *response){
         NSLog(@"Error %@", response);
         [self displayLoginViewController];
     }];
     
-    [client getTermsWithCompletionHandler:^(NSMutableArray *response){
+    [self.client getTermsWithCompletionHandler:^(NSMutableArray *response){
         self.terms = response;
         [self.tableView reloadData];
     }];
-
-
 }
 
 - (void) displayLoginViewController {
@@ -115,9 +115,6 @@
     }];
 }
 
-- (IBAction)refreshTapped:(id)sender {
-    [self viewDidLoad];
-}
 
 #pragma mark - Navigation
 

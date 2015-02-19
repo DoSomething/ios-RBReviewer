@@ -125,11 +125,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Inbox" id="F6C-vP-ujv">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="refresh" id="rtI-aN-ghq">
-                            <connections>
-                                <action selector="refreshTapped:" destination="I1m-YK-5Au" id="wgQ-JT-Ou7"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="SpM-Sh-v1B">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OUH-b9-Xeb">
                                 <rect key="frame" x="445" y="155" width="79" height="30"/>
