@@ -406,28 +406,28 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="clW-Qm-a1q" id="Au7-wt-klE">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2h-UU-RAb">
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2h-UU-RAb">
                                                     <rect key="frame" x="488" y="8" width="72" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <state key="normal" title="Approve" image="approved.png"/>
+                                                    <state key="normal" image="approved.png"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FBU-Lt-gb7">
-                                                    <rect key="frame" x="88" y="8" width="49" height="27"/>
+                                                    <rect key="frame" x="83" y="8" width="25" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <state key="normal" title="Flag" image="flagged.png"/>
+                                                    <state key="normal" image="flagged.png"/>
                                                     <connections>
                                                         <segue destination="UKh-iw-KOS" kind="show" id="YBd-C4-71z"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xWk-0I-ohX">
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xWk-0I-ohX">
                                                     <rect key="frame" x="405" y="8" width="73" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <state key="normal" title="Promote" image="promoted.png"/>
+                                                    <state key="normal" image="promoted.png"/>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2rj-lw-rt4">
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2rj-lw-rt4">
                                                     <rect key="frame" x="8" y="8" width="70" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <state key="normal" title="Exclude" image="excluded.png"/>
+                                                    <state key="normal" image="excluded.png"/>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -437,8 +437,8 @@
                                                 <constraint firstItem="h2h-UU-RAb" firstAttribute="trailing" secondItem="Au7-wt-klE" secondAttribute="trailingMargin" id="LYe-Yi-Nxe"/>
                                                 <constraint firstItem="2rj-lw-rt4" firstAttribute="leading" secondItem="Au7-wt-klE" secondAttribute="leadingMargin" id="Oji-I4-gRH"/>
                                                 <constraint firstItem="xWk-0I-ohX" firstAttribute="top" secondItem="Au7-wt-klE" secondAttribute="topMargin" id="Qr3-Mf-VDc"/>
-                                                <constraint firstItem="FBU-Lt-gb7" firstAttribute="leading" secondItem="2rj-lw-rt4" secondAttribute="trailing" constant="10" id="Sca-6j-sDh"/>
-                                                <constraint firstItem="h2h-UU-RAb" firstAttribute="leading" secondItem="xWk-0I-ohX" secondAttribute="trailing" constant="10" id="Te8-UW-mDd"/>
+                                                <constraint firstItem="FBU-Lt-gb7" firstAttribute="leading" secondItem="2rj-lw-rt4" secondAttribute="trailing" constant="50" id="Sca-6j-sDh"/>
+                                                <constraint firstItem="h2h-UU-RAb" firstAttribute="leading" secondItem="xWk-0I-ohX" secondAttribute="trailing" constant="50" id="Te8-UW-mDd"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="h2h-UU-RAb" secondAttribute="bottom" id="TfO-Sd-KwX"/>
                                                 <constraint firstItem="FBU-Lt-gb7" firstAttribute="top" secondItem="Au7-wt-klE" secondAttribute="topMargin" id="hMk-yh-foS"/>
                                                 <constraint firstItem="h2h-UU-RAb" firstAttribute="top" secondItem="Au7-wt-klE" secondAttribute="topMargin" id="s8F-CE-hnD"/>
