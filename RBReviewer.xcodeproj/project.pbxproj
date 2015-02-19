@@ -300,6 +300,7 @@
 				TargetAttributes = {
 					B20DC9B91A39E63200075693 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = S4HV7AJFFK;
 					};
 					B20DC9D21A39E63300075693 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -529,9 +530,12 @@
 			baseConfigurationReference = CA4F0AC1C06FE9851EDC1502 /* Pods-RBReviewer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = RBReviewer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -540,9 +544,12 @@
 			baseConfigurationReference = 82B90C5E1F1110A7C954F3A3 /* Pods-RBReviewer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = RBReviewer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
