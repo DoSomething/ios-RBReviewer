@@ -20,8 +20,16 @@
 
 @interface DSODetailViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *approveButton;
+@property (weak, nonatomic) IBOutlet UIButton *excludeButton;
+@property (weak, nonatomic) IBOutlet UIButton *flagButton;
+@property (weak, nonatomic) IBOutlet UIButton *promoteButton;
 @property (strong, nonatomic) NSMutableDictionary *reportbackFile;
 @property (weak, nonatomic) IBOutlet DSOInboxZeroView *inboxZeroView;
+- (IBAction)excludeTapped:(id)sender;
+- (IBAction)approveTapped:(id)sender;
+- (IBAction)flagTapped:(id)sender;
+- (IBAction)promoteTapped:(id)sender;
 
 @end
 
@@ -74,7 +82,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    return 5;
 }
 
 
@@ -89,7 +97,7 @@
             return cell;
         }
 
-        case 1: {
+        case 2: {
             DSOImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"imageCell" forIndexPath:indexPath];
             NSData* imageData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:self.reportbackFile[@"src"]]];
             UIImage* image = [[UIImage alloc] initWithData:imageData];
@@ -97,7 +105,7 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }
-        case 2: {
+        case 3: {
             DSOCaptionTableViewCell *cell =  [tableView dequeueReusableCellWithIdentifier:@"captionCell" forIndexPath:indexPath];
             
             if ([self.reportbackFile[@"caption"] isEqualToString:@""]) {
@@ -110,7 +118,7 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }
-        case 3: {
+        case 1: {
             DSOQuantityTableViewCell *cell =  [tableView dequeueReusableCellWithIdentifier:@"quantityCell" forIndexPath:indexPath];
             cell.quantityLabel.text = nil;
             if (self.reportbackFile[@"quantity"] != nil) {
@@ -125,21 +133,6 @@
             DSODynamicTextTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"whyParticipatedCell" forIndexPath:indexPath];
             cell.dynamicTextLabel.text = self.reportbackFile[@"why_participated"];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            return cell;
-        }
-        case 5: {
-            DSOReviewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reviewCell" forIndexPath:indexPath];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
-            cell.excludeButton.tag = 0;
-            [cell.excludeButton addTarget:self action:@selector(review:) forControlEvents:UIControlEventTouchUpInside];
-
-            cell.approveButton.tag = 10;
-            [cell.approveButton addTarget:self action:@selector(review:) forControlEvents:UIControlEventTouchUpInside];
-
-            cell.promoteButton.tag = 20;
-            [cell.promoteButton addTarget:self action:@selector(review:) forControlEvents:UIControlEventTouchUpInside];
-            
             return cell;
         }
     }
@@ -222,4 +215,18 @@
 }
 */
 
+- (IBAction)excludeTapped:(id)sender {
+    [self postReview:@"excluded"];
+}
+
+- (IBAction)approveTapped:(id)sender {
+    [self postReview:@"approved"];
+}
+
+- (IBAction)flagTapped:(id)sender {
+}
+
+- (IBAction)promoteTapped:(id)sender {
+    [self postReview:@"promoted"];
+}
 @end
