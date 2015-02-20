@@ -476,6 +476,7 @@
                                 <state key="normal" image="delete-32.png"/>
                                 <connections>
                                     <action selector="flagTapped:" destination="wQp-6U-E8P" eventType="touchUpInside" id="4hG-PR-M3w"/>
+                                    <segue destination="UKh-iw-KOS" kind="show" id="y8O-Aq-dvS"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -550,4 +551,7 @@
         <image name="logo.png" width="160" height="140"/>
         <image name="promoted.png" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="y8O-Aq-dvS"/>
+    </inferredMetricsTieBreakers>
 </document>
