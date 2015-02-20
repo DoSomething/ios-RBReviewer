@@ -434,60 +434,75 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ncd-Dm-wX1">
-                                <rect key="frame" x="448" y="528" width="122" height="64"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ncd-Dm-wX1">
+                                <rect key="frame" x="524" y="528" width="60" height="64"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="0ue-Xr-Eqk"/>
                                     <constraint firstAttribute="height" constant="64" id="EbW-6u-2Nr"/>
                                 </constraints>
-                                <state key="normal" image="checkmark-64.png"/>
+                                <state key="normal" image="checkmark-32.png"/>
                                 <connections>
                                     <action selector="approveTapped:" destination="wQp-6U-E8P" eventType="touchUpInside" id="kjP-52-rc3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ioJ-xq-K8L">
-                                <rect key="frame" x="16" y="528" width="119" height="64"/>
-                                <state key="normal" image="delete_sign-64.png"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ioJ-xq-K8L">
+                                <rect key="frame" x="16" y="528" width="60" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="GnY-0P-IRh"/>
+                                    <constraint firstAttribute="width" constant="60" id="wza-D6-C3K"/>
+                                </constraints>
+                                <state key="normal" image="delete_sign-32.png"/>
                                 <connections>
                                     <action selector="excludeTapped:" destination="wQp-6U-E8P" eventType="touchUpInside" id="dxd-lm-iEL"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dyX-ro-i7l">
-                                <rect key="frame" x="140" y="542" width="120" height="32"/>
-                                <state key="normal" image="delete-32.png"/>
-                                <connections>
-                                    <action selector="flagTapped:" destination="wQp-6U-E8P" eventType="touchUpInside" id="4hG-PR-M3w"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEe-Tc-wys">
-                                <rect key="frame" x="320" y="542" width="120" height="32"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEe-Tc-wys">
+                                <rect key="frame" x="445" y="528" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="Ve9-1P-pSf"/>
+                                    <constraint firstAttribute="height" constant="64" id="Zbu-fK-8uu"/>
+                                </constraints>
                                 <state key="normal" image="hearts-32.png"/>
                                 <connections>
                                     <action selector="promoteTapped:" destination="wQp-6U-E8P" eventType="touchUpInside" id="wZ4-BU-hYC"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dyX-ro-i7l">
+                                <rect key="frame" x="91" y="528" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="3Jy-Bx-5m4"/>
+                                    <constraint firstAttribute="width" constant="64" id="QeT-bQ-CB3"/>
+                                </constraints>
+                                <state key="normal" image="delete-32.png"/>
+                                <connections>
+                                    <action selector="flagTapped:" destination="wQp-6U-E8P" eventType="touchUpInside" id="4hG-PR-M3w"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="Ncd-Dm-wX1" secondAttribute="trailing" constant="14" id="1JH-rM-lFT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ncd-Dm-wX1" secondAttribute="trailing" id="1JH-rM-lFT"/>
+                            <constraint firstItem="PYB-Vy-Ygy" firstAttribute="top" secondItem="dEe-Tc-wys" secondAttribute="bottom" constant="8" id="5cM-KA-yC8"/>
+                            <constraint firstItem="PYB-Vy-Ygy" firstAttribute="top" secondItem="dyX-ro-i7l" secondAttribute="bottom" constant="8" id="8HM-ql-ENj"/>
                             <constraint firstAttribute="bottomMargin" secondItem="DN5-K4-tLq" secondAttribute="bottom" constant="80" id="8qz-i5-Bqm"/>
-                            <constraint firstItem="dyX-ro-i7l" firstAttribute="leading" secondItem="ioJ-xq-K8L" secondAttribute="trailing" constant="25" id="FAY-cz-yaN"/>
                             <constraint firstItem="ECs-ek-gtC" firstAttribute="leading" secondItem="7y0-xG-t8w" secondAttribute="leadingMargin" id="G6J-K3-gCE"/>
+                            <constraint firstItem="Ncd-Dm-wX1" firstAttribute="leading" secondItem="dEe-Tc-wys" secondAttribute="trailing" constant="15" id="LiK-Jm-6HB"/>
                             <constraint firstItem="PYB-Vy-Ygy" firstAttribute="top" secondItem="Ncd-Dm-wX1" secondAttribute="bottom" constant="8" id="Mfl-Pf-OQd"/>
                             <constraint firstItem="PYB-Vy-Ygy" firstAttribute="top" secondItem="dEe-Tc-wys" secondAttribute="bottom" constant="26" id="NfM-26-g7R"/>
                             <constraint firstItem="DN5-K4-tLq" firstAttribute="top" secondItem="7y0-xG-t8w" secondAttribute="topMargin" constant="60" id="PKe-H9-b3g"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DN5-K4-tLq" secondAttribute="trailing" id="VX5-hm-sn9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ECs-ek-gtC" secondAttribute="trailing" id="c1P-6A-Rnz"/>
-                            <constraint firstItem="Ncd-Dm-wX1" firstAttribute="leading" secondItem="dEe-Tc-wys" secondAttribute="trailing" constant="25" id="fZN-Ig-g46"/>
                             <constraint firstItem="ioJ-xq-K8L" firstAttribute="leading" secondItem="7y0-xG-t8w" secondAttribute="leadingMargin" id="hfB-3t-a7E"/>
                             <constraint firstItem="DN5-K4-tLq" firstAttribute="leading" secondItem="7y0-xG-t8w" secondAttribute="leadingMargin" id="i9O-eK-GX4"/>
                             <constraint firstItem="PYB-Vy-Ygy" firstAttribute="top" secondItem="ioJ-xq-K8L" secondAttribute="bottom" constant="8" id="jcf-DW-blP"/>
                             <constraint firstItem="PYB-Vy-Ygy" firstAttribute="top" secondItem="ECs-ek-gtC" secondAttribute="bottom" constant="200" id="jed-Vh-sGE"/>
                             <constraint firstItem="ECs-ek-gtC" firstAttribute="top" secondItem="B14-8F-N2P" secondAttribute="bottom" id="mwG-pV-IBL"/>
-                            <constraint firstItem="PYB-Vy-Ygy" firstAttribute="top" secondItem="dyX-ro-i7l" secondAttribute="bottom" constant="26" id="xbq-hj-Cjf"/>
+                            <constraint firstItem="dyX-ro-i7l" firstAttribute="leading" secondItem="ioJ-xq-K8L" secondAttribute="trailing" constant="15" id="r4e-ld-aSY"/>
                             <constraint firstItem="dEe-Tc-wys" firstAttribute="leading" secondItem="dyX-ro-i7l" secondAttribute="trailing" constant="60" id="yB7-Ms-F78"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="NfM-26-g7R"/>
                                 <exclude reference="yB7-Ms-F78"/>
                             </mask>
                         </variation>
@@ -526,9 +541,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="checkmark-64.png" width="64" height="64"/>
+        <image name="checkmark-32.png" width="32" height="32"/>
         <image name="delete-32.png" width="32" height="32"/>
-        <image name="delete_sign-64.png" width="64" height="64"/>
+        <image name="delete_sign-32.png" width="32" height="32"/>
         <image name="flagged.png" width="25" height="25"/>
         <image name="ghost-guitar.png" width="768" height="1024"/>
         <image name="hearts-32.png" width="32" height="32"/>
