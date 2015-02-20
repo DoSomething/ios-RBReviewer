@@ -274,7 +274,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="DN5-K4-tLq">
-                                <rect key="frame" x="16" y="60" width="568" height="540"/>
+                                <rect key="frame" x="16" y="60" width="568" height="460"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="titleCell" id="eKb-LW-vVl" customClass="DSOTitleTableViewCell">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -457,7 +457,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottomMargin" secondItem="DN5-K4-tLq" secondAttribute="bottom" id="8qz-i5-Bqm"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="DN5-K4-tLq" secondAttribute="bottom" constant="80" id="8qz-i5-Bqm"/>
                             <constraint firstItem="ECs-ek-gtC" firstAttribute="leading" secondItem="7y0-xG-t8w" secondAttribute="leadingMargin" id="G6J-K3-gCE"/>
                             <constraint firstItem="DN5-K4-tLq" firstAttribute="top" secondItem="7y0-xG-t8w" secondAttribute="topMargin" constant="60" id="PKe-H9-b3g"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DN5-K4-tLq" secondAttribute="trailing" id="VX5-hm-sn9"/>
