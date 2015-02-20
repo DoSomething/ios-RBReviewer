@@ -46,6 +46,7 @@
     self.screenName = self.taxonomyTerm[@"name"];
     [self updateTitle];
     [self updateTableView];
+    [TSMessage setDelegate:self];
 }
 
 - (void) updateTitle {
@@ -191,18 +192,21 @@
 - (void) displayStatusMessage:(NSString *)status {
     NSString *title = [NSString stringWithFormat:@"Reportback %@ %@.", self.reportbackFile[@"fid"], status];
     NSString *filename = [NSString stringWithFormat:@"%@.png", status];
-    
-    [TSMessage showNotificationInViewController:self
+
+    NSTimeInterval duration = 3;
+    [TSMessage showNotificationInViewController:[TSMessage defaultViewController]
                                           title:title
                                        subtitle:nil
                                           image:[UIImage imageNamed:filename]
                                            type:TSMessageNotificationTypeSuccess
-                                       duration:TSMessageNotificationDurationAutomatic
+                                       duration:duration
                                        callback:nil
                                     buttonTitle:nil
                                  buttonCallback:nil
-                                     atPosition:TSMessageNotificationPositionBottom
+                                     atPosition:TSMessageNotificationPositionTop
                            canBeDismissedByUser:YES];
+    
+    [self.tableView setContentOffset:CGPointZero animated:YES];
 }
 /*
 #pragma mark - Navigation
