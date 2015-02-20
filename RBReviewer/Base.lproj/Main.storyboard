@@ -298,6 +298,30 @@
                                             <outlet property="titleLabel" destination="DxA-Cy-1L3" id="d1h-wf-kc9"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="quantityCell" id="Rkm-4d-b9Y" customClass="DSOQuantityTableViewCell">
+                                        <rect key="frame" x="16" y="278" width="568" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rkm-4d-b9Y" id="j8c-qx-F4F">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantity" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jE5-q6-dwJ">
+                                                    <rect key="frame" x="8" y="8" width="552" height="27"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="jE5-q6-dwJ" firstAttribute="leading" secondItem="j8c-qx-F4F" secondAttribute="leadingMargin" id="Ehb-4L-1oo"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="jE5-q6-dwJ" secondAttribute="trailing" id="ixv-6z-aFr"/>
+                                                <constraint firstItem="jE5-q6-dwJ" firstAttribute="top" secondItem="j8c-qx-F4F" secondAttribute="topMargin" id="kys-UB-29I"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="jE5-q6-dwJ" secondAttribute="bottom" id="shq-fg-QMC"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="quantityLabel" destination="jE5-q6-dwJ" id="uID-B0-su1"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="imageCell" rowHeight="300" id="fNC-Kh-qCl" customClass="DSOImageTableViewCell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fNC-Kh-qCl" id="DaK-oh-z5C">
@@ -353,30 +377,6 @@
                                             <outlet property="captionLabel" destination="fpY-WN-4dX" id="G8I-cW-qLd"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="quantityCell" id="Rkm-4d-b9Y" customClass="DSOQuantityTableViewCell">
-                                        <rect key="frame" x="16" y="278" width="568" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rkm-4d-b9Y" id="j8c-qx-F4F">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantity" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jE5-q6-dwJ">
-                                                    <rect key="frame" x="8" y="8" width="552" height="27"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="jE5-q6-dwJ" firstAttribute="leading" secondItem="j8c-qx-F4F" secondAttribute="leadingMargin" id="Ehb-4L-1oo"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="jE5-q6-dwJ" secondAttribute="trailing" id="ixv-6z-aFr"/>
-                                                <constraint firstItem="jE5-q6-dwJ" firstAttribute="top" secondItem="j8c-qx-F4F" secondAttribute="topMargin" id="kys-UB-29I"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="jE5-q6-dwJ" secondAttribute="bottom" id="shq-fg-QMC"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="quantityLabel" destination="jE5-q6-dwJ" id="uID-B0-su1"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="whyParticipatedCell" id="0C4-Kd-nfK" customClass="DSODynamicTextTableViewCell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0C4-Kd-nfK" id="nwx-Y5-cVC">
@@ -398,38 +398,6 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="dynamicTextLabel" destination="puN-Da-3cb" id="DqD-mS-EPZ"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reviewCell" id="clW-Qm-a1q" customClass="DSOReviewTableViewCell">
-                                        <rect key="frame" x="16" y="278" width="568" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="clW-Qm-a1q" id="Au7-wt-klE">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FBU-Lt-gb7">
-                                                    <rect key="frame" x="83" y="8" width="25" height="27"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <state key="normal" image="flagged.png"/>
-                                                    <connections>
-                                                        <segue destination="UKh-iw-KOS" kind="show" id="YBd-C4-71z"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xWk-0I-ohX">
-                                                    <rect key="frame" x="405" y="8" width="73" height="27"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <state key="normal" image="promoted.png"/>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="xWk-0I-ohX" secondAttribute="bottom" id="5UW-bX-VNS"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="FBU-Lt-gb7" secondAttribute="bottom" id="BMN-Gs-00a"/>
-                                                <constraint firstItem="xWk-0I-ohX" firstAttribute="top" secondItem="Au7-wt-klE" secondAttribute="topMargin" id="Qr3-Mf-VDc"/>
-                                                <constraint firstItem="FBU-Lt-gb7" firstAttribute="top" secondItem="Au7-wt-klE" secondAttribute="topMargin" id="hMk-yh-foS"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="flagButton" destination="FBU-Lt-gb7" id="qev-ZM-SDb"/>
-                                            <outlet property="promoteButton" destination="xWk-0I-ohX" id="bh7-9j-K0s"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -545,13 +513,8 @@
         <image name="checkmark-32.png" width="32" height="32"/>
         <image name="delete-32.png" width="32" height="32"/>
         <image name="delete_sign-32.png" width="32" height="32"/>
-        <image name="flagged.png" width="25" height="25"/>
         <image name="ghost-guitar.png" width="768" height="1024"/>
         <image name="hearts-32.png" width="32" height="32"/>
         <image name="logo.png" width="160" height="140"/>
-        <image name="promoted.png" width="25" height="25"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="y8O-Aq-dvS"/>
-    </inferredMetricsTieBreakers>
 </document>
