@@ -9,7 +9,6 @@
 #import "DSODetailViewController.h"
 #import "DSOCaptionTableViewCell.h"
 #import "DSOQuantityTableViewCell.h"
-#import "DSOReviewTableViewCell.h"
 #import "DSOTitleTableViewCell.h"
 #import "DSODynamicTextTableViewCell.h"
 #import "DSOImageTableViewCell.h"
