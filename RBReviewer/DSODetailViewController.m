@@ -20,8 +20,16 @@
 
 @interface DSODetailViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *approveButton;
+@property (weak, nonatomic) IBOutlet UIButton *excludeButton;
+@property (weak, nonatomic) IBOutlet UIButton *flagButton;
+@property (weak, nonatomic) IBOutlet UIButton *promoteButton;
 @property (strong, nonatomic) NSMutableDictionary *reportbackFile;
 @property (weak, nonatomic) IBOutlet DSOInboxZeroView *inboxZeroView;
+- (IBAction)excludeTapped:(id)sender;
+- (IBAction)approveTapped:(id)sender;
+- (IBAction)flagTapped:(id)sender;
+- (IBAction)promoteTapped:(id)sender;
 
 @end
 
@@ -222,4 +230,18 @@
 }
 */
 
+- (IBAction)excludeTapped:(id)sender {
+    [self postReview:@"excluded"];
+}
+
+- (IBAction)approveTapped:(id)sender {
+    [self postReview:@"approved"];
+}
+
+- (IBAction)flagTapped:(id)sender {
+}
+
+- (IBAction)promoteTapped:(id)sender {
+    [self postReview:@"promoted"];
+}
 @end
