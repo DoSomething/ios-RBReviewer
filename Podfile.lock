@@ -1,25 +1,26 @@
 PODS:
-  - AFNetworkActivityLogger (2.0.1):
-    - AFNetworking (~> 2.0)
-  - AFNetworking (2.5.0):
-    - AFNetworking/NSURLConnection (= 2.5.0)
-    - AFNetworking/NSURLSession (= 2.5.0)
-    - AFNetworking/Reachability (= 2.5.0)
-    - AFNetworking/Security (= 2.5.0)
-    - AFNetworking/Serialization (= 2.5.0)
-    - AFNetworking/UIKit (= 2.5.0)
-  - AFNetworking/NSURLConnection (2.5.0):
+  - AFNetworkActivityLogger (2.0.4):
+    - AFNetworking/NSURLConnection (~> 2.0)
+    - AFNetworking/NSURLSession (~> 2.0)
+  - AFNetworking (2.5.1):
+    - AFNetworking/NSURLConnection (= 2.5.1)
+    - AFNetworking/NSURLSession (= 2.5.1)
+    - AFNetworking/Reachability (= 2.5.1)
+    - AFNetworking/Security (= 2.5.1)
+    - AFNetworking/Serialization (= 2.5.1)
+    - AFNetworking/UIKit (= 2.5.1)
+  - AFNetworking/NSURLConnection (2.5.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.5.0):
+  - AFNetworking/NSURLSession (2.5.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.5.0)
-  - AFNetworking/Security (2.5.0)
-  - AFNetworking/Serialization (2.5.0)
-  - AFNetworking/UIKit (2.5.0):
+  - AFNetworking/Reachability (2.5.1)
+  - AFNetworking/Security (2.5.1)
+  - AFNetworking/Serialization (2.5.1)
+  - AFNetworking/UIKit (2.5.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - GoogleAnalytics-iOS-SDK (3.10):
@@ -27,25 +28,25 @@ PODS:
   - GoogleAnalytics-iOS-SDK/Core (3.10)
   - HexColors (2.2.1)
   - SSKeychain (1.2.2)
-  - TSMessages (0.9.11):
+  - TSMessages (0.9.12):
     - HexColors
   - UIImageView-PlayGIF (1.0.2)
 
 DEPENDENCIES:
-  - AFNetworkActivityLogger (= 2.0.1)
-  - AFNetworking (= 2.5.0)
-  - GoogleAnalytics-iOS-SDK (= 3.10)
-  - SSKeychain (= 1.2.2)
-  - TSMessages (= 0.9.11)
+  - AFNetworkActivityLogger (~> 2.0.1)
+  - AFNetworking (~> 2.5.0)
+  - GoogleAnalytics-iOS-SDK (~> 3.10)
+  - SSKeychain (~> 1.2.2)
+  - TSMessages (~> 0.9.11)
   - UIImageView-PlayGIF (~> 1.0.2)
 
 SPEC CHECKSUMS:
-  AFNetworkActivityLogger: 01dde83938bf509742ad4c21f25d43a0fa019dd6
-  AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
+  AFNetworkActivityLogger: cdaa92ea0d544835babe0ba097e7806182d8f837
+  AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
   GoogleAnalytics-iOS-SDK: f422062075d9ccb1ea8d783fc5ba3829461e9502
   HexColors: 01384d2bbe8dc4ffa43c3b4135db6e976952d153
   SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
-  TSMessages: e21ef5b1c7518cc590a4826c8b05b16b79b10c2c
+  TSMessages: b2b5dc71f65146387e51f2600bb0eb8f3a6c4ab8
   UIImageView-PlayGIF: 1b70b8b4d8d7aec4bc09091d16eb21cbdb04ded4
 
 COCOAPODS: 0.35.0

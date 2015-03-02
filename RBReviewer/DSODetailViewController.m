@@ -46,7 +46,7 @@
     self.screenName = self.taxonomyTerm[@"name"];
     [self updateTitle];
     [self updateTableView];
-    [TSMessage setDelegate:self];
+    [TSMessage setDelegate:self.navigationController];
 }
 
 - (void) updateTitle {
