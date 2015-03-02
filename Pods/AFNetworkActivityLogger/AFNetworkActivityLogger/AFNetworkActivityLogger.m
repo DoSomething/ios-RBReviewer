@@ -28,13 +28,31 @@
 
 static NSURLRequest * AFNetworkRequestFromNotification(NSNotification *notification) {
     NSURLRequest *request = nil;
-    if ([[notification object] isKindOfClass:[AFURLConnectionOperation class]]) {
-        request = [(AFURLConnectionOperation *)[notification object] request];
-    } else if ([[notification object] respondsToSelector:@selector(originalRequest)]) {
+    if ([[notification object] respondsToSelector:@selector(originalRequest)]) {
         request = [[notification object] originalRequest];
+    } else if ([[notification object] respondsToSelector:@selector(request)]) {
+        request = [[notification object] request];
     }
 
     return request;
+}
+
+static NSError * AFNetworkErrorFromNotification(NSNotification *notification) {
+    NSError *error = nil;
+    if ([[notification object] isKindOfClass:[AFURLConnectionOperation class]]) {
+        error = [(AFURLConnectionOperation *)[notification object] error];
+    }
+    
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
+    if ([[notification object] isKindOfClass:[NSURLSessionTask class]]) {
+        error = [(NSURLSessionTask *)[notification object] error];
+        if (!error) {
+            error = notification.userInfo[AFNetworkingTaskDidCompleteErrorKey];
+        }
+    }
+#endif
+    
+    return error;
 }
 
 @implementation AFNetworkActivityLogger
@@ -72,8 +90,8 @@ static NSURLRequest * AFNetworkRequestFromNotification(NSNotification *notificat
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkRequestDidFinish:) name:AFNetworkingOperationDidFinishNotification object:nil];
 
 #if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= 1090)
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkRequestDidStart:) name:AFNetworkingTaskDidStartNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkRequestDidFinish:) name:AFNetworkingTaskDidFinishNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkRequestDidStart:) name:AFNetworkingTaskDidResumeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(networkRequestDidFinish:) name:AFNetworkingTaskDidCompleteNotification object:nil];
 #endif
 }
 
@@ -118,7 +136,7 @@ static void * AFNetworkRequestStartDate = &AFNetworkRequestStartDate;
 - (void)networkRequestDidFinish:(NSNotification *)notification {
     NSURLRequest *request = AFNetworkRequestFromNotification(notification);
     NSURLResponse *response = [notification.object response];
-    NSError *error = [notification.object error];
+    NSError *error = AFNetworkErrorFromNotification(notification);
 
     if (!request && !response) {
         return;
@@ -131,13 +149,15 @@ static void * AFNetworkRequestStartDate = &AFNetworkRequestStartDate;
     NSUInteger responseStatusCode = 0;
     NSDictionary *responseHeaderFields = nil;
     if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-        responseStatusCode = [(NSHTTPURLResponse *)response statusCode];
+        responseStatusCode = (NSUInteger)[(NSHTTPURLResponse *)response statusCode];
         responseHeaderFields = [(NSHTTPURLResponse *)response allHeaderFields];
     }
 
-    NSString *responseString = nil;
+    id responseObject = nil;
     if ([[notification object] respondsToSelector:@selector(responseString)]) {
-        responseString = [[notification object] responseString];
+        responseObject = [[notification object] responseString];
+    } else if (notification.userInfo) {
+        responseObject = notification.userInfo[AFNetworkingTaskDidCompleteSerializedResponseKey];
     }
 
     NSTimeInterval elapsedTime = [[NSDate date] timeIntervalSinceDate:objc_getAssociatedObject(notification.object, AFNetworkRequestStartDate)];
@@ -155,7 +175,7 @@ static void * AFNetworkRequestStartDate = &AFNetworkRequestStartDate;
     } else {
         switch (self.level) {
             case AFLoggerLevelDebug:
-                NSLog(@"%ld '%@' [%.04f s]: %@ %@", (long)responseStatusCode, [[response URL] absoluteString], elapsedTime, responseHeaderFields, responseString);
+                NSLog(@"%ld '%@' [%.04f s]: %@ %@", (long)responseStatusCode, [[response URL] absoluteString], elapsedTime, responseHeaderFields, responseObject);
                 break;
             case AFLoggerLevelInfo:
                 NSLog(@"%ld '%@' [%.04f s]", (long)responseStatusCode, [[response URL] absoluteString], elapsedTime);
