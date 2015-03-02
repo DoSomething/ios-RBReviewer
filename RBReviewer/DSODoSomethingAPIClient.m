@@ -211,10 +211,4 @@
     
 }
 
-- (BOOL) isLoggedIn {
-    NSMutableDictionary *tokens = [self getSavedTokens];
-    if ([tokens count] > 0) {
-    }
-    return NO;
-}
 @end

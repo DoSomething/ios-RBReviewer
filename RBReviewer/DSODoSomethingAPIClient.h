@@ -37,6 +37,4 @@
 
 - (NSMutableDictionary *) getSavedTokens;
 
-- (BOOL) isLoggedIn;
-
 @end
