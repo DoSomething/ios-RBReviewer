@@ -85,7 +85,7 @@
 
     cell.textLabel.text = term[@"name"];
     NSString *total = (NSString *)term[@"inbox"];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", total];
+    cell.detailTextLabel.text = total;
     cell.selectionStyle = UITableViewCellSelectionStyleDefault;
 
     if ([total intValue] == 0) {
