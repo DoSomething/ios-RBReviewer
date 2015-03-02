@@ -20,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.deleteImage = FALSE;
+    self.deleteImage = NO;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.options = [[NSMutableArray alloc] init];
@@ -99,14 +99,14 @@
                                          buttonCallback:nil
                                              atPosition:TSMessageNotificationPositionBottom
                                    canBeDismissedByUser:YES];
-            self.deleteImage = TRUE;
+            self.deleteImage = YES;
         }
     }
     else {
         cell.imageView.image = nil;
         [option setObject:[NSNumber numberWithInt:0]  forKey:@"checked"];
         if ([key isEqual:@"delete"]) {
-            self.deleteImage = FALSE;
+            self.deleteImage = NO;
         }
     }
 }
