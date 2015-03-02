@@ -27,7 +27,6 @@
 @property (weak, nonatomic) IBOutlet DSOInboxZeroView *inboxZeroView;
 - (IBAction)excludeTapped:(id)sender;
 - (IBAction)approveTapped:(id)sender;
-- (IBAction)flagTapped:(id)sender;
 - (IBAction)promoteTapped:(id)sender;
 
 @end
@@ -224,9 +223,6 @@
 
 - (IBAction)approveTapped:(id)sender {
     [self postReview:@"approved"];
-}
-
-- (IBAction)flagTapped:(id)sender {
 }
 
 - (IBAction)promoteTapped:(id)sender {
