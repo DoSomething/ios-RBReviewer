@@ -81,7 +81,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tableCell" forIndexPath:indexPath];
-    NSMutableDictionary *term = (NSMutableDictionary *)[self.terms objectAtIndex:indexPath.row];
+    NSMutableDictionary *term = (NSMutableDictionary *)self.terms[indexPath.row];
 
     cell.textLabel.text = term[@"name"];
     NSString *total = (NSString *)term[@"inbox"];
@@ -98,7 +98,7 @@
 }
 - (NSIndexPath *)tableView:(UITableView *)tv willSelectRowAtIndexPath:(NSIndexPath *)path
 {
-    NSMutableDictionary *term = (NSMutableDictionary *)[self.terms objectAtIndex:path.row];
+    NSMutableDictionary *term = (NSMutableDictionary *)self.terms[path.row];
     NSString *total = (NSString *)term[@"inbox"];
     
     if ([total intValue] > 0){
@@ -127,7 +127,7 @@
     DSODetailViewController *destVC = (DSODetailViewController *)initialVC.topViewController;
     UITableViewCell *cell = (UITableViewCell *)sender;
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    NSMutableDictionary *term = (NSMutableDictionary *)[self.terms objectAtIndex:indexPath.row];
+    NSMutableDictionary *term = (NSMutableDictionary *)self.terms[indexPath.row];
     [destVC setInboxCount:[cell.detailTextLabel.text intValue]];
     [destVC setTaxonomyTerm:term];
 }

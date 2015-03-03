@@ -186,8 +186,7 @@
     if ([tokens count] > 0) {
         for (NSDictionary *token in tokens) {
             NSString *key = token[@"acct"];
-            NSString *value = [SSKeychain passwordForService:self.serviceTokensName account:key];
-            [savedTokens setObject:value forKey:key];
+            savedTokens[key] = [SSKeychain passwordForService:self.serviceTokensName account:key];
         }
     }
     return savedTokens;

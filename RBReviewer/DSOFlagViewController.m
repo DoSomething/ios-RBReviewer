@@ -86,7 +86,7 @@
     BOOL checked = [[option objectForKey:@"checked"] boolValue];
     if (!checked) {
         cell.imageView.image = [UIImage imageNamed:@"approved.png"];
-        [option setObject:[NSNumber numberWithInt:1]  forKey:@"checked"];
+        option[@"checked"] = [NSNumber numberWithInt:1];
         if ([key isEqualToString:@"delete"]) {
             [TSMessage showNotificationInViewController:self
                                                   title:@"Delete Image"
@@ -104,7 +104,7 @@
     }
     else {
         cell.imageView.image = nil;
-        [option setObject:[NSNumber numberWithInt:0]  forKey:@"checked"];
+        option[@"checked"] = [NSNumber numberWithInt:0];
         if ([key isEqualToString:@"delete"]) {
             self.deleteImage = NO;
         }
