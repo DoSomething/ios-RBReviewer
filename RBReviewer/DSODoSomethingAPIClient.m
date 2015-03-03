@@ -120,7 +120,7 @@
     }];
 }
 
-- (void)getSingleInboxReportbackWithCompletionHandler:(void(^)(NSMutableArray *))completionHandler andTid:(NSInteger)tid
+- (void)getSingleInboxReportbackForTid:(NSInteger)tid andCompletionHandler:(void(^)(NSMutableArray *))completionHandler andErrorHandler:(void(^)(NSError *))errorHandler
 {
     
     NSString *url = [NSString stringWithFormat:@"terms/%li/inbox.json?count=1", tid];

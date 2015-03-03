@@ -25,7 +25,7 @@
 
 -(void)checkStatusWithCompletionHandler:(void(^)(NSDictionary *))completionHandler andErrorHandler:(void(^)(NSDictionary *))errorHandler;
 
-- (void)getSingleInboxReportbackWithCompletionHandler:(void(^)(NSMutableArray *))completionHandler andTid:(NSInteger)tid;
+- (void)getSingleInboxReportbackForTid:(NSInteger)tid andCompletionHandler:(void(^)(NSMutableArray *))completionHandler andErrorHandler:(void(^)(NSError *))errorHandler;
 
 - (void)getTermsWithCompletionHandler:(void(^)(NSMutableArray *))completionHandler;
 
