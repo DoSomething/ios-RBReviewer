@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *excludeButton;
 @property (weak, nonatomic) IBOutlet UIButton *flagButton;
 @property (weak, nonatomic) IBOutlet UIButton *promoteButton;
+@property (strong, nonatomic) NSMutableArray *actionButtons;
 @property (strong, nonatomic) NSMutableDictionary *reportbackFile;
 @property (weak, nonatomic) IBOutlet DSOInboxZeroView *inboxZeroView;
 - (IBAction)excludeTapped:(id)sender;
@@ -46,10 +47,18 @@
     [self updateTitle];
     [self updateTableView];
     [TSMessage setDelegate:self.navigationController];
+    self.actionButtons = [[NSMutableArray alloc] initWithObjects:self.approveButton,self.excludeButton,self.flagButton,self.promoteButton, nil];
+    [self hideButtons:YES];
 }
 
 - (void) updateTitle {
     self.title = [NSString stringWithFormat:@"%@ (%li)", self.taxonomyTerm[@"name"], self.inboxCount];
+}
+
+- (void) hideButtons:(BOOL)isHidden {
+    for (UIButton *button in self.actionButtons) {
+        button.hidden = isHidden;
+    }
 }
 
 - (void)updateTableView {
@@ -63,10 +72,12 @@
             [self.tableView reloadData];
             self.inboxZeroView.hidden = YES;
             self.tableView.hidden = NO;
+            [self hideButtons:NO];
         }
         else {
             self.tableView.hidden = YES;
             self.inboxZeroView.hidden = NO;
+            [self hideButtons:YES];
         }
     } andTid:tid];
 
