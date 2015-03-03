@@ -164,13 +164,13 @@
                              @"source":@"ios"
                              };
     DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
-    [client postReportbackReviewWithCompletionHandler:^(NSArray *response){
+    [client postReportbackReviewWithValues:values andCompletionHandler:^(NSArray *response){
         [self displayStatusMessage:@"flagged"];
         [self updateTableView];
         int newValue = self.inboxCount;
         self.inboxCount = newValue - 1;
         [self updateTitle];
-    } :values];
+    }];
 }
 
 -(void)review:(id)sender
@@ -197,13 +197,13 @@
                              };
 
     DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
-    [client postReportbackReviewWithCompletionHandler:^(NSArray *response){
+    [client postReportbackReviewWithValues:values andCompletionHandler:^(NSArray *response){
         [self displayStatusMessage:status];
         int newValue = self.inboxCount;
         self.inboxCount = newValue - 1;
         [self updateTitle];
         [self updateTableView];
-    } :values];
+    }];
 }
 
 - (void) displayStatusMessage:(NSString *)status {

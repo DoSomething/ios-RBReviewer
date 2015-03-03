@@ -31,7 +31,7 @@
 
 - (void)logoutUserWithCompletionHandler:(void(^)(NSDictionary *))completionHandler;
 
-- (void)postReportbackReviewWithCompletionHandler:(void(^)(NSArray *))completionHandler :(NSDictionary *)values;
+- (void)postReportbackReviewWithValues:(NSDictionary *)values andCompletionHandler:(void(^)(NSArray *))completionHandler;
 
 - (NSDictionary *) getSavedLogin;
 

@@ -150,7 +150,7 @@
     }];
 }
 
-- (void)postReportbackReviewWithCompletionHandler:(void(^)(NSArray *))completionHandler :(NSDictionary *)values
+- (void)postReportbackReviewWithValues:(NSDictionary *)values andCompletionHandler:(void(^)(NSArray *))completionHandler
 {
 
     NSString *postUrl = [NSString stringWithFormat:@"reportback_files/%@/review.json", values[@"fid"]];
