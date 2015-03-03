@@ -55,7 +55,7 @@
     
     DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
 
-    [client loginWithCompletionHandler:^(NSDictionary *response){
+    [client loginWithUsername:username andPassword:password andCompletionHandler:^(NSDictionary *response){
         UINavigationController *inboxNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"inboxNavigationController"];
         DSOInboxViewController *inboxVC = (DSOInboxViewController *)inboxNavVC.topViewController;
         inboxVC.displayWelcomeMessage = YES;
@@ -68,6 +68,6 @@
                                            subtitle:error.localizedDescription
                                                type:TSMessageNotificationTypeError];
         
-    } andUsername:username andPassword:password];
+    }];
 }
 @end

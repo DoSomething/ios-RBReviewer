@@ -21,7 +21,7 @@
 
 - (instancetype)initWithBaseURL:(NSURL *)url;
 
--(void)loginWithCompletionHandler:(void(^)(NSDictionary *))completionHandler andErrorHandler:(void(^)(NSError *))errorHandler andUsername:(NSString *)username andPassword:(NSString *)password;
+-(void)loginWithUsername:(NSString *)username andPassword:(NSString *)password andCompletionHandler:(void(^)(NSDictionary *))completionHandler andErrorHandler:(void(^)(NSError *))errorHandler;
 
 -(void)checkStatusWithCompletionHandler:(void(^)(NSDictionary *))completionHandler andErrorHandler:(void(^)(NSDictionary *))errorHandler;
 
