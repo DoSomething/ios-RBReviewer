@@ -183,6 +183,8 @@
 
 - (void) postReview:(NSString *)status
 {
+    self.tableView.hidden = YES;
+    [self hideButtons:YES];
     NSDictionary *values = @{
                              @"fid":self.reportbackFile[@"fid"],
                              @"status":status,
