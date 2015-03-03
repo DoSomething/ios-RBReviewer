@@ -10,6 +10,7 @@
 #import "DSODoSomethingAPIClient.h"
 #import "DSODetailViewController.h"
 #import "DSOLoginViewController.h"
+#import <TSMessage.h>
 
 
 @interface DSOInboxViewController ()
@@ -28,11 +29,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     self.screenName = @"Inbox";
     self.terms = [[NSMutableArray alloc] init];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.client = [DSODoSomethingAPIClient sharedClient];
+    if (self.displayWelcomeMessage) {
+        [TSMessage showNotificationInViewController:self.navigationController
+                                              title:@"Welcome back!"
+                                           subtitle:self.client.user[@"mail"]
+                                               type:TSMessageNotificationTypeMessage];
+    }
+
 }
 
 - (void) viewDidAppear:(BOOL)animated {

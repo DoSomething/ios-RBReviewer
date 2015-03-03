@@ -56,12 +56,10 @@
     DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
 
     [client loginWithCompletionHandler:^(NSDictionary *response){
-        DSOInboxViewController *inboxVC = [self.storyboard instantiateViewControllerWithIdentifier:@"inboxNavigationController"];
-        [self presentViewController:inboxVC animated:YES completion:nil];
-        [TSMessage showNotificationInViewController:inboxVC
-                                              title:@"Welcome back!"
-                                           subtitle:client.user[@"mail"]
-                                        type:TSMessageNotificationTypeMessage];
+        UINavigationController *inboxNavVC = [self.storyboard instantiateViewControllerWithIdentifier:@"inboxNavigationController"];
+        DSOInboxViewController *inboxVC = (DSOInboxViewController *)inboxNavVC.topViewController;
+        inboxVC.displayWelcomeMessage = YES;
+        [self presentViewController:inboxNavVC animated:YES completion:nil];
         
     } andErrorHandler:^(NSError *error){
         

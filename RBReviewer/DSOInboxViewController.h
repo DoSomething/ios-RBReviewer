@@ -10,5 +10,5 @@
 #import "GAITrackedViewController.h"
 
 @interface DSOInboxViewController : GAITrackedViewController  <UITableViewDataSource, UITableViewDelegate>
-
+@property (nonatomic, assign) BOOL displayWelcomeMessage;
 @end
