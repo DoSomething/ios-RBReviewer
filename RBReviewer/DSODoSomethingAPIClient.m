@@ -65,7 +65,7 @@
     }
 }
 
--(void)loginWithCompletionHandler:(void(^)(NSDictionary *))completionHandler andErrorHandler:(void(^)(NSError *))errorHandler andUsername:(NSString *)username andPassword:(NSString *)password
+-(void)loginWithUsername:(NSString *)username andPassword:(NSString *)password andCompletionHandler:(void(^)(NSDictionary *))completionHandler andErrorHandler:(void(^)(NSError *))errorHandler
 {
     NSDictionary *params = @{@"username":username,
                              @"password":password};
@@ -120,7 +120,7 @@
     }];
 }
 
-- (void)getSingleInboxReportbackWithCompletionHandler:(void(^)(NSMutableArray *))completionHandler andTid:(NSInteger)tid
+- (void)getSingleInboxReportbackForTid:(NSInteger)tid andCompletionHandler:(void(^)(NSMutableArray *))completionHandler andErrorHandler:(void(^)(NSError *))errorHandler
 {
     
     NSString *url = [NSString stringWithFormat:@"terms/%li/inbox.json?count=1", tid];
@@ -150,7 +150,7 @@
     }];
 }
 
-- (void)postReportbackReviewWithCompletionHandler:(void(^)(NSArray *))completionHandler :(NSDictionary *)values
+- (void)postReportbackReviewWithValues:(NSDictionary *)values andCompletionHandler:(void(^)(NSArray *))completionHandler
 {
 
     NSString *postUrl = [NSString stringWithFormat:@"reportback_files/%@/review.json", values[@"fid"]];

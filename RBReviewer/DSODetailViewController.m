@@ -66,7 +66,7 @@
     NSInteger tid = [tidString integerValue];
 
     DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
-    [client getSingleInboxReportbackWithCompletionHandler:^(NSMutableArray *response){
+    [client getSingleInboxReportbackForTid:tid andCompletionHandler:^(NSMutableArray *response){
         if ([response count] > 0) {
             self.reportbackFile = (NSMutableDictionary *)response[0];
             [self.tableView reloadData];
@@ -79,7 +79,12 @@
             self.inboxZeroView.hidden = NO;
             [self hideButtons:YES];
         }
-    } andTid:tid];
+    } andErrorHandler:^(NSError *error){
+        [TSMessage showNotificationInViewController:self
+                                              title:@"Aw, shit"
+                                           subtitle:error.localizedDescription
+                                               type:TSMessageNotificationTypeError];
+    }];
 
     // Set TableFooterView to avoid repeating seperator lines.
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
@@ -159,13 +164,13 @@
                              @"source":@"ios"
                              };
     DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
-    [client postReportbackReviewWithCompletionHandler:^(NSArray *response){
+    [client postReportbackReviewWithValues:values andCompletionHandler:^(NSArray *response){
         [self displayStatusMessage:@"flagged"];
         [self updateTableView];
         int newValue = self.inboxCount;
         self.inboxCount = newValue - 1;
         [self updateTitle];
-    } :values];
+    }];
 }
 
 -(void)review:(id)sender
@@ -192,13 +197,13 @@
                              };
 
     DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
-    [client postReportbackReviewWithCompletionHandler:^(NSArray *response){
+    [client postReportbackReviewWithValues:values andCompletionHandler:^(NSArray *response){
         [self displayStatusMessage:status];
         int newValue = self.inboxCount;
         self.inboxCount = newValue - 1;
         [self updateTitle];
         [self updateTableView];
-    } :values];
+    }];
 }
 
 - (void) displayStatusMessage:(NSString *)status {

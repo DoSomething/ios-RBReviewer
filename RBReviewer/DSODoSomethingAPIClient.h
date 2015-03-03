@@ -21,17 +21,17 @@
 
 - (instancetype)initWithBaseURL:(NSURL *)url;
 
--(void)loginWithCompletionHandler:(void(^)(NSDictionary *))completionHandler andErrorHandler:(void(^)(NSError *))errorHandler andUsername:(NSString *)username andPassword:(NSString *)password;
+-(void)loginWithUsername:(NSString *)username andPassword:(NSString *)password andCompletionHandler:(void(^)(NSDictionary *))completionHandler andErrorHandler:(void(^)(NSError *))errorHandler;
 
 -(void)checkStatusWithCompletionHandler:(void(^)(NSDictionary *))completionHandler andErrorHandler:(void(^)(NSDictionary *))errorHandler;
 
-- (void)getSingleInboxReportbackWithCompletionHandler:(void(^)(NSMutableArray *))completionHandler andTid:(NSInteger)tid;
+- (void)getSingleInboxReportbackForTid:(NSInteger)tid andCompletionHandler:(void(^)(NSMutableArray *))completionHandler andErrorHandler:(void(^)(NSError *))errorHandler;
 
 - (void)getTermsWithCompletionHandler:(void(^)(NSMutableArray *))completionHandler;
 
 - (void)logoutUserWithCompletionHandler:(void(^)(NSDictionary *))completionHandler;
 
-- (void)postReportbackReviewWithCompletionHandler:(void(^)(NSArray *))completionHandler :(NSDictionary *)values;
+- (void)postReportbackReviewWithValues:(NSDictionary *)values andCompletionHandler:(void(^)(NSArray *))completionHandler;
 
 - (NSDictionary *) getSavedLogin;
 
