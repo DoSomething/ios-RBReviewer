@@ -67,9 +67,8 @@
 
 -(void)loginWithCompletionHandler:(void(^)(NSDictionary *))completionHandler andErrorHandler:(void(^)(NSError *))errorHandler andUsername:(NSString *)username andPassword:(NSString *)password
 {
-    NSDictionary *params = [[NSDictionary alloc] init];
-    params = @{@"username":username,
-             @"password":password};
+    NSDictionary *params = @{@"username":username,
+                             @"password":password};
     
     [self POST:@"auth/login.json" parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
 
@@ -211,10 +210,4 @@
     
 }
 
-- (BOOL) isLoggedIn {
-    NSMutableDictionary *tokens = [self getSavedTokens];
-    if ([tokens count] > 0) {
-    }
-    return FALSE;
-}
 @end

@@ -20,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.deleteImage = FALSE;
+    self.deleteImage = NO;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.options = [[NSMutableArray alloc] init];
@@ -87,7 +87,7 @@
     if (!checked) {
         cell.imageView.image = [UIImage imageNamed:@"approved.png"];
         [option setObject:[NSNumber numberWithInt:1]  forKey:@"checked"];
-        if ([key isEqual:@"delete"]) {
+        if ([key isEqualToString:@"delete"]) {
             [TSMessage showNotificationInViewController:self
                                                   title:@"Delete Image"
                                                subtitle:@"Are you sure? This cannot be undone."
@@ -99,14 +99,14 @@
                                          buttonCallback:nil
                                              atPosition:TSMessageNotificationPositionBottom
                                    canBeDismissedByUser:YES];
-            self.deleteImage = TRUE;
+            self.deleteImage = YES;
         }
     }
     else {
         cell.imageView.image = nil;
         [option setObject:[NSNumber numberWithInt:0]  forKey:@"checked"];
-        if ([key isEqual:@"delete"]) {
-            self.deleteImage = FALSE;
+        if ([key isEqualToString:@"delete"]) {
+            self.deleteImage = NO;
         }
     }
 }

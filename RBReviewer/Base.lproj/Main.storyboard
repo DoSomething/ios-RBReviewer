@@ -443,7 +443,6 @@
                                 </constraints>
                                 <state key="normal" image="delete-32.png"/>
                                 <connections>
-                                    <action selector="flagTapped:" destination="wQp-6U-E8P" eventType="touchUpInside" id="4hG-PR-M3w"/>
                                     <segue destination="UKh-iw-KOS" kind="show" id="y8O-Aq-dvS"/>
                                 </connections>
                             </button>

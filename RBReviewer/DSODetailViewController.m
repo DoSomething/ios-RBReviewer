@@ -27,7 +27,6 @@
 @property (weak, nonatomic) IBOutlet DSOInboxZeroView *inboxZeroView;
 - (IBAction)excludeTapped:(id)sender;
 - (IBAction)approveTapped:(id)sender;
-- (IBAction)flagTapped:(id)sender;
 - (IBAction)promoteTapped:(id)sender;
 
 @end
@@ -36,10 +35,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.inboxZeroView.hidden = TRUE;
+    self.inboxZeroView.hidden = YES;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.hidden = TRUE;
+    self.tableView.hidden = YES;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 44;
 
@@ -62,12 +61,12 @@
         if ([response count] > 0) {
             self.reportbackFile = (NSMutableDictionary *)response[0];
             [self.tableView reloadData];
-            self.inboxZeroView.hidden = TRUE;
-            self.tableView.hidden = FALSE;
+            self.inboxZeroView.hidden = YES;
+            self.tableView.hidden = NO;
         }
         else {
-            self.tableView.hidden = TRUE;
-            self.inboxZeroView.hidden = FALSE;
+            self.tableView.hidden = YES;
+            self.inboxZeroView.hidden = NO;
         }
     } andTid:tid];
 
@@ -224,9 +223,6 @@
 
 - (IBAction)approveTapped:(id)sender {
     [self postReview:@"approved"];
-}
-
-- (IBAction)flagTapped:(id)sender {
 }
 
 - (IBAction)promoteTapped:(id)sender {
