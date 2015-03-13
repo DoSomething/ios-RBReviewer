@@ -28,7 +28,6 @@
 		B27B50C71A718A490098C0C9 /* DSOImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B27B50C61A718A490098C0C9 /* DSOImageTableViewCell.m */; };
 		B27B50CA1A718A6A0098C0C9 /* DSODynamicTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B27B50C91A718A6A0098C0C9 /* DSODynamicTextTableViewCell.m */; };
 		B27B50CC1A718C400098C0C9 /* ghost-guitar.png in Resources */ = {isa = PBXBuildFile; fileRef = B27B50CB1A718C400098C0C9 /* ghost-guitar.png */; };
-		B280325A1A39EA7F00785B7E /* DSODoSomethingAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B28032591A39EA7F00785B7E /* DSODoSomethingAPIClient.m */; };
 		B2AB11AD1A96B88100871DF3 /* checkmark-64.png in Resources */ = {isa = PBXBuildFile; fileRef = B2AB11AC1A96B88100871DF3 /* checkmark-64.png */; };
 		B2AB11B11A96BB0A00871DF3 /* thumbs_up-32.png in Resources */ = {isa = PBXBuildFile; fileRef = B2AB11AE1A96BB0A00871DF3 /* thumbs_up-32.png */; };
 		B2AB11B21A96BB0A00871DF3 /* thumbs_up-48.png in Resources */ = {isa = PBXBuildFile; fileRef = B2AB11AF1A96BB0A00871DF3 /* thumbs_up-48.png */; };
@@ -99,8 +98,6 @@
 		B27B50C81A718A6A0098C0C9 /* DSODynamicTextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSODynamicTextTableViewCell.h; sourceTree = "<group>"; };
 		B27B50C91A718A6A0098C0C9 /* DSODynamicTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSODynamicTextTableViewCell.m; sourceTree = "<group>"; };
 		B27B50CB1A718C400098C0C9 /* ghost-guitar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ghost-guitar.png"; sourceTree = "<group>"; };
-		B28032581A39EA7F00785B7E /* DSODoSomethingAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSODoSomethingAPIClient.h; sourceTree = "<group>"; };
-		B28032591A39EA7F00785B7E /* DSODoSomethingAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSODoSomethingAPIClient.m; sourceTree = "<group>"; };
 		B2AB11AC1A96B88100871DF3 /* checkmark-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkmark-64.png"; sourceTree = "<group>"; };
 		B2AB11AE1A96BB0A00871DF3 /* thumbs_up-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbs_up-32.png"; sourceTree = "<group>"; };
 		B2AB11AF1A96BB0A00871DF3 /* thumbs_up-48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbs_up-48.png"; sourceTree = "<group>"; };
@@ -174,8 +171,6 @@
 			children = (
 				B20DC9C11A39E63300075693 /* AppDelegate.h */,
 				B20DC9C21A39E63300075693 /* AppDelegate.m */,
-				B28032581A39EA7F00785B7E /* DSODoSomethingAPIClient.h */,
-				B28032591A39EA7F00785B7E /* DSODoSomethingAPIClient.m */,
 				B2428B911A4A416B007DF9C2 /* Views */,
 				B2428B901A4A3676007DF9C2 /* Controllers */,
 				B20DC9BD1A39E63300075693 /* Supporting Files */,
@@ -447,7 +442,6 @@
 			files = (
 				B266AED71A7693AE00B61F47 /* DSOQuantityTableViewCell.m in Sources */,
 				B27B50CA1A718A6A0098C0C9 /* DSODynamicTextTableViewCell.m in Sources */,
-				B280325A1A39EA7F00785B7E /* DSODoSomethingAPIClient.m in Sources */,
 				B262F5F01A77FABE00B1DA2D /* DSOInboxZeroView.m in Sources */,
 				B20DC9C61A39E63300075693 /* DSOLoginViewController.m in Sources */,
 				B27B50C71A718A490098C0C9 /* DSOImageTableViewCell.m in Sources */,

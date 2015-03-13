@@ -1,0 +1,1 @@
+../../../SlothKit/Pod/Classes/DSOCampaign.h

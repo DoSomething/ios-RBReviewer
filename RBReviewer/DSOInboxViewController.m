@@ -7,18 +7,20 @@
 //
 
 #import "DSOInboxViewController.h"
-#import "DSODoSomethingAPIClient.h"
 #import "DSODetailViewController.h"
 #import "DSOLoginViewController.h"
+
+#import <SlothKit/DSOClient.h>
 #import <TSMessage.h>
 
 
 @interface DSOInboxViewController ()
 
+@property (strong, nonatomic) DSOClient *client;
 @property (strong, nonatomic) NSMutableArray *terms;
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 @property (weak, nonatomic) IBOutlet UIButton *logoutButton;
-@property (strong, nonatomic) DSODoSomethingAPIClient *client;
+
 
 - (IBAction)logoutTapped:(id)sender;
 
@@ -34,11 +36,12 @@
     self.terms = [[NSMutableArray alloc] init];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.client = [DSODoSomethingAPIClient sharedClient];
+    self.client = [DSOClient sharedClient];
+    // @todo Add self.client.user back into subtitle
     if (self.displayWelcomeMessage) {
         [TSMessage showNotificationInViewController:self.navigationController
                                               title:@"Welcome back!"
-                                           subtitle:self.client.user[@"mail"]
+                                           subtitle:@"You're looking great today."
                                                type:TSMessageNotificationTypeMessage];
     }
 
@@ -46,8 +49,7 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self.client checkStatusWithCompletionHandler:^(NSDictionary *response){
-        
+    [self.client getConnectionStatusWithCompletionHandler:^(NSDictionary *response){
         NSDictionary *user = response[@"user"];
         NSDictionary *userRoles = user[@"roles"];
         NSLog(@"%@", user);
@@ -56,8 +58,7 @@
             [self displayLoginViewController];
         }
         return;
-        
-    } andErrorHandler:^(NSDictionary *response){
+    } errorHandler:^(NSDictionary *response){
         NSLog(@"Error %@", response);
         [self displayLoginViewController];
     }];
@@ -71,11 +72,6 @@
 - (void) displayLoginViewController {
     DSOLoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNavigationController"];
     [self presentViewController:loginVC animated:YES completion:nil];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -118,8 +114,7 @@
 }
 
 - (IBAction)logoutTapped:(id)sender {
-    DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
-    [client logoutUserWithCompletionHandler:^(NSDictionary *response){
+    [self.client logoutWithCompletionHandler:^(NSDictionary *response){
         [self displayLoginViewController];
     }];
 }
