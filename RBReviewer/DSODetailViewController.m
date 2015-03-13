@@ -13,11 +13,13 @@
 #import "DSODynamicTextTableViewCell.h"
 #import "DSOImageTableViewCell.h"
 #import "DSOFlagViewController.h"
-#import "DSODoSomethingAPIClient.h"
 #import "DSOInboxZeroView.h"
+
+#import <SlothKit/DSOClient.h>
 #import <TSMessage.h>
 
 @interface DSODetailViewController ()
+@property (strong, nonatomic) DSOClient *client;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *approveButton;
 @property (weak, nonatomic) IBOutlet UIButton *excludeButton;
@@ -36,6 +38,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.client = [DSOClient sharedClient];
     self.inboxZeroView.hidden = YES;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -65,8 +68,7 @@
     NSString *tidString = (NSString *)self.taxonomyTerm[@"tid"];
     NSInteger tid = [tidString integerValue];
 
-    DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
-    [client getSingleInboxReportbackForTid:tid andCompletionHandler:^(NSMutableArray *response){
+    [self.client getSingleInboxReportbackForTid:tid completionHandler:^(NSMutableArray *response){
         if ([response count] > 0) {
             self.reportbackFile = (NSMutableDictionary *)response[0];
             [self.tableView reloadData];
@@ -79,7 +81,7 @@
             self.inboxZeroView.hidden = NO;
             [self hideButtons:YES];
         }
-    } andErrorHandler:^(NSError *error){
+    } errorHandler:^(NSError *error){
         [TSMessage showNotificationInViewController:self
                                               title:@"Aw, shit"
                                            subtitle:error.localizedDescription
@@ -163,8 +165,8 @@
                              @"delete":[NSNumber numberWithBool:source.deleteImage],
                              @"source":@"ios"
                              };
-    DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
-    [client postReportbackReviewWithValues:values andCompletionHandler:^(NSArray *response){
+
+    [self.client postReportbackItemReviewWithValues:values completionHandler:^(NSArray *response){
         [self displayStatusMessage:@"flagged"];
         [self updateTableView];
         int newValue = self.inboxCount;
@@ -196,8 +198,7 @@
                              @"source":@"ios"
                              };
 
-    DSODoSomethingAPIClient *client = [DSODoSomethingAPIClient sharedClient];
-    [client postReportbackReviewWithValues:values andCompletionHandler:^(NSArray *response){
+    [self.client postReportbackItemReviewWithValues:values completionHandler:^(NSArray *response){
         [self displayStatusMessage:status];
         int newValue = self.inboxCount;
         self.inboxCount = newValue - 1;
@@ -225,15 +226,6 @@
     
     [self.tableView setContentOffset:CGPointZero animated:YES];
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)excludeTapped:(id)sender {
     [self postReview:@"excluded"];

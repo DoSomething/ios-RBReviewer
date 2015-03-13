@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-RBReviewer-SlothKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-RBReviewer-TSMessages.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -44,45 +49,60 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SlothKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>115EE86CD340308BA6717A1D</key>
+		<key>08E02272C2DD67BA3588712B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5B74EBDB4469562931F32AB6</key>
+		<key>219EB5EA4153B3450C4B06B9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>636BAF06A167C308910BB764</key>
+		<key>27627921F55B0C77AB7D46EB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7763A04BFD6739FC348766EF</key>
+		<key>2EB81EBEC6174315BE1440AB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BDBA6E21E9B7472D0C6A13EE</key>
+		<key>334CDA47B29E9375F0517659</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DAE13E7F1A629770122102A5</key>
+		<key>5A6CC9D9FE003F3371650356</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DFE1660F13CE19D0510B9317</key>
+		<key>851507D91EBDA36C4FFA7857</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FB2E6E8E336F0CC44A9EC622</key>
+		<key>8F98AAEF0E94790FB65A6D51</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A2DDFDF3F973D52D68F164F5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BB67397C5C7BA20D644918BA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
