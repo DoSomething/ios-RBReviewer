@@ -169,7 +169,7 @@
     [self.client postReportbackItemReviewWithValues:values completionHandler:^(NSArray *response){
         [self displayStatusMessage:@"flagged"];
         [self updateTableView];
-        int newValue = self.inboxCount;
+        int newValue = (int)self.inboxCount;
         self.inboxCount = newValue - 1;
         [self updateTitle];
     }];
@@ -200,7 +200,7 @@
 
     [self.client postReportbackItemReviewWithValues:values completionHandler:^(NSArray *response){
         [self displayStatusMessage:status];
-        int newValue = self.inboxCount;
+        int newValue = (int)self.inboxCount;
         self.inboxCount = newValue - 1;
         [self updateTitle];
         [self updateTableView];

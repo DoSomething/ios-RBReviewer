@@ -11,7 +11,7 @@
 
 @interface DSODetailViewController : GAITrackedViewController <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) NSMutableDictionary *taxonomyTerm;
-@property (assign, nonatomic) NSInteger *inboxCount;
+@property (assign, nonatomic) NSInteger inboxCount;
 
 - (IBAction)unwindToDetail:(UIStoryboardSegue *)segue;
 @end

@@ -12,6 +12,8 @@
 	<dict>
 		<key>0E1ED94AB26D51453C36F1021362B4A9D7EB789E</key>
 		<string>https://github.com/DoSomething/ios-RBReviewer.git</string>
+		<key>7AC8548C644EB8DFAB9BB274F219A801C930010C</key>
+		<string>https://github.com/DoSomething/slothkit.objc.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>RBReviewer.xcworkspace</string>
@@ -19,6 +21,8 @@
 	<dict>
 		<key>0E1ED94AB26D51453C36F1021362B4A9D7EB789E</key>
 		<string>..</string>
+		<key>7AC8548C644EB8DFAB9BB274F219A801C930010C</key>
+		<string>../../SlothKit</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/DoSomething/ios-RBReviewer.git</string>
@@ -35,6 +39,14 @@
 			<string>0E1ED94AB26D51453C36F1021362B4A9D7EB789E</string>
 			<key>IDESourceControlWCCName</key>
 			<string>RBReviewer</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7AC8548C644EB8DFAB9BB274F219A801C930010C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SlothKit</string>
 		</dict>
 	</array>
 </dict>

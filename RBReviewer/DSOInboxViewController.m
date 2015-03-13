@@ -132,7 +132,7 @@
     UITableViewCell *cell = (UITableViewCell *)sender;
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     NSMutableDictionary *term = (NSMutableDictionary *)self.terms[indexPath.row];
-    [destVC setInboxCount:[cell.detailTextLabel.text intValue]];
+    [destVC setInboxCount:(NSInteger)[cell.detailTextLabel.text intValue]];
     [destVC setTaxonomyTerm:term];
 }
 @end
